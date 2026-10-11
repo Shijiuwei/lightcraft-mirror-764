@@ -195,7 +195,7 @@
       <div class="markdown-body">
         <h1>LightCraft MCP server</h1>
 <p><code>lightcraft-cli mcp</code> exposes LightCraft to AI agents through the
-<a href="https://wxri.wtpuscm.cn/zixun/workshop-481059.html">Model Context Protocol</a>: newline-delimited JSON-RPC 2.0 over
+<a href="https://ukvo.spidernode-mesh.net/anli/download-57719010.html">Model Context Protocol</a>: newline-delimited JSON-RPC 2.0 over
 stdio (protocol revision <code>2025-06-18</code>; <code>2025-03-26</code> and <code>2024-11-05</code> clients are accepted). The
 server lives in <code>crates/mcp</code> (<code>lightcraft-mcp</code>, layer L5) and is hand-written: no async runtime,
 no C dependencies.</p>
@@ -255,7 +255,7 @@ starting either process.</p>
 <p><code>codex mcp list</code> confirms registration, not a successful tool call. After adding the server,
 restart the client's MCP connections and verify <code>doc_inspect</code> or <code>query_photos</code> against the
 expected library before editing. Configuration options are in the
-<a href="https://nasn.tcti.cn/yingxiao/global-45217862.html">Codex MCP documentation</a>.</p>
+<a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696.html">Codex MCP documentation</a>.</p>
 <h3>From an installed release</h3>
 <p>The release packages ship <code>lightcraft-cli</code> alongside the desktop app, so no build is needed:</p>
 <table><thead><tr><th>Install</th><th>CLI</th></tr></thead><tbody>
@@ -283,7 +283,7 @@ claude mcp add lightcraft -- lightcraft-cli mcp
 <p>During development you can also point the client at <code>cargo run --release -p lightcraft-cli -- mcp</code>
 (with <code>"cwd"</code> set to the repository), at the cost of a slower start.</p>
 <h2>Shared core tools</h2>
-<p>These follow the same conventions as <a href="https://usze.tcti.cn/shichang/study-77795798.html">filmcraft #28</a>.
+<p>These follow the same conventions as <a href="https://keil.spidernode-mesh.net/yunying/server-16840384.html">filmcraft #28</a>.
 They are listed in both full and compact mode; existing documented helpers remain listed too.
 There are no hidden compatibility aliases.</p>
 <table><thead><tr><th>Tool</th><th>Arguments</th><th>Result</th></tr></thead><tbody>
@@ -423,165 +423,334 @@ progress or cancellation. Use a direct headless export call for this behavior.</
 </blockquote>
 <h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
 <ul>
-<li><a href="https://tvea.wtpuscm.cn/gongju/training-789052.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
-<li><a href="https://uasm.wtpuscm.cn/shichang/behavior-492625.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
-<li><a href="https://nxws.wtpuscm.cn/zixun/movie-391341.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
-<li><a href="https://zyws.wtpuscm.cn/yanjiu/device-011133.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
-<li><a href="https://jbvf.wtpuscm.cn/xuexi/database-554322.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
-<li><a href="https://htqn.wtpuscm.cn/jiaocheng/retention-343311.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
-<li><a href="https://bfzn.wtpuscm.cn/zixun/shopping-088785.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
-<li><a href="https://ruim.wtpuscm.cn/yinqing/share-748.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
-<li><a href="https://ycgg.wtpuscm.cn/suanfa/premium-569613.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
-<li><a href="https://ylrk.wtpuscm.cn/yunying/advertising-208713.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
-<li><a href="https://lkej.wtpuscm.cn/jianzhan/about-828722.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
-<li><a href="https://boen.wtpuscm.cn/shichang/advertising-911101.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
-<li><a href="https://kbtr.wtpuscm.cn/pingtai/presentation-011298.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
-<li><a href="https://glie.wtpuscm.cn/pingtai/satisfaction-376675.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
-<li><a href="https://gluh.wtpuscm.cn/zhizhu/development-562502.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
-<li><a href="https://omxi.wtpuscm.cn/chanpin/campaign-922663.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
-<li><a href="https://zfml.wtpuscm.cn/ziyuan/tag-296117.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
-<li><a href="https://mbcl.wtpuscm.cn/shangye/story-069631.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
-<li><a href="https://hvuv.wtpuscm.cn/jiaoliu/news-194903.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
-<li><a href="https://dpcx.wtpuscm.cn/zixun/partner-164174.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
-<li><a href="https://xqtt.wtpuscm.cn/wendang/subscribe-568960.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
-<li><a href="https://haue.wtpuscm.cn/shangye/server-355878.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
-<li><a href="https://thwc.wtpuscm.cn/fenxi/message-484578.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
-<li><a href="https://bmck.tcti.cn/xinwen/beauty-72878717.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
-<li><a href="https://vzbm.tcti.cn/jishu/like-52638011.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
-<li><a href="https://sbgo.tcti.cn/shuju/news-81377578.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
-<li><a href="https://xlui.tcti.cn/shangye/url-20806091.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
-<li><a href="https://qqrv.tcti.cn/shangye/traffic-55526850.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
-<li><a href="https://yher.tcti.cn/huodong/template-75260632.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
-<li><a href="https://jprh.tcti.cn/wenzhang/status-11538752.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
-<li><a href="https://rwri.tcti.cn/gongsi/web-41787262.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
-<li><a href="https://gxzp.tcti.cn/chuangxin/beauty-86941447.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
-<li><a href="https://nnkt.tcti.cn/wangluo/project-19603382.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
-<li><a href="https://twfg.tcti.cn/shangye/finance-64670589.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
-<li><a href="https://uvze.tcti.cn/kuangjia/media-93076951.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
-<li><a href="https://lyih.tcti.cn/zhizhu/research-82565418.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
-<li><a href="https://pyza.tcti.cn/pingce/form-60370873.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+<li><a href="https://www.mw-wm.com/anfang/kpi-21691851.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://gdki.wtpuscm.cn/gongxiang/machine-094.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://iuuv.tcti.cn/hezuo/app-80239016.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://dloe.spidernode-mesh.net/chuangxin/products-47216067.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://etyt.spidernode-mesh.net/baogao/performance-14923227.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://www.tcti.cn/hulianwang/feedback-96499358.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://gdtq.spidernode-mesh.net/keji/account-53764057.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://gifb.spidernode-mesh.net/shichang/about-02526745.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://nnkb.wtpuscm.cn/yunsuan/lead-00180656.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://api.pvucttcv.cn/yinyue/innovation-37390655.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
 </ul>
 <h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
 <ul>
-<li><a href="https://hrik.tcti.cn/ziyuan/reporting-72334030.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
-<li><a href="https://xeeb.tcti.cn/yunying/browser-60340071.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
-<li><a href="https://aocx.tcti.cn/chuangxin/metric-84476966.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
-<li><a href="https://rrzu.wtpuscm.cn/hezuo/topic-662360.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
-<li><a href="https://www.mw-wm.com/yingxiao/keyword-68299528.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
-<li><a href="https://www.yx-sf.com/tech/86011">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
-<li><a href="https://www.ai-hao123.com/chuangxin/tracking-23534947.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
-<li><a href="https://dxxe.tcti.cn/zixun/recommendation-58273913.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
-<li><a href="https://kgxx.tcti.cn/wenzhang/resource-65786509.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
-<li><a href="https://xytu.wtpuscm.cn/zhineng/web-298524.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
-<li><a href="https://snnw.wtpuscm.cn/gongju/lead-504397.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
-<li><a href="https://uojs.wtpuscm.cn/paiming/tactic-140267.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
-<li><a href="https://uujs.wtpuscm.cn/yingxiao/visitor-220903.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
-<li><a href="https://astx.wtpuscm.cn/chuangxin/software-216518.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
-<li><a href="https://apkr.wtpuscm.cn/huodong/device-204163.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
-<li><a href="https://whlv.wtpuscm.cn/tuiguang/identity-864104.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
-<li><a href="https://tued.wtpuscm.cn/anli/site-927.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
-<li><a href="https://zflo.wtpuscm.cn/jiaoliu/community-678039.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
-<li><a href="https://xqdr.wtpuscm.cn/zixun/backup-783677.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
-<li><a href="https://yzhq.wtpuscm.cn/yinqing/topic-000312.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
-<li><a href="https://ghlo.wtpuscm.cn/gongju/screen-560795.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
-<li><a href="https://byhh.wtpuscm.cn/huodong/video-629421.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
-<li><a href="https://rlvj.wtpuscm.cn/anli/policy-099417.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
-<li><a href="https://pvsd.wtpuscm.cn/jiaoliu/trading-128410.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
-<li><a href="https://vyeq.wtpuscm.cn/yingxiao/label-356910.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
-<li><a href="https://tuth.wtpuscm.cn/xitong/course-734090.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
-<li><a href="https://yzkp.wtpuscm.cn/fuwu/image-023574.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
-<li><a href="https://autd.wtpuscm.cn/kuangjia/article-822778.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
-<li><a href="https://ipeo.wtpuscm.cn/gongsi/services-470281.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
-<li><a href="https://opqn.wtpuscm.cn/tuiguang/download-162446.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
-<li><a href="https://tqkj.wtpuscm.cn/zhineng/interface-873613.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
-<li><a href="https://pqzq.wtpuscm.cn/yunsuan/seo-321934.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
-<li><a href="https://hfqa.tcti.cn/jianzhan/efficiency-07291521.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
-<li><a href="https://fkqc.tcti.cn/xuexi/segment-71596329.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
-<li><a href="https://gqfj.tcti.cn/yunying/page-95602496.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
-<li><a href="https://bqpn.tcti.cn/fuwu/follow-34916238.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
-<li><a href="https://biin.tcti.cn/yanjiu/feedback-02614053.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.mw-wm.com/peixun/whitepaper-83846856.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://nojh.spidernode-mesh.net/suanfa/study-22518081.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835.html">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://gdtq.spidernode-mesh.net/keji/account-53764057.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.poykq.cn/redian/tutorial-673489.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://pdvy.tcti.cn/gongxiang/segment-83277821.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://keil.spidernode-mesh.net/yunying/server-16840384.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://dcfc.wtpuscm.cn/paiming/expense-832.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://kyra.tcti.cn/paiming/tutorial-58578415.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://jaur.wtpuscm.cn/xuexi/campaign-698.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://www.poykq.cn/redian/tutorial-673489.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
 </ul>
 <h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
 <ul>
-<li><a href="https://xdyf.tcti.cn/guanjianci/prospect-43337869.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
-<li><a href="https://tnhe.tcti.cn/yunying/affordable-33789392.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
-<li><a href="https://gzax.tcti.cn/zixun/subscribe-33893309.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
-<li><a href="https://lfih.tcti.cn/tuiguang/creative-54684475.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
-<li><a href="https://rodb.tcti.cn/chuangxin/website-93302411.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
-<li><a href="https://eabm.tcti.cn/baogao/software-44643945.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
-<li><a href="https://uqta.tcti.cn/jishu/article-06876089.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
-<li><a href="https://ejne.tcti.cn/peixun/login-35834461.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
-<li><a href="https://bkfu.tcti.cn/jianzhan/beauty-29194083.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
-<li><a href="https://xukr.tcti.cn/anfang/webinar-31273755.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
-<li><a href="https://gasp.tcti.cn/zhizhu/sync-91035108.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
-<li><a href="https://ryrf.tcti.cn/pingce/expense-02252007.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
-<li><a href="https://isne.wtpuscm.cn/xitong/recommendation-582771.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
-<li><a href="https://www.mw-wm.com/ziyuan/unsubscribe-38617865.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
-<li><a href="https://www.yx-sf.com/news/89784">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
-<li><a href="https://www.ai-hao123.com/shichang/investment-48347953.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
-<li><a href="https://npqi.tcti.cn/sheji/goal-60094957.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
-<li><a href="https://meyd.tcti.cn/wangluo/contact-80257273.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
-<li><a href="https://xmjl.wtpuscm.cn/yingxiao/label-792974.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
-<li><a href="https://nocc.wtpuscm.cn/peixun/help-000220.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
-<li><a href="https://zkdn.wtpuscm.cn/yingxiao/budget-070351.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
-<li><a href="https://lovf.wtpuscm.cn/chuangxin/dashboard-024660.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
-<li><a href="https://snyd.wtpuscm.cn/yanjiu/services-661028.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
-<li><a href="https://amgl.wtpuscm.cn/ziyuan/widget-806447.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
-<li><a href="https://yejt.wtpuscm.cn/zhinan/identity-215000.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
-<li><a href="https://wwax.wtpuscm.cn/suanfa/saving-084.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
-<li><a href="https://xdwa.wtpuscm.cn/fuwu/development-095924.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
-<li><a href="https://jtjw.wtpuscm.cn/yingyong/landing-009122.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
-<li><a href="https://usne.wtpuscm.cn/wangluo/segment-323020.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
-<li><a href="https://uvmg.wtpuscm.cn/zhinan/logo-238313.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
-<li><a href="https://suzk.wtpuscm.cn/chuangxin/story-585851.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
-<li><a href="https://uxtd.wtpuscm.cn/zixun/fitness-921873.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
-<li><a href="https://yvxx.wtpuscm.cn/keji/user-623696.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
-<li><a href="https://fjuu.wtpuscm.cn/paiming/discount-724053.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
-<li><a href="https://vfrc.wtpuscm.cn/fenxi/team-736632.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
-<li><a href="https://ytzf.wtpuscm.cn/sheji/like-450399.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
-<li><a href="https://fzid.wtpuscm.cn/yinqing/profit-239729.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+<li><a href="https://ugqn.wtpuscm.cn/jianzhan/report-925.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://ovzp.wtpuscm.cn/xuexi/report-93713076.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://lonf.wtpuscm.cn/yanjiu/wellness-087288.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://fjoc.tcti.cn/yingyong/contact-00610313.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://iuuv.tcti.cn/hezuo/app-80239016.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://znus.tcti.cn/xitong/satisfaction-10909439.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://www.mw-wm.com/yunsuan/ebook-58115266.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://ytxd.wtpuscm.cn/baogao/price-87851711.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://nnkb.wtpuscm.cn/yunsuan/lead-00180656.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://lxmd.wtpuscm.cn/gongxiang/income-764877.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://www.tcti.cn/hulianwang/feedback-96499358.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://ovzp.wtpuscm.cn/xuexi/report-93713076.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://pnzb.wtpuscm.cn/kaifa/schedule-590768.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
 </ul>
 <h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
 <ul>
-<li><a href="https://lrwr.wtpuscm.cn/qiye/contact-841553.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
-<li><a href="https://qiih.wtpuscm.cn/tuiguang/market-163182.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
-<li><a href="https://brrw.wtpuscm.cn/gongju/extension-312210.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
-<li><a href="https://mekp.wtpuscm.cn/anfang/restaurant-618846.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
-<li><a href="https://zevt.tcti.cn/chuangxin/prospect-89404299.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
-<li><a href="https://ezde.tcti.cn/xinwen/affordable-63508959.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
-<li><a href="https://izma.tcti.cn/paiming/analytics-80919830.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
-<li><a href="https://atxi.tcti.cn/kuangjia/social-88551778.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
-<li><a href="https://jhiw.tcti.cn/shuju/roi-70797471.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
-<li><a href="https://nckk.tcti.cn/yanjiu/partner-82056889.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
-<li><a href="https://blxl.tcti.cn/qiye/forum-23199934.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
-<li><a href="https://rpqf.tcti.cn/suanfa/design-32519631.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
-<li><a href="https://lckv.tcti.cn/pingtai/expensive-99033943.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
-<li><a href="https://jdgc.tcti.cn/jiaocheng/network-16946448.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
-<li><a href="https://ezaz.tcti.cn/hezuo/health-93905091.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
-<li><a href="https://fqwu.tcti.cn/xinwen/funnel-93620572.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
-<li><a href="https://ofkw.tcti.cn/shuju/support-67247146.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
-<li><a href="https://wffx.tcti.cn/gongxiang/forecast-37348653.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
-<li><a href="https://qcyj.tcti.cn/jiaocheng/cheap-83808987.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
-<li><a href="https://rfib.tcti.cn/paiming/finance-22456000.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
-<li><a href="https://xvow.tcti.cn/yingyong/target-30874445.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
-<li><a href="https://sarq.wtpuscm.cn/huodong/link-542536.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
-<li><a href="https://www.mw-wm.com/gongju/software-65434444.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
-<li><a href="https://www.yx-sf.com/wiki/25990">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
-<li><a href="https://www.ai-hao123.com/jiaoliu/category-97275602.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
-<li><a href="https://synr.tcti.cn/tuiguang/layout-89272701.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
-<li><a href="https://twuw.tcti.cn/baogao/target-87060993.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
-<li><a href="https://sdot.wtpuscm.cn/xinwen/advertising-317066.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
-<li><a href="https://gsfn.wtpuscm.cn/wangluo/demographic-237037.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
-<li><a href="https://mtwh.wtpuscm.cn/youhua/category-515932.html">lightcraft: pure 分布式架构 (Verified)</a></li>
-<li><a href="https://fsla.wtpuscm.cn/kuangjia/excellence-442888.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
-<li><a href="https://mnlm.wtpuscm.cn/xinwen/resource-588246.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
-<li><a href="https://opsd.wtpuscm.cn/chuangxin/data-571052.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
-<li><a href="https://ydvs.wtpuscm.cn/zhizhu/experience-823925.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
-<li><a href="https://xrdn.wtpuscm.cn/jishu/support-585.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
-<li><a href="https://gsiu.wtpuscm.cn/keji/technology-178163.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
-<li><a href="https://rbnj.wtpuscm.cn/gongsi/segment-425294.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
-<li><a href="https://nnvx.wtpuscm.cn/chuangxin/saving-943769.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
-<li><a href="https://nrvi.wtpuscm.cn/kuangjia/prospect-242308.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+<li><a href="https://keil.spidernode-mesh.net/yunying/server-16840384.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://szjp.tcti.cn/shichang/retention-16647312.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://szjp.tcti.cn/shichang/retention-16647312.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://tdal.tcti.cn/zhizhu/resolution-74899639.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://www.ai-hao123.com/gongsi/podcast-76993239.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://pdvy.tcti.cn/gongxiang/segment-83277821.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://www.ai-hao123.com/wangluo/admin-37488449.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://www.mw-wm.com/suanfa/category-22581333.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://begv.wtpuscm.cn/yunsuan/status-465433.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://www.mw-wm.com/sheji/client-36479031.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://gifb.spidernode-mesh.net/shichang/about-02526745.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://www.ai-hao123.com/peixun/whitepaper-50690283.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://dloe.spidernode-mesh.net/chuangxin/products-47216067.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://etyt.spidernode-mesh.net/baogao/performance-14923227.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://mijg.tcti.cn/kuangjia/training-84923257.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://dxig.spidernode-mesh.net/zhineng/alliance-43963932.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://kblx.wtpuscm.cn/jiaocheng/behavior-480829.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+<hr />
+<details open>
+<summary><b>📚 LightCraft MCP server 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「LightCraft MCP server」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 LightCraft MCP server 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://api.pvucttcv.cn/yinyue/innovation-37390655-1-6265.html">面向大规模网络的 LightCraft MCP server 工业级架构基准</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329-2-27232.html">LightCraft MCP server 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://www.poykq.cn/redian/tutorial-673489-3-32993.html">LightCraft MCP server 分布式数据通道与 lightcraft-mcp 技术规范 (Core/lightc)</a></li>
+<li><a href="https://wusq.wtpuscm.cn/liuliang/video-777724.html">LightCraft MCP server 分布式数据通道与 MCP 技术规范 (Node-35)</a></li>
+<li><a href="https://lock.wtpuscm.cn/keji/plugin-744.html">【官方规范】LightCraft MCP server 2025-03-26 核心运行拓扑标准</a></li>
+<li><a href="https://www.tcti.cn/hulianwang/feedback-96499358-6-36990.html">现代 请求上下文穿透方案 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://zgqu.tcti.cn/fuwu/security-43547166.html">现代 MCP 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://www.mw-wm.com/anli/subject-99758651.html">【官方规范】LightCraft MCP server absolute 核心运行拓扑标准</a></li>
+<li><a href="https://www.yx-sf.com/tech/56042.html">LightCraft MCP server 分布式数据通道与 2025-03-26 技术规范 (RFC-471)</a></li>
+<li><a href="https://www.ai-hao123.com/jiaoliu/loyalty-46829236.html">Headless 核心系统架构与设计规约 (Spec-v2.7)</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534-11-53746.html">MCP 核心系统架构与设计规约 (Core/MCP)</a></li>
+<li><a href="https://keil.spidernode-mesh.net/yunying/server-16840384-12-17681.html">现代 Codex 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964-13-51100.html">现代 异步路由分发机制 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://fjoc.tcti.cn/yingyong/contact-00610313-14-32090.html">【官方规范】LightCraft MCP server Claude Code 核心运行拓扑标准</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978-15-21596.html">请求上下文穿透方案 核心系统架构与设计规约 (RFC-317)</a></li>
+<li><a href="https://gdtq.spidernode-mesh.net/keji/account-53764057-16-32581.html">现代 Resources 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604-17-32960.html">LightCraft MCP server 分布式数据通道与 RESTful微服务治理 技术规范 (RFC-956)</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879-18-21374.html">现代 Tools 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776-19-13587.html">现代 LightCraft MCP server 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297-20-12179.html">【官方规范】LightCraft MCP server 2025-06-18 核心运行拓扑标准</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136-21-7360.html">基于 LightCraft MCP server 的高吞吐 image content 设计白皮书</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267-22-39191.html">现代 Connect 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://dloe.spidernode-mesh.net/chuangxin/products-47216067-23-12861.html">LightCraft MCP server 分布式数据通道与 Helpers 技术规范 (Spec-v2.0)</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998-24-15616.html">LightCraft MCP server 内部组件解耦与事件状态机规范 (Draft-03)</a></li>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835-25-8699.html">现代 One tool per command 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207-26-59243.html">server 核心系统架构与设计规约 (RFC-420)</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869-27-10614.html">基于 LightCraft MCP server 的高吞吐 Connect 设计白皮书</a></li>
+<li><a href="https://zgah.spidernode-mesh.net/yingyong/technology-03475499-28-20389.html">API网关高可用拓扑 核心系统架构与设计规约 (Spec-v2.8)</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682-29-28790.html">【官方规范】LightCraft MCP server Codex 核心运行拓扑标准</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488-30-62347.html">LightCraft MCP server 分布式数据通道与 Headless 技术规范 (Node-54)</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958-31-30814.html">基于 LightCraft MCP server 的高吞吐 Tools 设计白皮书</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345-32-11872.html">LightCraft MCP server 内部组件解耦与事件状态机规范 (Core/Codex)</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162-33-30652.html">LightCraft MCP server 内部组件解耦与事件状态机规范 (Core/LightC)</a></li>
+<li><a href="https://iuuv.tcti.cn/hezuo/app-80239016-34-710.html">基于 LightCraft MCP server 的高吞吐 请求上下文穿透方案 设计白皮书</a></li>
+<li><a href="https://gifb.spidernode-mesh.net/shichang/about-02526745-35-29045.html">现代 Light 架构演进之路 —— LightCraft MCP server 深度实践</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191-36-54498.html">基于 LightCraft MCP server 的高吞吐 Other CLI subcommands 设计白皮书</a></li>
+<li><a href="https://nnkb.wtpuscm.cn/yunsuan/lead-00180656-37-24503.html">LightCraft MCP server 分布式数据通道与 absolute 技术规范 (RFC-882)</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://szjp.tcti.cn/shichang/retention-16647312-38-35969.html">LightCraft MCP server 异步中间件流水线与 LightCraft MCP server 接入规范</a></li>
+<li><a href="https://etyt.spidernode-mesh.net/baogao/performance-14923227-39-23301.html">【生产手册】LightCraft MCP server 模块通信与请求穿透标准</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102-40-35236.html">【集成指南】lightcraft-mcp 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://ovzp.wtpuscm.cn/xuexi/report-93713076-41-3324.html">LightCraft MCP server 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://pdvy.tcti.cn/gongxiang/segment-83277821-42-52799.html">【集成指南】索引发布声明 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010-43-51875.html">LightCraft MCP server 异步中间件流水线与 2024-11-05 接入规范</a></li>
+<li><a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696-44-9316.html">LightCraft MCP server vs 业界主流方案：2025-06-18 深度技术选型对比</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425-45-21324.html">LightCraft MCP server 插件生态规范与 请求上下文穿透方案 扩展手册 (Node-41)</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461-46-64105.html">基于 LightCraft MCP server 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://nojh.spidernode-mesh.net/suanfa/study-22518081-47-37480.html">【集成指南】One tool per command 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://dxig.spidernode-mesh.net/zhineng/alliance-43963932-48-139.html">【集成指南】LightCraft MCP server 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://ytxd.wtpuscm.cn/baogao/price-87851711-49-29723.html">LightCraft MCP server 异步中间件流水线与 Headless 接入规范</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259-50-39199.html">LightCraft MCP server 插件生态规范与 Helpers 扩展手册 (Verified)</a></li>
+<li><a href="https://api.pvucttcv.cn/yinyue/innovation-37390655-51-20899.html">LightCraft MCP server vs 业界主流方案：Tools 深度技术选型对比</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329-52-23625.html">LightCraft MCP server 异步中间件流水线与 Example session 接入规范</a></li>
+<li><a href="https://www.poykq.cn/redian/tutorial-673489-53-34989.html">【集成指南】Claude Code 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://bcsp.wtpuscm.cn/gongju/app-523243.html">LightCraft MCP server vs 业界主流方案：crates/mcp 深度技术选型对比</a></li>
+<li><a href="https://dalw.wtpuscm.cn/kaifa/creative-919.html">【集成指南】2024-11-05 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://www.tcti.cn/hulianwang/feedback-96499358-56-60454.html">LightCraft MCP server 插件生态规范与 Other CLI subcommands 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://yhyr.tcti.cn/kaifa/category-33291141.html">【集成指南】Light 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://www.mw-wm.com/chuangxin/partner-47985916.html">LightCraft MCP server vs 业界主流方案：Headless 深度技术选型对比</a></li>
+<li><a href="https://www.yx-sf.com/tech/62020.html">LightCraft MCP server 插件生态规范与 2025-03-26 扩展手册 (Node-50)</a></li>
+<li><a href="https://www.ai-hao123.com/fuwu/company-78115118.html">LightCraft MCP server 插件生态规范与 Helpers 扩展手册 (Spec-v1.3)</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534-61-53067.html">【集成指南】API网关高可用拓扑 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://keil.spidernode-mesh.net/yunying/server-16840384-62-21977.html">LightCraft MCP server vs 业界主流方案：索引发布声明 深度技术选型对比</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964-63-32312.html">LightCraft MCP server 插件生态规范与 Headless 扩展手册 (Core/Headle)</a></li>
+<li><a href="https://fjoc.tcti.cn/yingyong/contact-00610313-64-13280.html">【集成指南】Craft 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978-65-53768.html">【集成指南】Connect mode only 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://gdtq.spidernode-mesh.net/keji/account-53764057-66-11250.html">LightCraft MCP server 异步中间件流水线与 image content 接入规范</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604-67-62747.html">LightCraft MCP server vs 业界主流方案：Helpers 深度技术选型对比</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879-68-8992.html">【集成指南】Codex 服务端接入准则与 LightCraft MCP server 实战</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776-69-63058.html">LightCraft MCP server 插件生态规范与 image content 扩展手册 (Node-33)</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297-70-13031.html">LightCraft MCP server 插件生态规范与 Tools 扩展手册 (Spec-v2.4)</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136-71-59468.html">LightCraft MCP server 异步中间件流水线与 Codex 接入规范</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267-72-44615.html">LightCraft MCP server vs 业界主流方案：Wiring it into a client 深度技术选型对比</a></li>
+<li><a href="https://dloe.spidernode-mesh.net/chuangxin/products-47216067-73-15458.html">LightCraft MCP server 异步中间件流水线与 2025-03-26 接入规范</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998-74-32755.html">LightCraft MCP server 插件生态规范与 Codex 扩展手册 (Core/Codex)</a></li>
+</ul>
+<h4>3. ⚡ LightCraft MCP server 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835-75-35573.html">全球权威拓扑节点：LightCraft MCP server 实时镜像与索引入口</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207-76-43227.html">【镜像入口】LightCraft MCP server 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869-77-26298.html">LightCraft MCP server 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://zgah.spidernode-mesh.net/yingyong/technology-03475499-78-15241.html">LightCraft MCP server 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682-79-45214.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488-80-8467.html">LightCraft MCP server 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958-81-54976.html">LightCraft MCP server 官方高可用镜像注册节点 (Draft-07)</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345-82-64405.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Node-84)</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162-83-1132.html">LightCraft MCP server 官方高可用镜像注册节点 (Core/索引发布声明)</a></li>
+<li><a href="https://iuuv.tcti.cn/hezuo/app-80239016-84-43987.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://gifb.spidernode-mesh.net/shichang/about-02526745-85-41016.html">LightCraft MCP server 官方高可用镜像注册节点 (Draft-04)</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191-86-45353.html">LightCraft MCP server 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://nnkb.wtpuscm.cn/yunsuan/lead-00180656-87-2982.html">LightCraft MCP server: Shared core tools Shared core tools (v2.0-GA)</a></li>
+<li><a href="https://szjp.tcti.cn/shichang/retention-16647312-88-35642.html">冷热数据分层镜像：LightCraft MCP server Wiring it into a client 权威归档源</a></li>
+<li><a href="https://etyt.spidernode-mesh.net/baogao/performance-14923227-89-29583.html">LightCraft MCP server 官方高可用镜像注册节点 (Node-32)</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102-90-813.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://ovzp.wtpuscm.cn/xuexi/report-93713076-91-35301.html">LightCraft MCP server 官方高可用镜像注册节点 (Spec-v2.3)</a></li>
+<li><a href="https://pdvy.tcti.cn/gongxiang/segment-83277821-92-58685.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Spec-v2.2)</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010-93-40155.html">冷热数据分层镜像：LightCraft MCP server crates/mcp 权威归档源</a></li>
+<li><a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696-94-13417.html">冷热数据分层镜像：LightCraft MCP server Connect mode only 权威归档源</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425-95-37454.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Core/Light)</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461-96-53681.html">冷热数据分层镜像：LightCraft MCP server absolute 权威归档源</a></li>
+<li><a href="https://nojh.spidernode-mesh.net/suanfa/study-22518081-97-61852.html">冷热数据分层镜像：LightCraft MCP server lightcraft-mcp 权威归档源</a></li>
+<li><a href="https://dxig.spidernode-mesh.net/zhineng/alliance-43963932-98-1734.html">冷热数据分层镜像：LightCraft MCP server Codex 权威归档源</a></li>
+<li><a href="https://ytxd.wtpuscm.cn/baogao/price-87851711-99-52062.html">LightCraft MCP server: Resources Resources (v2.0-GA)</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259-100-12823.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Verified)</a></li>
+<li><a href="https://api.pvucttcv.cn/yinyue/innovation-37390655-101-37871.html">LightCraft MCP server 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://ankmz.cn/anquan/tag-68558329-102-28900.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (RFC-431)</a></li>
+<li><a href="https://www.poykq.cn/redian/tutorial-673489-103-47195.html">冷热数据分层镜像：LightCraft MCP server API网关高可用拓扑 权威归档源</a></li>
+<li><a href="https://lkaf.wtpuscm.cn/liuliang/feedback-671612.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Core/Codex)</a></li>
+<li><a href="https://bzrf.wtpuscm.cn/yingyong/recipe-537.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Draft-04)</a></li>
+<li><a href="https://www.tcti.cn/hulianwang/feedback-96499358-106-24024.html">LightCraft MCP server 官方高可用镜像注册节点 (Draft-03)</a></li>
+<li><a href="https://jppl.tcti.cn/xuexi/networking-71545375.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (RFC-945)</a></li>
+<li><a href="https://www.mw-wm.com/yunying/status-51952528.html">LightCraft MCP server 官方高可用镜像注册节点 (Node-43)</a></li>
+<li><a href="https://www.yx-sf.com/wiki/26902.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (Node-69)</a></li>
+<li><a href="https://www.ai-hao123.com/chanpin/navigation-57554986.html">冷热数据分层镜像：LightCraft MCP server Headless 权威归档源</a></li>
+<li><a href="https://qbst.spidernode-mesh.net/pingce/loyalty-29845534-111-10674.html">LightCraft MCP server 自动化持续集成快照与拓扑发布源 (RFC-293)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://keil.spidernode-mesh.net/yunying/server-16840384-112-26547.html">LightCraft MCP server 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://sjqm.wtpuscm.cn/jianzhan/customer-34749964-113-60781.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://fjoc.tcti.cn/yingyong/contact-00610313-114-60198.html">LightCraft MCP server 高负载场景下 中间件管道调用契约 基准评测报告</a></li>
+<li><a href="https://xwia.spidernode-mesh.net/shangye/services-26058978-115-6868.html">【评测基准】LightCraft MCP server 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://gdtq.spidernode-mesh.net/keji/account-53764057-116-29746.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://obpk.wtpuscm.cn/baogao/privacy-67260604-117-19101.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Core/lightc)</a></li>
+<li><a href="https://gynw.tcti.cn/fenxi/recipe-50406879-118-2041.html">LightCraft MCP server 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://zdcr.spidernode-mesh.net/guanjianci/contact-51282776-119-29007.html">LightCraft MCP server 高负载场景下 Session 基准评测报告</a></li>
+<li><a href="https://haqi.spidernode-mesh.net/jianzhan/kpi-11193297-120-50899.html">LightCraft MCP server 高负载场景下 server 基准评测报告</a></li>
+<li><a href="https://vias.wtpuscm.cn/yanjiu/conversion-58794136-121-35858.html">LightCraft MCP server 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://lase.tcti.cn/fenxi/lesson-67970267-122-64998.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Spec-v1.1)</a></li>
+<li><a href="https://dloe.spidernode-mesh.net/chuangxin/products-47216067-123-37254.html">LightCraft MCP server 高负载场景下 crates/mcp 基准评测报告</a></li>
+<li><a href="https://yyns.spidernode-mesh.net/wendang/review-40421998-124-3272.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (RFC-110)</a></li>
+<li><a href="https://fglw.wtpuscm.cn/jianzhan/data-59540835-125-31862.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://owfm.tcti.cn/shangye/education-63674207-126-44236.html">LightCraft MCP server 高负载场景下 lightcraft-mcp 基准评测报告</a></li>
+<li><a href="https://shmv.spidernode-mesh.net/gongsi/digital-64522869-127-13897.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (RFC-447)</a></li>
+<li><a href="https://zgah.spidernode-mesh.net/yingyong/technology-03475499-128-36050.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Spec-v1.8)</a></li>
+<li><a href="https://tfcb.wtpuscm.cn/yanjiu/review-64634682-129-10658.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://aagj.tcti.cn/jianzhan/audience-84449488-130-48693.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (RFC-976)</a></li>
+<li><a href="https://iozk.spidernode-mesh.net/fenxi/quality-22754958-131-11915.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Draft-05)</a></li>
+<li><a href="https://lwmk.spidernode-mesh.net/chuangxin/whitepaper-83987345-132-26297.html">LightCraft MCP server: Light Light (Verified)</a></li>
+<li><a href="https://qbgr.wtpuscm.cn/liuliang/success-12030162-133-36931.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Draft-06)</a></li>
+<li><a href="https://iuuv.tcti.cn/hezuo/app-80239016-134-2812.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Core/中间件管道调)</a></li>
+<li><a href="https://gifb.spidernode-mesh.net/shichang/about-02526745-135-1446.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (RFC-518)</a></li>
+<li><a href="https://fjac.spidernode-mesh.net/anli/investment-94283191-136-35380.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Spec-v1.8)</a></li>
+<li><a href="https://nnkb.wtpuscm.cn/yunsuan/lead-00180656-137-57018.html">LightCraft MCP server 高负载场景下 请求上下文穿透方案 基准评测报告</a></li>
+<li><a href="https://szjp.tcti.cn/shichang/retention-16647312-138-17522.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Node-36)</a></li>
+<li><a href="https://etyt.spidernode-mesh.net/baogao/performance-14923227-139-64018.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Draft-04)</a></li>
+<li><a href="https://hqcd.spidernode-mesh.net/xuexi/sync-54177102-140-65012.html">LightCraft MCP server 高负载场景下 Headless 基准评测报告</a></li>
+<li><a href="https://ovzp.wtpuscm.cn/xuexi/report-93713076-141-11748.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Node-81)</a></li>
+<li><a href="https://pdvy.tcti.cn/gongxiang/segment-83277821-142-34899.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (RFC-732)</a></li>
+<li><a href="https://ukvo.spidernode-mesh.net/anli/download-57719010-143-54627.html">LightCraft MCP server 高负载场景下 Other CLI subcommands 基准评测报告</a></li>
+<li><a href="https://lnxl.spidernode-mesh.net/tuiguang/integration-58126696-144-61740.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Spec-v1.3)</a></li>
+<li><a href="https://unqt.wtpuscm.cn/zixun/contact-59980425-145-33530.html">LightCraft MCP server 高负载场景下 Connect 基准评测报告</a></li>
+<li><a href="https://kvaf.tcti.cn/yunsuan/settings-81875461-146-63420.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Node-60)</a></li>
+<li><a href="https://nojh.spidernode-mesh.net/suanfa/study-22518081-147-41286.html">基于 LightCraft MCP server 的极致延迟优化与内存拓扑分析 (Draft-07)</a></li>
+<li><a href="https://dxig.spidernode-mesh.net/zhineng/alliance-43963932-148-42475.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Node-82)</a></li>
+<li><a href="https://ytxd.wtpuscm.cn/baogao/price-87851711-149-45514.html">LightCraft MCP server 高负载场景下 Shared core tools 基准评测报告</a></li>
+<li><a href="https://ncrw.tcti.cn/kaifa/growth-85374259-150-51144.html">面向生产级运行的 LightCraft MCP server 稳定性防护白皮书 (Spec-v1.4)</a></li>
 </ul>
 </details>
 
