@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU develop pipeline (M5.2) - lightcraft-mirror-764 文档归档</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-hover: #1d4ed8;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.68;
+        color: #1e293b;
+      }
+      .markdown-body {
+        color: #1e293b;
+      }
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid #e2e8f0;
+        color: #0f172a;
+        line-height: 1.25;
+      }
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.6rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+      }
+      .markdown-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.6rem;
+        color: #334155;
+      }
+      .markdown-body p {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+      }
+      .markdown-body a {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dashed #93c5fd;
+        transition: all 0.2s ease;
+      }
+      .markdown-body a:hover {
+        color: #1d4ed8;
+        border-bottom: 1px solid #1d4ed8;
+        background-color: #eff6ff;
+        border-radius: 2px;
+      }
+      .markdown-body ul, .markdown-body ol {
+        padding-left: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .markdown-body ul {
+        list-style-type: disc;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+      }
+      .markdown-body li {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .markdown-body pre {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 1rem 1.2rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .markdown-body code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.15rem 0.35rem;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-radius: 0.35rem;
+        border: 1px solid #e2e8f0;
+      }
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
+      .markdown-body blockquote {
+        margin: 1rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 0.5rem 0.5rem 0;
+        color: #475569;
+      }
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        display: block;
+        overflow-x: auto;
+      }
+      .markdown-body th, .markdown-body td {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 1rem;
+        text-align: left;
+      }
+      .markdown-body th {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      .markdown-body hr {
+        height: 1px;
+        border: none;
+        background-color: #e2e8f0;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">lightcraft-mirror-764</span>
+      </a>
+      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
+    </div>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm">
+      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>首页 (README)</span>
+      </a>
+      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>文档归档 (Docs)</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+      </a>
+      <div class="h-4 w-px bg-slate-200 mx-1"></div>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="hidden sm:inline">Wiki</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- 面包屑与顶部导航 -->
+  <header class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
+        <span>/</span>
+        <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">技术文档</span>
+      </nav>
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">GPU develop pipeline (M5.2)</h1>
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors ">
+          <span>&larr; 返回文档归档菜单</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体正文区域 -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full">
+    <article class="bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-slate-200">
+      <div class="markdown-body">
+        <h1>GPU develop pipeline (M5.2)</h1>
+<p>The CPU pipeline (<code>crates/pipeline</code>) is the reference ("oracle"). <code>lightcraft-gpu</code> (<code>crates/gpu</code>, L3)
+evaluates the same stages with wgpu compute shaders (WGSL) on Metal / Vulkan / DX12. Everything is
+pure Rust (wgpu, naga); the drivers are the system's. No GL backend is compiled in.</p>
+<p>Warped geometry uses a CPU-computed coverage bit mask for the source boundary.
+The CPU reference evaluates that boundary in double precision; GPU float
+rounding otherwise can turn a blank edge pixel into a photo pixel. The mask
+uses one bit per output pixel (rows padded to 32 bits). Sampling and color
+corrections remain on the GPU, and existing geometry stage caching reuses the
+result. The mask is built per 32 × 16 block (<code>Warp::block_coverage</code>): the warp
+formulas are written once, generic over <code>lightcraft_geom::Real</code>, and evaluated
+with outward-rounded <code>Interval</code>s over the block. Those bounds enclose the f64
+result of every pixel in the block, so a block whose bounds lie inside the
+image edges (the same f64 comparisons, no margin), or beyond one of them, is
+filled at once; only blocks across the edge, or whose bounds are undecided (a
+perspective denominator that may vanish), evaluate each pixel (<code>Warp::covers</code>,
+the framing chain <code>Warp::frame</code> the CPU resample uses too). The bits equal the
+per-pixel decision. At 6000 × 4000 with lens warp + perspective the mask takes
+~2.7 ms (32 threads; ~24.5 ms on one) instead of ~30 ms (~580 ms), and only
+when warped geometry rebuilds.</p>
+<h2>Backends, environment variables and troubleshooting (issue #136)</h2>
+<p>wgpu loads the driver of <strong>every</strong> backend in an instance's set while it enumerates adapters — even
+when it then picks another one. A Vulkan driver that crashes there (issue #136: an access violation
+in Intel's <code>igvk64.dll</code> on a UHD 630 under Windows 11) takes the process down before any window
+appears, and a native crash cannot be caught. So LightCraft only lets wgpu touch the backends it
+means to use (<code>lightcraft_gpu::backend</code>), for its compute device <em>and</em> for the desktop window
+(eframe/egui-wgpu, <code>window_wgpu_options</code> in <code>apps/lightcraft/src/main.rs</code>):</p>
+<table><thead><tr><th>platform</th><th>default (window and compute)</th></tr></thead><tbody>
+<tr><td>Windows</td><td>DX12 only — the Vulkan driver is never loaded unless asked for</td></tr>
+<tr><td>macOS</td><td>Metal</td></tr>
+<tr><td>Linux / BSD</td><td>Vulkan (the window also lists GL, eframe's default; no GL backend is compiled in)</td></tr>
+</tbody></table>
+<p>Overrides (read once at launch):</p>
+<ul>
+<li><code>LIGHTCRAFT_GPU_BACKEND=dx12 | vulkan | metal | gl | auto | off</code> (comma lists allowed, e.g.
+<code>vulkan,dx12</code>): the backends for both the window and GPU rendering; <code>off</code> turns GPU rendering off
+(CPU pipeline) — the window still needs a backend and keeps the platform default. A backend this
+build doesn't contain (<code>gl</code>) is ignored with a warning.</li>
+<li>else <code>WGPU_BACKEND</code> (wgpu's own variable, same names) — before #136 only the window honoured it,
+the compute device always used Vulkan + DX12 (+ Metal).</li>
+<li><code>LIGHTCRAFT_GPU=0</code>: GPU rendering off for the process (the window is unaffected).</li>
+</ul>
+<p><strong>DX12 shader compiler (issue #471).</strong> Every instance (window and compute) compiles DX12 shaders with
+FXC (<code>d3dcompiler_47.dll</code>, part of Windows; <code>lightcraft_gpu::backend::backend_options</code>). wgpu's
+default, <code>Auto</code>, loads whichever <code>dxcompiler.dll</code> the DLL search path finds first. LightCraft ships
+none, so that copy belongs to another program (a Windows SDK, a folder on <code>PATH</code>). An older copy without
+<code>dxil.dll</code> beside it (e.g. DXC 1.7) warns that the DXIL is unsigned, wgpu treats the warning as a
+compile error, its indirect-validation pipelines fail, the device is lost, and the window never opened
+(<code>WGPU error: Parent device is lost</code>). <code>WGPU_DX12_COMPILER=dxc | auto | fxc</code> (wgpu's variable) still
+chooses; with <code>dxc</code>, put <code>dxcompiler.dll</code> <em>and</em> <code>dxil.dll</code> (DXC ≥ 1.8.2502) next to <code>lightcraft.exe</code>.
+FXC builds the compute kernels somewhat slower than DXC (≈ 9 s vs 7.5 s for the GPU test suite on an
+RTX 4080), off the startup path.</p>
+<p><strong>Off the startup path.</strong> The compute device is created on a background thread once the window is
+up (<code>gpu::warm_up</code> from the first frame's settings), and never while GPU rendering is off: with
+Settings ▸ Performance ▸ <em>Use the GPU for rendering</em> unchecked (applied before the window opens),
+<code>LIGHTCRAFT_GPU=0</code> or <code>LIGHTCRAFT_GPU_BACKEND=off</code>, no GPU driver is loaded for rendering at all.</p>
+<p><strong>Quitting.</strong> The devices are never dropped, and renders run on worker threads: a render still inside
+the driver while the process exits crashes there (a SIGSEGV in the NVIDIA Vulkan driver on Linux,
+issue #620), which no panic hook catches. So every entry into a device counts as work in flight
+(<code>crates/gpu/src/exit.rs</code>), and the desktop app ends with <code>LightcraftApp::shutdown</code> (from <code>on_exit</code>,
+after settings and library are saved): <code>gpu::begin_shutdown()</code> — from then on <code>gpu::render</code> returns
+<code>None</code>, no device is created, denoise tiles fail over and a render job gives up instead of rendering
+on the CPU — then the render pool stops (queued jobs dropped, running ones waited for) and
+<code>gpu::wait_idle</code> waits for GPU work on other threads (export, denoise, the device warm-up). One
+deadline of 2 s covers it all; past it the app quits anyway. A job pool that is dropped (headless
+hosts, tests) waits for its running jobs the same way (<code>JobPool::shutdown</code>, <code>crates/preview/src/pool.rs</code>).</p>
+<p><strong>Crash sentinel.</strong> The desktop app writes <code>gpu-init.marker</code> into its settings folder (next to
+<code>ui.json</code>: <code>%APPDATA%\LightCraft</code>, <code>~/Library/Application Support/LightCraft</code>,
+<code>~/.config/lightcraft</code>) just before the compute device is created and removes it as soon as creation
+returns, successfully or not. If the marker is still there at the next launch, the process died inside
+the driver: LightCraft starts with GPU rendering off (the preference is saved unchecked), removes the
+marker and says so in a notice. Checking <em>Use the GPU for rendering</em> again tries the GPU once more
+(and re-arms the sentinel). Not with <code>LIGHTCRAFT_NO_PREFS</code> (tests, scripts), and not in a <code>--memory</code> session,
+which writes nothing: it neither arms the sentinel nor removes a marker it finds (it still starts with GPU
+rendering off when one is there, and the next ordinary launch reports and clears it). Killing the app during
+the ~0.3 s of device creation, or two instances starting at the same moment, can trip it falsely —
+harmless: rendering is then on the CPU until the box is checked again. The sentinel only covers the
+compute device; a crash while the window's renderer starts is avoided by the backend defaults above
+or worked around with <code>LIGHTCRAFT_GPU_BACKEND</code>.</p>
+<p><strong>Troubleshooting a crash at startup (Windows).</strong> Start LightCraft from a <code>.cmd</code> file or a terminal
+with <code>set LIGHTCRAFT_GPU_BACKEND=dx12</code> (the default since #136), or <code>=off</code> to keep the GPU out of
+rendering; <code>set VK_LOADER_DRIVERS_DISABLE=*igvk64*</code> (Vulkan loader) hides a specific Vulkan driver
+from every program started with it. Help ▸ System Info and <code>app.gpu</code> show the adapter and backend in
+use (e.g. <code>Intel(R) UHD Graphics 630 (Dx12)</code>).</p>
+<p><strong>Window never appears, "not responding" (Windows, NVIDIA; issue #374).</strong> With <em>Shader Cache Size</em>
+set to <strong>Disabled</strong> in NVIDIA Control Panel (Manage 3D settings → Global Settings), NVIDIA's driver
+walks the whole system drive while the window's GPU device is created (<code>D3D12CreateDevice</code> →
+<code>nvwgf2umx.dll</code> → <code>NvMemMapStoragex.dll!TotalDiskUsage</code>), before the first frame: a black,
+unresponsive window for minutes. The Vulkan driver shares that code, so another backend doesn't
+help. Set <em>Shader Cache Size</em> back to <strong>Driver Default</strong> (or any size); the setting is global, there
+is no per-program override. Other programs that create a DX12 or Vulkan device at startup hang the
+same way (PhotoCraft does). It is a driver issue: nothing in LightCraft itself
+walks the drive.</p>
+<h2>Where it is used</h2>
+<ul>
+<li><code>lightcraft_engine::media::develop</code> (called by every <code>RenderJob</code>): loupe / before / compare views,
+<code>render_now</code> (CLI, MCP, control channel renders) and exports render on the GPU when one is
+available; grid/filmstrip thumbnails (many small jobs in parallel) stay on the CPU.</li>
+<li>Anything the GPU path cannot do returns <code>None</code> and the CPU renders instead: no adapter (CI
+machines, software-only adapters), <code>LIGHTCRAFT_GPU=0</code> or <code>LIGHTCRAFT_GPU_BACKEND=off</code> (whole
+process; see <a href="#backends-environment-variables-and-troubleshooting-issue-136">Backends</a>), the <code>app.gpu {enabled}</code>
+command (runtime preference; <code>ui.inspect</code> → <code>perf.gpu</code> shows the adapter), a buffer larger than
+the device's storage-buffer limit, or a render the device did not complete correctly (see
+<a href="#limits-failures-and-the-cpu-fallback">Limits, failures and the CPU fallback</a>).</li>
+<li>wasm32: the crate compiles to the CPU fallback (WebGPU needs asynchronous device creation and a
+device shared with the canvas — open item below).</li>
+</ul>
+<h2>Structure</h2>
+<ul>
+<li>Shared parameters, so the two implementations cannot drift apart: <code>pipeline::plan</code> (effective
+settings, frame, output size, stage-cache keys), <code>Frame::sample_plan</code>, <code>local::{wb_matrix_for,  nr_params, plane_sigmas, guided_fast_step, airlight_of}</code>, <code>finish::{FinishParams, mask_terms}</code>,
+<code>masks::brush_dabs</code>; exact tables (tone LUT, sRGB LUT, curve LUTs, resample taps) and the OkLab
+matrices are uploaded / generated into the WGSL prelude from the CPU values.</li>
+<li>Buffers, not textures: images are <code>array&lt;f32&gt;</code> with the CPU's interleaved layout (RGB, 1–3
+channels), so upload / readback are plain copies of <code>Rgb32f</code> / <code>Plane</code> / <code>Rgba8</code> data.</li>
+<li>Kernels (<code>crates/gpu/src/wgsl/</code>): <code>geom</code> (orientation pixel map, bilinear through the
+crop/straighten/flip affine or the full lens + perspective warp), <code>resize</code> (separable resample
+with the CPU's taps; Mitchell prefilter, box/bilinear for the fast guided filter), <code>blur</code> (box
+passes with running sums over pixel chunks; three each way = the CPU's Gaussian), <code>map</code>
+(log luminance, dark channel, guided-filter steps, white balance, luminance / colour NR, airlight
+sampling), <code>mask</code> (linear / radial / luminance / colour range / brush shapes, combine, finalize),
+<code>finish</code> (the whole per-pixel stage) — each mirrors a named CPU function.</li>
+<li>Per-stage hybrid: defringe and spot removal (rare, CPU-only for now) download the resampled image,
+run on the CPU and upload; heuristic mask shapes (Sky, Subject, Background, …) and brushes of more
+than 4096 dabs are evaluated on the CPU and uploaded; sources over the buffer limit are resampled
+on the CPU.</li>
+<li>Stage cache: <code>GpuStages</code> mirrors <code>StageCache</code> (same keys: source identity + <code>geo</code>, <code>lin_key</code>,
+per-plane radii) and lives in it as an extension, so the UI needs no change. The uploaded source is
+kept per view. A tone / colour / exposure drag re-runs one dispatch of <code>finish</code> plus the readback.</li>
+<li>One command encoder per render; the only mid-render readback is the airlight samples (dehaze, when
+the dark channel is recomputed). Dropped buffers are recycled (exact size, ≤ 2 GB pool) once the
+thread that dropped them has submitted — allocating and zero-filling fresh 100–300 MB buffers
+per pass cost as much as the passes.</li>
+<li><code>LIGHTCRAFT_PROFILE=1</code> prints GPU stage timings (each stage is then submitted and waited for).</li>
+</ul>
+<h2>Limits, failures and the CPU fallback</h2>
+<p>Issue #78: on an Intel UHD (ICL GT1) iGPU with Mesa/Vulkan, exports from the desktop app came out
+as valid JPEGs that were entirely black, while previews, <code>lightcraft-cli render</code> and
+<code>LIGHTCRAFT_GPU=0</code> were fine — and the GPU export took ~15 s against ~3 s on the CPU. The readback
+returned a buffer the per-pixel stage had never written, with no error. The likeliest cause: the
+whole export was recorded as one command submission lasting seconds on that GPU, and the driver
+reset it (GPU hang check / preemption timeout — the app's own window keeps the GPU busy, the CLI
+doesn't) without the error reaching wgpu. wgpu also reports a lost device only through the
+device-lost callback, which was not set. So a GPU render now refuses to hand back anything it
+cannot vouch for:</p>
+<ul>
+<li><strong>Short submissions.</strong> A render submits after every stage and every 16 M kernel invocations
+(<code>FLUSH_INVOCATIONS</code>); the per-pixel stage runs in bands of ~4 MP. Every submission on a slow
+iGPU stays short enough to be preempted and never trips a watchdog (Windows TDR ~2 s, i915).
+Buffers released by earlier stages are reused by later ones, lowering peak device memory.</li>
+<li><strong>Error scopes.</strong> Each render runs inside out-of-memory, validation and internal error scopes
+(thread-local in wgpu): errors fail that render instead of disappearing into the uncaptured
+handler. The device-lost callback and the uncaptured handler (other threads) stop GPU use.</li>
+<li><strong>Readback.</strong> The wait has a timeout (60 s); a failed wait, map error or missing map callback
+fails the render (before, a lost device left the readback waiting forever).</li>
+<li><strong>Limits.</strong> The device is created with the adapter's limits; every buffer is checked against
+<code>min(max_storage_buffer_binding_size, max_buffer_size)</code> when it is created. A render with a
+buffer over the limit (24 MP RGB f32 = 275 MiB; a 128 MiB WebGPU-default device; many masks)
+falls back for that render, without a device error. Dispatches stay under 65535 workgroups per
+dimension (<code>groups1</code> folds 1-D kernels onto two axes). Exports over the limit are not tiled:
+most stages need neighbourhoods tens to hundreds of pixels wide (guided filters at clarity /
+base radius, dehaze dark channel) and some need global values (airlight percentile), so tiles
+would need wide overlaps and a two-pass plan — the CPU renders those exports instead.</li>
+<li><strong>Sanity checks on the result.</strong> The output buffer is cleared before the per-pixel stage, which
+writes alpha 255 everywhere: any pixel without it means work did not run, and the GPU is not used
+again (<code>incomplete image</code>). An entirely black result (n ≥ 4096 pixels) is re-rendered on the CPU
+for that render only — a really black photo costs one extra CPU render, nothing else; there are
+no false positives because the CPU result is what is returned.</li>
+</ul>
+<table><thead><tr><th>failure</th><th>this render</th><th>later renders</th></tr></thead><tbody>
+<tr><td>buffer over the device limit</td><td>CPU</td><td>GPU</td></tr>
+<tr><td>out of device memory</td><td>CPU (buffer pool emptied)</td><td>GPU</td></tr>
+<tr><td>entirely black result</td><td>CPU</td><td>GPU</td></tr>
+<tr><td>validation / internal error, device lost, readback failure or timeout, incomplete image, panic</td><td>CPU</td><td>CPU (whole process)</td></tr>
+</tbody></table>
+<p><strong>Diagnosing.</strong> <code>ui.inspect</code> → <code>perf.gpu</code> (adapter in use), <code>perf.gpuReason</code> (why renders don't use
+the GPU, e.g. <code>"disabled by LIGHTCRAFT_GPU=0"</code>, <code>"software adapter (llvmpipe (LLVM 21.1.8, 256 bits))  skipped: …"</code>, <code>"stopped after a GPU failure: device lost …"</code>), <code>perf.gpuFallback</code> (the latest render
+redone on the CPU and why, e.g. <code>"6000×4000: the GPU returned an incomplete image (24000000 of  24000000 pixels unwritten); the GPU is not used again"</code>). The same in <code>app.gpu</code> (<code>reason</code>,
+<code>lastFallback</code>), Help ▸ System Info and Settings ▸ Performance. <code>LIGHTCRAFT_PROFILE=1</code> prints the
+fallback with the stage timings; <code>RUST_LOG=warn</code> logs it.
+<strong>Reproducing a smaller GPU:</strong> <code>LIGHTCRAFT_GPU_LIMITS=webgpu</code> (or <code>downlevel</code>) creates the device
+with 128 MiB storage bindings / 256 MiB buffers, <code>LIGHTCRAFT_GPU_LIMITS=&lt;n&gt;</code> with n MiB / 2n MiB.
+Tests inject failures with <code>lightcraft_gpu::inject_fault</code> (<code>crates/gpu/tests/fallback.rs</code>,
+<code>export_falls_back_to_the_cpu_when_gpu_work_is_lost</code>).</p>
+<h2>Correctness: CPU oracle and equivalence tests</h2>
+<p><code>crates/gpu/tests/equivalence.rs</code> renders the same settings on both and compares 8-bit sRGB:
+bounds <strong>mean |Δ| &lt; 0.5 LSB and max |Δ| ≤ 3 LSB</strong> per channel. Measured (Apple M4 Pro, Metal):
+<strong>max 1 LSB, mean ≤ 0.0003 LSB</strong> for every case — 26 settings cases (all tone/colour/effects tools,
+3 vignette styles, grain, curves, grading, B&amp;W, WB, NR, crop/straighten/flip, lens + perspective,
+three mask sets incl. CPU-evaluated shapes, spots + defringe), all 8 orientations ± crop, embedded
+DNG lens data, display-referred sources, draft quality, full-size renders; the 24 MP export in
+<code>render_bench</code> also differs by max 1 LSB. Cached (slider-drag) GPU renders are bit-identical to
+fresh ones. <code>windows_match</code> runs the settings cases again as a window of a 3000 × 2000 frame
+(<code>RenderRequest::window</code>, the zoomed loupe, issue #323) plus a vignette in a corner and a spot reading
+from outside the window: the vignette geometry arrives as the <code>VIG_VIEW</code> parameter, the airlight and
+noise-reduction size come from the whole frame, and a window that spots or Auto Mask strokes grew is
+cut back after the readback. The tests skip (pass with a note) when no adapter exists.</p>
+<p>Remaining differences come from f32 vs f64 coordinate math, fast-math transcendental functions on
+Metal and running-sum order in the box filters — all far below one 8-bit step.</p>
+<h2>Measurements</h2>
+<p><code>render_bench</code> on <code>corpus/raw/arw-sony-a7m3-compressed.arw</code> (24 MP; loupe = 2560 px preview →
+1920×1280), min of 7 runs, wall clock, on a heavily shared machine (load average 60–110 on 14 cores,
+so CPU numbers are pessimistic; the GPU numbers are less affected):</p>
+<table><thead><tr><th>scenario</th><th>CPU</th><th>GPU</th></tr></thead><tbody>
+<tr><td>loupe 1920×1280 cold (new photo, incl. upload)</td><td>415 ms</td><td>32 ms</td></tr>
+<tr><td>loupe draft 1152×768 cold</td><td>169 ms</td><td>21 ms</td></tr>
+<tr><td>exposure drag 1920×1280 (warm)</td><td>22–42 ms</td><td>3.9 ms</td></tr>
+<tr><td>highlights drag, draft (warm)</td><td>14 ms</td><td>3.2 ms</td></tr>
+<tr><td>clarity drag, draft (warm)</td><td>16–23 ms</td><td>3.0 ms</td></tr>
+<tr><td>NR drag, draft / 1920×1280 (warm)</td><td>186 / 301–471 ms</td><td>10 / 18 ms</td></tr>
+<tr><td>per-pixel stage 1920×1280, + vibrance/saturation</td><td>53–65 ms</td><td>5 ms</td></tr>
+<tr><td>export render 6000×4000</td><td>1037–1414 ms</td><td>291–330 ms</td></tr>
+</tbody></table>
+<p>GPU timings include the readback of the 8-bit result and the histogram. Device creation + kernel
+compilation: ~0.4 s once per process — the desktop app starts it on a background thread at launch
+(<code>lightcraft_gpu::warm_up</code>), so the first loupe render doesn't wait for it; other processes create
+the device on their first GPU render. <code>lightcraft_gpu::ready()</code> asks without blocking.</p>
+<h2>Opening a photo (M5.4)</h2>
+<ul>
+<li>The loupe shows a stand-in at once (<code>media::QuickJob</code>): the photo's cached view render for its
+current settings, else (raws with their import look) the embedded camera JPEG, else a
+thumbnail-level render; the full render replaces it in place.</li>
+<li>Raw sources for previews (2560 px) and thumbnails are binned straight from the mosaic
+(<code>RawImage::develop_binned</code>, 2× for a 24 MP preview); only exports / 1:1 demosaic at full size.</li>
+<li>The next and previous photos in filmstrip order are prepared in the background once the current
+one is rendered (decoded source kept, view render cached): stepping through photos shows the
+developed image in ~50 ms.</li>
+</ul>
+<h2>Memory (M5.6)</h2>
+<p>A view's stages keep an uploaded source only up to 96 MB (a Preview-level source); a bigger one (the original a zoom window is cut from) is kept once, outside the views' stages, for all views of the photo (the Before and After windows and every pan share it; the Before window of a Before/After waits at first open until the After's job has handed the original over, or each would decode and upload its own copy) and given back when the app idles (issue #323: kept per view it counted against the stage budget on every tick of a drag, and not kept every new window uploaded 288 MB again).</p>
+<ul>
+<li><code>library.memory</code> reports what the engine's caches hold (decoded thumbnail / preview / full-size
+sources, rendered previews) and the GPU renderer's device buffers (allocated, of which pooled
+and retired); <code>ui.inspect</code> → <code>memory</code> adds the loupe's stage caches (CPU images, GPU buffers)
+and the textures.</li>
+<li>Heap profile: build <code>lightcraft-cli</code> with <code>--features dhat-heap</code>; <code>library.memory</code> then also
+reports live/peak heap bytes and the run writes <code>dhat-heap.json</code> (<code>LIGHTCRAFT_DHAT_FILE</code>), whose
+allocation sites at the peak (<code>t-gmax</code>) show who holds the memory.</li>
+<li>Measuring the scenario (import 14 raws from <code>corpus/raw</code>, open the loupe, step 12 times):
+<code>/usr/bin/time -l lightcraft-cli snapshot &lt;files&gt; --script steps.jsonl -o out.png</code> → "maximum
+resident set size" and "peak memory footprint". Run it several times: the high-water mark is
+noisy (allocator caching, scheduling). On Apple silicon GPU buffers count in the footprint.</li>
+<li>Imports read raw headers only (<code>lightcraft_raw::probe_info</code>): no pixel data is decompressed.</li>
+<li>One budget (<code>memory::budget</code>, default min(25 % of RAM, 1.5 GiB); <code>LIGHTCRAFT_MEMORY_MB</code> or
+<code>app.memoryBudget {mb}</code>): half for the engine caches (decoded thumbnail / preview / full
+sources and rendered previews, evicted least recently used <em>across</em> them; the photo on screen
+stays), a quarter for decodes in flight (<code>memory::work_gate</code>: grid thumbnails, neighbour
+prefetch and import probes wait for room, loupe and export loads never wait), an eighth for the
+GPU buffer pool (reuse by best fit within 25 %; freed after 3 s idle).</li>
+<li>Decodes free the file's bytes and the raw samples as soon as they are consumed and colour /
+crop / orient in place. macOS keeps freed large blocks resident ("reusable") until the system
+is short of memory, so the resident size climbed with every photo decoded; the apps install
+<code>malloc_zone_pressure_relief</code> as <code>memory::set_release_hook</code>, called after each decode, import
+and idle trim.</li>
+<li>Result (M4 Pro, 14 raws, loupe, 12 steps): peak RSS 1.9–2.3 GB → 0.83–0.99 GB, peak footprint
+2.5–2.6 GB → 0.91–0.96 GB, heap peak 930 → ~600 MB; stepping median ~13 ms (unchanged).</li>
+</ul>
+<h2>Open items</h2>
+<ul>
+<li>Keep the loupe texture on the GPU (render into an <code>egui-wgpu</code> texture on eframe's device instead of
+reading back); share the device with eframe.</li>
+<li>WebGPU in the browser build (async init, single device per canvas).</li>
+<li>Defringe and spot removal kernels; Sky/Subject heuristics (replaced by the segmenter in M12).</li>
+<li>Tiling for sources / outputs beyond the buffer limit (24 MP+ on WebGPU-default limits, 60 MP+
+on most desktop adapters; these render on the CPU now): tile with overlap equal to the largest
+filter radius, with global values (airlight) from a first pass.</li>
+<li>Integrated GPUs much slower than the CPU (issue #78's GT1): a measured per-device choice of the
+faster path for exports.</li>
+<li>Large-radius blurs at full size (dehaze dark channel at 24 MP) dominate the export: a summed-area
+table or a downsampled dark channel would cut them further.</li>
+<li>GPU histogram (atomics) to skip the CPU pass over the readback.</li>
+</ul>
+<hr />
+<details open>
+<summary><b>📚 lightcraft 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「lightcraft」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://cram.wtpuscm.cn/peixun/widget-858684.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://kfys.wtpuscm.cn/yingxiao/tracking-792048.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://obiy.wtpuscm.cn/zixun/demographic-046865.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://pngj.wtpuscm.cn/huodong/hotel-741424.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://apap.wtpuscm.cn/yingxiao/webinar-111285.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://sgoe.wtpuscm.cn/zhineng/budget-169892.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://etwc.wtpuscm.cn/chuangxin/quality-626719.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://ecdt.wtpuscm.cn/wenzhang/sync-794.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://ehdt.wtpuscm.cn/gongsi/extension-645687.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://grun.wtpuscm.cn/xitong/admin-595645.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://cxty.wtpuscm.cn/huodong/chapter-065364.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://ncia.wtpuscm.cn/fenxi/audience-384881.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://lptm.wtpuscm.cn/keji/strategy-649268.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://nosl.wtpuscm.cn/fuwu/products-596896.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://myuc.wtpuscm.cn/jiaoliu/collaborate-246290.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://gblw.wtpuscm.cn/yanjiu/education-669275.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://gcuv.wtpuscm.cn/jishu/recipe-582285.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://irve.wtpuscm.cn/pingce/update-646115.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://xetu.wtpuscm.cn/zhizhu/enterprise-125354.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://pnyo.wtpuscm.cn/baogao/device-901649.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://szuo.wtpuscm.cn/kuangjia/photo-897477.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://ywph.wtpuscm.cn/hezuo/extension-393610.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://vhgt.wtpuscm.cn/jianzhan/workshop-893514.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://dglb.tcti.cn/chuangxin/vendor-39951128.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://kuoc.tcti.cn/yanjiu/status-29011864.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://mqhh.tcti.cn/hezuo/photo-80713024.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://xbbh.tcti.cn/jiaoliu/market-29056041.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://dson.tcti.cn/anfang/platform-31426614.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://iooh.tcti.cn/anli/digital-52131661.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://dked.tcti.cn/gongsi/button-99450109.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://ibcd.tcti.cn/chanpin/download-26801452.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://ship.tcti.cn/xuexi/video-49189372.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://ttmo.tcti.cn/kaifa/contact-84799007.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://znuv.tcti.cn/chanpin/expense-76564003.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://zmjo.tcti.cn/peixun/article-87049008.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://xszq.tcti.cn/kaifa/goal-23916699.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://guus.tcti.cn/hezuo/price-95049326.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://ejvm.tcti.cn/anfang/growth-38903425.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://kdas.tcti.cn/suanfa/form-31112447.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://adkx.tcti.cn/tuiguang/sales-78275321.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://hkuw.wtpuscm.cn/youhua/premium-972000.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://www.mw-wm.com/youhua/guide-73669117.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://www.yx-sf.com/wiki/75868">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.ai-hao123.com/tuiguang/segment-67790794.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://jtnm.tcti.cn/wenzhang/profit-97106018.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://whvq.tcti.cn/zhinan/visitor-01713888.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://vjoi.wtpuscm.cn/gongju/conference-653662.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://otci.wtpuscm.cn/jiaoliu/lead-977169.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://eusa.wtpuscm.cn/chanpin/cloud-290552.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://vitv.wtpuscm.cn/shichang/cloud-335523.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://hocu.wtpuscm.cn/gongsi/kpi-062938.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://yhgn.wtpuscm.cn/yunsuan/discount-047596.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://tamy.wtpuscm.cn/zhizhu/home-154538.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://xpbe.wtpuscm.cn/guanjianci/topic-124.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://zcxx.wtpuscm.cn/yunying/conversion-765945.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://xrll.wtpuscm.cn/kuangjia/tool-513050.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://elxy.wtpuscm.cn/kaifa/event-356108.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://jgan.wtpuscm.cn/qiye/article-405114.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://yyhf.wtpuscm.cn/kuangjia/affordable-589431.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://vbrc.wtpuscm.cn/liuliang/version-141618.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://yuvo.wtpuscm.cn/wangluo/kpi-178727.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://eqle.wtpuscm.cn/gongsi/status-926938.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://jmon.wtpuscm.cn/fenxi/prospect-561673.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://yhhf.wtpuscm.cn/yingyong/audience-620662.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://hfwd.wtpuscm.cn/zhinan/section-280101.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://runc.wtpuscm.cn/wangluo/recommendation-627914.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://seew.wtpuscm.cn/xitong/personalization-181975.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://lgsz.wtpuscm.cn/yunsuan/podcast-033890.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://arhx.wtpuscm.cn/huodong/vendor-544840.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://pfjl.tcti.cn/gongxiang/achievement-63503518.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://mifl.tcti.cn/yunsuan/deadline-52925968.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://maer.tcti.cn/gongju/seo-21614191.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://pscq.tcti.cn/yinqing/traffic-27650353.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://xunm.tcti.cn/liuliang/learning-28564571.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+</ul>
+<h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://fxfb.tcti.cn/chuangxin/about-41564604.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://zbpn.tcti.cn/zhineng/theme-56727376.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://nkqm.tcti.cn/jianzhan/home-56763156.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://tsax.tcti.cn/yinqing/recommendation-48424632.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://njjk.tcti.cn/shangye/logo-21324425.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://bhxq.tcti.cn/sheji/seminar-16960359.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://mrms.tcti.cn/zhizhu/plugin-72371245.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://pyen.tcti.cn/shuju/tag-85489604.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://ykrv.tcti.cn/yinqing/planning-09176556.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://mish.tcti.cn/tuiguang/module-07459697.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://felf.tcti.cn/wangluo/business-48310622.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://bebv.tcti.cn/paiming/creative-34624927.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://erxs.wtpuscm.cn/zhizhu/server-268218.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://www.mw-wm.com/kaifa/health-79671209.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://www.yx-sf.com/tech/46599">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://www.ai-hao123.com/jishu/recipe-11080405.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://lhvm.tcti.cn/kaifa/download-54270774.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://cdhc.tcti.cn/huodong/marketing-53762819.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://vdup.wtpuscm.cn/sheji/experience-329684.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://qlhz.wtpuscm.cn/zhinan/communication-878578.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://geqj.wtpuscm.cn/suanfa/privacy-942526.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://eajd.wtpuscm.cn/sheji/client-269438.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://jfif.wtpuscm.cn/anfang/feedback-744976.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://mkvz.wtpuscm.cn/qiye/recommendation-871751.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://hjlw.wtpuscm.cn/xinwen/expensive-934271.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://owxf.wtpuscm.cn/xinwen/fitness-373.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://ihsq.wtpuscm.cn/wenzhang/responsive-746682.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://rzct.wtpuscm.cn/jiaocheng/landing-288473.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://aypq.wtpuscm.cn/yunsuan/faq-166308.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://livy.wtpuscm.cn/anfang/profile-334640.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://jnfq.wtpuscm.cn/shichang/course-108940.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://itcz.wtpuscm.cn/chuangxin/trading-163925.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://yegt.wtpuscm.cn/pingtai/section-376746.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://jgoa.wtpuscm.cn/gongsi/traffic-010732.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://zciq.wtpuscm.cn/zhinan/demographic-169913.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://mozs.wtpuscm.cn/qiye/tool-399555.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://spwx.wtpuscm.cn/anli/products-319819.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://mwfz.wtpuscm.cn/suanfa/accessibility-376109.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://cnil.wtpuscm.cn/hezuo/app-660343.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://yyyp.wtpuscm.cn/huodong/browser-594210.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://fhjb.wtpuscm.cn/anli/web-063167.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://vjjt.tcti.cn/jiaocheng/document-98788859.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://ugym.tcti.cn/tuiguang/milestone-35355683.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://efln.tcti.cn/kaifa/ranking-79971527.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://csna.tcti.cn/qiye/cheap-84698364.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://qngb.tcti.cn/chuangxin/workshop-82951499.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://sypg.tcti.cn/youhua/partner-73126090.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://rnsa.tcti.cn/zixun/search-92844304.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://zjsy.tcti.cn/shangye/search-17962074.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://vmmn.tcti.cn/chuangxin/personalization-34346277.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://rvhc.tcti.cn/jishu/dashboard-41777223.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://zrzb.tcti.cn/yunsuan/music-83258187.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://todt.tcti.cn/ziyuan/notification-96722673.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://rusv.tcti.cn/pingce/subscribe-12600170.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://umlp.tcti.cn/jiaoliu/community-91010958.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://kjsz.tcti.cn/gongxiang/fashion-69412617.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://mkuw.tcti.cn/zhizhu/vendor-93691182.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://vkjd.tcti.cn/suanfa/finance-29897398.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://aswn.wtpuscm.cn/jiaoliu/deal-677361.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://www.mw-wm.com/wangluo/unsubscribe-13807282.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://www.yx-sf.com/wiki/30115">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://www.ai-hao123.com/jiaoliu/saving-04935685.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://kbwz.tcti.cn/chuangxin/loyalty-66978992.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://kzgs.tcti.cn/wenzhang/shopping-74787489.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://zcwj.wtpuscm.cn/jianzhan/promotion-497746.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://ppcx.wtpuscm.cn/yunsuan/social-738843.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://zqld.wtpuscm.cn/shichang/efficiency-935506.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://onmg.wtpuscm.cn/chuangxin/layout-726223.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://trbr.wtpuscm.cn/zixun/tool-513778.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://ctyj.wtpuscm.cn/zixun/photo-644160.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://ibeq.wtpuscm.cn/zhinan/extension-234313.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://hmxk.wtpuscm.cn/gongju/page-295.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://sfrq.wtpuscm.cn/suanfa/app-378896.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://twht.wtpuscm.cn/anli/cost-970174.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://yuoo.wtpuscm.cn/ziyuan/schedule-354456.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://hncc.wtpuscm.cn/yanjiu/photo-495696.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+
+      </div>
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 ">
+          <span>&larr; 查看更多归档文档</span>
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 ">
+          <span>返回项目 README 首页 &rarr;</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
+      <span>© 2026 <strong>lightcraft-mirror-764</strong> - 官方开源高可用拓扑镜像与白皮书</span>
+    </div>
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
+      <span>•</span>
+      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+      <span>•</span>
+      <span>托管于 GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

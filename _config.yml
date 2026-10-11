@@ -1,0 +1,5 @@
+title: "lightcraft-mirror-764"
+description: "High availability mirror and network topology specifications for storytold/lightcraft"
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-relative-links

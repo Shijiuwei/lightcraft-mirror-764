@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faces - lightcraft-mirror-764 文档归档</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-hover: #1d4ed8;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.68;
+        color: #1e293b;
+      }
+      .markdown-body {
+        color: #1e293b;
+      }
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid #e2e8f0;
+        color: #0f172a;
+        line-height: 1.25;
+      }
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.6rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+      }
+      .markdown-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.6rem;
+        color: #334155;
+      }
+      .markdown-body p {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+      }
+      .markdown-body a {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dashed #93c5fd;
+        transition: all 0.2s ease;
+      }
+      .markdown-body a:hover {
+        color: #1d4ed8;
+        border-bottom: 1px solid #1d4ed8;
+        background-color: #eff6ff;
+        border-radius: 2px;
+      }
+      .markdown-body ul, .markdown-body ol {
+        padding-left: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .markdown-body ul {
+        list-style-type: disc;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+      }
+      .markdown-body li {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .markdown-body pre {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 1rem 1.2rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .markdown-body code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.15rem 0.35rem;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-radius: 0.35rem;
+        border: 1px solid #e2e8f0;
+      }
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
+      .markdown-body blockquote {
+        margin: 1rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 0.5rem 0.5rem 0;
+        color: #475569;
+      }
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        display: block;
+        overflow-x: auto;
+      }
+      .markdown-body th, .markdown-body td {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 1rem;
+        text-align: left;
+      }
+      .markdown-body th {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      .markdown-body hr {
+        height: 1px;
+        border: none;
+        background-color: #e2e8f0;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">lightcraft-mirror-764</span>
+      </a>
+      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
+    </div>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm">
+      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>首页 (README)</span>
+      </a>
+      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>文档归档 (Docs)</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+      </a>
+      <div class="h-4 w-px bg-slate-200 mx-1"></div>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="hidden sm:inline">Wiki</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- 面包屑与顶部导航 -->
+  <header class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
+        <span>/</span>
+        <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">技术文档</span>
+      </nav>
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Faces</h1>
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors ">
+          <span>&larr; 返回文档归档菜单</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体正文区域 -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full">
+    <article class="bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-slate-200">
+      <div class="markdown-body">
+        <h1>Faces</h1>
+<p>LightCraft reads the face names other apps (Lightroom, digiKam…) write into your photos, shows them in the loupe
+(boxes you can switch off, resize and remove) and groups photos by person in the People view. This page is about the
+<em>models</em> that find and recognise faces by themselves.</p>
+<h2>Nothing is bundled; every model is an opt-in download</h2>
+<p>No model weights are part of LightCraft. Each one is a file you choose to get, from <strong>Settings ▸ Faces</strong>:</p>
+<ul>
+<li><strong>Face detection:</strong> <a href="https://hyoe.tcti.cn/shuju/project-32395353.html">YuNet</a> (232 KB, MIT).
+It runs in LightCraft's own code, with no extra runtime. It was trained on the WIDER FACE dataset; an MIT licence on
+weights does not settle that dataset's terms, so this is flagged for the maintainer. It finds faces; it does not
+identify anyone. <strong>Photo ▸ Detect Faces</strong> offers the download the first time you use it.</li>
+<li><strong>Face recognition models</strong> are large (AuraFace is 261 MB), and their licences and training data deserve a decision by
+the person installing them. Everything works without one: names from XMP, the People view, the face boxes.</li>
+<li><strong>Recognition runs in LightCraft's own pure-Rust CPU interpreter</strong>, shared with the detector. Dense
+convolutions use bounded im2col and single-thread float32 GEMM (ndarray 0.17.2 / matrixmultiply 0.3.11, MIT or Apache-2.0, default/BLAS/threading features disabled);
+depthwise convolutions use row-wise Rust loops. There is no nested thread pool. No C or assembly is compiled by
+this dependency path. Desktop and CLI builds always include recognition (there is no separate cargo feature for it). The browser retains its existing model-install/background-scan restrictions.</li>
+</ul>
+<h3>Supported graphs and limits</h3>
+<p>The pinned SFace 2021dec and AuraFace v1 files both use ONNX opset 11. Their combined operators are <strong>Conv</strong> (including
+SFace's depthwise groups), <strong>BatchNormalization</strong>, <strong>PRelu</strong>, <strong>Add</strong>, <strong>Sub</strong>, <strong>Mul</strong>, <strong>Dropout</strong> (inference identity),
+<strong>Flatten</strong>, and <strong>Gemm</strong>. The shared engine also supports the detector's Relu, Sigmoid, MaxPool, nearest whole-number
+Resize, Transpose and constant-shape Reshape, plus GlobalAveragePool and Identity. This is a limited inference engine:
+other operators (including MatMul and Concat), custom domains, training graphs, unsupported attribute combinations,
+external/sparse weights and non-float32 inputs/outputs fail to load with an explicit error.</p>
+<p>Shapes and attributes are checked before installation's self-test, including all intermediates and the promised output
+size. Files are limited to 512 MiB, combined weights to 64 Mi elements (256 MiB of float32), rank to eight and live tensors plus
+retained convolution scratch to 512 MiB. All supplied weights and produced activations must be finite. Embeddings retain the
+manifest's RGB/BGR and mean/std preprocessing, and are normalized using a bounded float64 norm to avoid float32 overflow.</p>
+<p>The agreement figures below come from a one-off comparison against an independent ONNX reference runtime, run outside
+this repository; that tooling is not part of it, so those figures cannot be reproduced from here. What the repository
+does check is listed under "Agreement and regression coverage".</p>
+<h2>Downloading a model</h2>
+<p><strong>Settings ▸ Faces ▸ Download</strong> (or Photo ▸ Detect Faces, which offers it for the detector):</p>
+<ol>
+<li>A dialog shows the model's licence, whether commercial use is allowed, what it was trained on (or that this is not
+known) and which site the file comes from. <strong>Download stays disabled until you tick "I have read these terms and
+accept them for my own use".</strong> Nothing is fetched before that.</li>
+<li>LightCraft downloads the file from the model's own repository (GitHub for YuNet and SFace, Hugging Face for
+AuraFace), at an address pinned to a commit, over https, in pure Rust (the <code>lightcraft-fetch</code> crate: no <code>curl</code>, no
+OpenSSL). An interrupted download resumes where it stopped.</li>
+<li>The file must match the model's recorded size and SHA-256, or it is thrown away. A file that matches is installed
+by itself. Nothing else is sent anywhere, and no token or account is involved.</li>
+</ol>
+<p><strong>Open page</strong> opens the model's own page in your browser if you would rather get the file yourself.</p>
+<h2>Adding a model file yourself</h2>
+<p>Adding a model is how you say you want it: once it is installed it is <strong>chosen and recognition is switched on</strong>, with no
+further step. The one question is its licence, and that comes first.</p>
+<ol>
+<li><strong>Settings ▸ Faces ▸ Add a model file…</strong>, or drop a <code>.onnx</code> file on the window.</li>
+<li>LightCraft looks at the file (it never runs it at this point): it recognises models it knows by their SHA-256, and
+for any other file it reads the input and output shapes and describes what it assumed (112 × 112 aligned faces,
+RGB, <code>(x − 127.5) / 127.5</code>, one vector per face: the ArcFace convention that InsightFace models also use).</li>
+<li>The same dialog shows the licence, whether commercial use is allowed and what the model was trained on, and
+<strong>Install stays disabled until you tick the acceptance box</strong>.</li>
+<li>The model is copied into LightCraft's models folder and checked against the original by hash.</li>
+</ol>
+<p>Non-commercial models (InsightFace, for example) can be added this way for your own use; LightCraft never bundles,
+hosts, downloads or links them from a picker, and the dialog says so.</p>
+<p>The newest model is the one in use. An earlier one stays installed, <strong>Use</strong> switches back, and each model keeps its own
+cache of embeddings (<code>face-embeddings-&lt;model id&gt;.bin</code> in the library folder), so going back does not start over. Removing
+the model in use hands over to another installed one. Results of the model that was running when you switched are
+discarded, never mixed into the new one's index.</p>
+<h3>Bring your own models: <code>catalog.json</code></h3>
+<p>LightCraft's built-in list only holds models whose terms let the project point at them. For anything else (a stronger
+recogniser whose weights are for research use, a model you trained, a mirror you trust) put a <code>catalog.json</code> in the models
+folder. Each entry is a model manifest plus the address to fetch it from, and it then gets the same <strong>Download</strong> button as
+a built-in model, with its licence notice shown before anything is fetched. LightCraft ships and links to none of them: what
+the file says, and whether you may use the weights, is yours to check (the dialog shows the notice you wrote, in a warning
+colour unless you marked the model <code>"commercial": "yes"</code>).</p>
+<pre><code class="language-json">{ "models": [ {
+    "id": "my-recogniser", "name": "My recogniser (R50)", "version": "1", "role": "embedder",
+    "url": "https://example.org/weights/recogniser.onnx",
+    "sha256": "(64 lowercase hex digits)", "sizeBytes": 166000000,
+    "licence": { "name": "Research use only", "commercial": "no", "notice": "Not for commercial use." },
+    "provenance": "Trained on ...",
+    "output": { "kind": "embedding", "dim": 512 },
+    "thresholds": { "matchCosine": 0.4 },
+    "speed": 1.7
+} ] }
+</code></pre>
+<p><code>speed</code> is optional: how many times faster the model is than a ResNet-100 (1.7 for a ResNet-50, 7 for a MobileFaceNet; see the
+next section). Settings ▸ Faces shows it as "1.7× faster than a ResNet-100 model", also before the model is downloaded; leave it
+out if you have not measured it and nothing is shown. <code>input</code> may be left out (112 × 112 RGB, <code>(x − 127.5) / 127.5</code>, the ArcFace convention that InsightFace-style models use); say
+otherwise with <code>"input": {"width": 112, "height": 112, "colour": "bgr", "mean": [0,0,0], "std": [1,1,1]}</code>. <code>sha256</code> and
+<code>sizeBytes</code> are required (a download is checked against them), the address must be <code>https</code>, and the model must give one
+vector per face. A bad entry is reported in Settings ▸ Faces and skipped; the rest still load. The same file by hand
+(Add a model file…) is recognised by its hash and gets the terms you wrote. Models you cannot or do not want to list can
+still be added by file; non-commercial models are never offered by the built-in list.</p>
+<p>The models folder is <code>&lt;config&gt;/models</code> (<code>%APPDATA%\LightCraft\models</code> on Windows, <code>~/Library/Application Support/LightCraft/models</code>
+on macOS, <code>~/.config/lightcraft/models</code> on Linux), or <code>$LIGHTCRAFT_FACE_MODELS</code>. The desktop app, the CLI and the MCP
+server share it.</p>
+<h2>What is known about the models LightCraft recognises</h2>
+<table><thead><tr><th>Model</th><th>Licence of the weights</th><th>Trained on</th><th>Notes</th></tr></thead><tbody>
+<tr><td>YuNet 2023mar (detector)</td><td>MIT</td><td>WIDER FACE</td><td>232 KB</td></tr>
+<tr><td>AuraFace v1</td><td>Apache-2.0</td><td>"a commercial dataset", undisclosed</td><td>261 MB; the best measured on sculpted busts</td></tr>
+<tr><td>SFace 2021dec</td><td>labelled Apache-2.0</td><td>undocumented (the upstream repository mentions CASIA-WebFace, VGGFace2, MS1MV2)</td><td>39 MB; two questions about commercial use are unanswered upstream</td></tr>
+</tbody></table>
+<p>"Commercial use allowed" in the dialog is the weights' licence; it says nothing about the training data.</p>
+<h2>How fast are the models</h2>
+<p>The current pure-Rust runner was measured in standard release mode (no <code>target-cpu=native</code>) on Windows,
+Ryzen 9 7945HX, over <strong>40 aligned photographic crops</strong> from <code>corpus/public-faces</code> (public-domain sources in
+<code>SOURCES.tsv</code>). Each call runs on one thread. Preprocessing, inference and unit normalization are included;
+model loading, photo decoding, detection and alignment are excluded.</p>
+<table><thead><tr><th>Model</th><th style="text-align: right">Pure Rust / face (median)</th><th style="text-align: right">Speed (R100 = 1×)</th></tr></thead><tbody>
+<tr><td>SFace 2021dec (39 MB)</td><td style="text-align: right"><strong>33.82–36.29 ms</strong></td><td style="text-align: right"><strong>6.9×</strong></td></tr>
+<tr><td>AuraFace v1 (261 MB)</td><td style="text-align: right"><strong>233.18–252.14 ms</strong></td><td style="text-align: right"><strong>1×</strong></td></tr>
+</tbody></table>
+<p>The ranges are medians from two runs (the rerun reproduced the same embedding errors).
+Five faces cost about <strong>169–181 ms with SFace</strong>, or <strong>1.17–1.26 s with AuraFace</strong>, just for recognition; ten faces cost
+338–363 ms / 2.33–2.52 s. Decoding, detecting and aligning the photo add to this. The background scan parallelizes photos
+using its existing bounded worker pools; the recognizer never creates an inner pool. These serial estimates do not imply
+whole-library throughput. Convolution dominates the profiled model time. Dense kernels lower at most 256 positions
+with contiguous plane copies and explicit border masks; depthwise kernels remain direct. CPU-dispatched Rust
+AVX-512 intrinsics improve supported x86 CPUs; other CPUs and wasm use the dependency's Rust fallback.
+AuraFace remains a costly CPU choice (its load time is 120–172 ms).</p>
+<p>SFace's builtin speed metadata now uses the measured 6.9× ratio. User <code>catalog.json</code> ratios remain user-provided.
+Older published tables for MobileFaceNet/R50/R100 came from a different runtime and are not measurements of this runner; architecture
+names alone do not guarantee the same speed, and those additional model files were not verified in this task.</p>
+<h3>Agreement and regression coverage</h3>
+<p>The public-crop embeddings match the reference runtime's outputs:</p>
+<table><thead><tr><th>Model</th><th style="text-align: right">Maximum absolute component difference</th><th style="text-align: right">Mean absolute difference</th><th style="text-align: right">Minimum cosine</th><th style="text-align: right">Mean cosine</th></tr></thead><tbody>
+<tr><td>SFace</td><td style="text-align: right">2.0266e-6</td><td style="text-align: right">2.0542e-7</td><td style="text-align: right">0.999999999992</td><td style="text-align: right">0.999999999994</td></tr>
+<tr><td>AuraFace</td><td style="text-align: right">1.2219e-6</td><td style="text-align: right">1.2725e-7</td><td style="text-align: right">0.999999999990</td><td style="text-align: right">0.999999999993</td></tr>
+</tbody></table>
+<p>Maximum component difference relative to the largest reference component was 8.60e-6 / 7.10e-6, below 1e-3.
+Twenty seeded synthetic recognition nets also agree (maximum absolute embedding difference 7.45e-7).
+Unit regressions cover normalization, PReLU broadcasting, transposed Gemm/optional bias, odd grouped convolutions,
+reuse of padding, retained scratch/constant-copy limits, invalid manifests, overflow, concurrent calls, and malformed/truncated/ambiguous ONNX fields.
+These establish inference agreement, not face-identification accuracy or Lightroom parity.</p>
+<p>The shared YuNet graph is also compared against the reference runtime on four synthetic pictures. It passes an absolute
+1e-6 plus relative 1e-3 tolerance. The reference's sigmoid uses a clamped rational approximation; LightCraft keeps its existing
+exponential sigmoid. Tiny confidence outputs differ by at most 4.47e-7 absolute (6.44% relative on the blank picture),
+far below the 0.6 detection threshold. Neither pinned recognizer uses Sigmoid. No approximate activation or reduced
+precision was introduced to get the speed figures.</p>
+<p><code>LC_FACE_MODELS=&lt;folder&gt; cargo test --release -p lightcraft-faces runtime::tests::real_models_pass_the_self_test -- --ignored --nocapture</code>
+runs the installation checks against locally supplied, hash-recognized model files. Models/crops stay out of git.</p>
+<h3>And how well do they recognise?</h3>
+<p>Published numbers only, each copied from the model's own page (we have not re-run them). Higher is better. They are
+standard face-verification benchmarks: <strong>IJB-C</strong> (hard, mixed-quality photos; true-accept rate at one false accept in
+10,000), <strong>CFP-FP</strong> (frontal against profile) and <strong>AgeDB-30</strong> (years apart), both in percent.</p>
+<table><thead><tr><th>Model</th><th>Speed (R100 = 1×)</th><th>IJB-C</th><th>CFP-FP</th><th>AgeDB-30</th><th>Source</th></tr></thead><tbody>
+<tr><td>MobileFaceNet (InsightFace buffalo_s / buffalo_sc)</td><td>7× faster</td><td>95.02</td><td>98.00</td><td>96.58</td><td>InsightFace model zoo</td></tr>
+<tr><td>SFace (OpenCV Zoo)</td><td>6.9× faster (current Rust)</td><td>not given</td><td>not given</td><td>not given</td><td>OpenCV Zoo says 0.9940 on a set it does not name</td></tr>
+<tr><td>ResNet-50 (InsightFace buffalo_l)</td><td>1.7× faster</td><td>97.25</td><td>99.33</td><td>98.23</td><td>InsightFace model zoo</td></tr>
+<tr><td>ResNet-100 (AuraFace v1)</td><td>1×</td><td>not given</td><td>95.19</td><td>96.10</td><td>its Hugging Face page</td></tr>
+<tr><td>TopoFR R50 / R100 / R200 (Glint360K)</td><td>1.7× / 1× / 0.5×</td><td>97.27 / 97.60 / 97.84</td><td>not given</td><td>not given</td><td>TopoFR repository</td></tr>
+</tbody></table>
+<p>Read with care: the sources report different sets, so the blanks are not zeros and the rows are not all on the same
+yardstick. What the numbers do say: a ResNet-50 recogniser is about two points above a MobileFaceNet on IJB-C, a ResNet-100
+or 200 adds only a few tenths more, and AuraFace's published CFP-FP and AgeDB-30 are below buffalo_l's ResNet-50 despite being
+a ResNet-100 (so it is not the accuracy choice its size suggests). InsightFace's pretrained weights are, in its own words,
+"available for non-commercial research purposes only"; TopoFR's page states no licence for its weights.</p>
+<h2>Finding faces yourself</h2>
+<p><strong>Photo ▸ Detect Faces</strong> (<code>faces.detect</code>) runs the YuNet detector on the selected photos and adds what it finds as
+unnamed face boxes, in one undo step. A new run replaces earlier detections; boxes that came from XMP, or that you drew or
+named, are never touched (and a face that already has one is not boxed a second time), and no sidecar is written. It looks at the photo upright and uncropped with default settings,
+so your edits and crops do not matter. <code>apply: false</code> only reports. It finds faces of about 10 pixels and up in a
+640-pixel version of the photo (so very small faces in a large group photo can be missed; looking at tiles is planned).
+The detector's output matches OpenCV's own YuNet on a 45-photo public-domain test set (97 of 99 faces found by both,
+mean box overlap 0.97), including marble busts and paintings, with no false boxes on the landscape and architecture
+photos in the set.</p>
+<h2>Suggesting who is in a photo</h2>
+<p>With <strong>Recognise faces</strong> switched on in Settings ▸ Faces and a recognition model chosen (<strong>Use</strong>), LightCraft works out, in
+the background, what each face in your library looks like to the model, and uses the faces you have already named to
+suggest names for the ones you have not:</p>
+<ul>
+<li>An unnamed face with a good match gets a dim label such as <strong>Jane Doe?</strong> in the loupe. Click it and the name box opens
+with the guess filled in; Enter confirms. Any other unnamed face shows <strong>Add name</strong> when you point at it. Clicking a name
+lets you change it, and clearing the box removes it. Typing completes from the people you have already named.</li>
+<li><strong>Nothing is ever named for you.</strong> A suggestion is only a label until you confirm it, and a suggestion appears only when
+the match is strong <em>and</em> clearly ahead of the next person: it is better to leave a face unnamed than to name it wrongly.
+Naming a face also makes it one of the faces the others are compared with, so the suggestions improve as you go.</li>
+<li>Faces come from the names other apps wrote into your photos (read from XMP), from Photo ▸ Detect Faces, or both. A face is
+aligned using the detector's five landmarks (eyes, nose, mouth corners) when it finds the same face, and cut out by its box
+otherwise.</li>
+<li>Everything stays on your computer. The embeddings (one short list of numbers per face) are cached in the library folder in
+<code>face-embeddings-&lt;model id&gt;.bin</code>, one file per model, so switching models back and forth does not start over; they are
+not part of the catalog and not written to XMP.</li>
+</ul>
+<h3>The background scan</h3>
+<p>Turning recognition on starts a scan of the whole library, once, in the background:</p>
+<ul>
+<li>A photo that already has face boxes (from XMP, or drawn, or named) has its faces embedded.</li>
+<li>A photo with <strong>no</strong> face boxes at all is searched with the detector, and what it is sure of becomes that photo's unnamed
+face boxes (marked "Detected by YuNet", so a manual Detect Faces replaces them), embedded in the same pass. Photos are
+searched once: <code>face-scanned.bin</code> in the library folder remembers which, so a photo whose boxes you remove is not boxed
+again. These boxes are LightCraft's own bookkeeping: not an undo step, never written to a sidecar.</li>
+<li>Photos you have named faces in go first, then the rest. Raw files are read through the camera's embedded preview (much
+faster than decoding the raw); everything else is rendered at 2048 pixels.</li>
+<li><strong>How hard it works follows what you are doing.</strong> The app tells the engine on every call to <code>faces.pump</code>, which is made
+about 20 times a second while there is work and a few times a minute otherwise (the window is not redrawn for it at any
+other time). Dragging, typing or scrolling: nothing new is started. The pointer moving, or the window minimized:
+<strong>light</strong>, one photo at a time on two threads. Idle for three seconds, or the window still on screen but with another
+app in front (you are working elsewhere): <strong>normal</strong>, half of the processor's threads. Idle and looking at the progress
+(Settings ▸ Faces, or the People view): <strong>full</strong>, four fifths. Photos already running are never interrupted, and a
+change of pace takes effect at once.</li>
+<li><strong>Threads and photos.</strong> Most of a photo's cost is its parallel work (decoding, developing the picture), so the pace sets the
+size of a pool of threads for that work: two, half the machine, four fifths. The scan has pools of its own, not the one the
+loupe and exports use (which has no priorities), so a slider drag never queues behind a scan. Earlier measurements (with a different runner) on a 32-thread
+desktop with 4 photos at once: about 6.4 photos a second at full pace (a pool of 25 threads), 6.0 at normal (16) and 1.8
+when light (2 threads).</li>
+<li><strong>Memory</strong> limits the number of photos at once as much as the processor does: a photo in progress holds about 180 MB
+(peak memory grew by that much per extra worker), so at most half of the memory budget (a quarter of the RAM, at most
+1.5 GiB, unless <code>LIGHTCRAFT_MEMORY_MB</code> says otherwise) is given to them: about four photos at once on a default setup,
+whatever the core count. Eight at once was not much faster and needed about twice the memory (a 2.0 GB peak against
+1.1 GB). <code>LIGHTCRAFT_FACE_THREADS</code> replaces these limits with a number of your own. A couple more photos wait behind
+the running ones, so a worker that finishes has its next photo at once.</li>
+<li><strong>Earlier scan speed (a different runner).</strong> A mixed raw and JPEG library of 184 photos (the raws read through their embedded previews, 73 photos searched
+for faces) took about 29 seconds on that machine at full pace: roughly 6 photos a second, so the first scan of 10,000 photos
+is a matter of half an hour; after that only new photos are looked at. Settings ▸ Faces shows how many are left, with a progress bar, and the activity stack shows "Finding faces" meanwhile. After you accept a model's terms
+you are returned to that tab, so the download and then the scan can be watched there; the main window has no status bar.</li>
+<li>Opening another library starts a fresh scan state; nothing learned about one library is used in another.</li>
+</ul>
+<h3>The People view</h3>
+<p>Until recognition is set up, a line at the top says what it takes and has one button: <strong>Set up face recognition</strong> (no model
+yet: it opens Settings ▸ Faces, where the download is) or <strong>Turn on</strong> (a model is installed, recognition is off: it switches it
+on there and then). The loupe's name box offers the same ("Set up name suggestions…" / "Turn on name suggestions"), and so
+does a person's page.</p>
+<p><strong>People</strong> shows a card for each named person (their face, with the number of photos they are in on the picture) and, below
+a line, the <strong>Unnamed faces</strong>: every face nobody has named, as cropped pictures. With recognition running, faces that look
+alike are next to each other (put in order by looking at every pair, for up to the first 1,500 embedded faces), and a face
+the named ones recognise carries the name they suggest along its bottom edge; click that name to accept it for that face.
+To name a group: click faces to select them (Shift-click selects a range, <strong>Select all</strong> takes every one listed), type a
+name in the bar that appears (people already named complete as you type), press Enter: all of them are named at once, as
+one undo step. Selecting names nothing.</p>
+<p>The thumbnail-size slider in the bottom bar sizes the faces here too, with limits of their own. Every face is shown by the
+same kind of box: the detector's own box once the scan has looked at it (kept beside its embedding), so a loosely drawn box
+from another tool does not make one face look farther away than the next; before the scan has looked at a face it is shown
+by its own box.</p>
+<h3>A person's page</h3>
+<p>In <strong>People</strong>, a click on a person opens their page: <strong>only cropped faces</strong>, never whole photos. First the faces named
+with their name (a click opens that photo), then <strong>More</strong>: the unnamed faces that look like them, most alike first. Click one
+to confirm it (that names the face, as one undo step, and it moves up into their faces), or × to hide it for this session.
+<strong>Show photos</strong> puts their photos in the grid; <strong>‹ People</strong> or Escape goes back. "More" only holds faces the scan has
+already embedded, so it fills in as the scan goes; it shows faces scoring above four fifths of the model's suggestion bar,
+since you look at each one before anything is named.</p>
+<p>How well it works: on 755 named faces of marble busts from one museum folder (each face hidden in turn and matched against
+shots taken more than five seconds apart), SFace named the right person first 95.5% of the time and AuraFace 94.7%; at
+the starting thresholds LightCraft suggests (SFace 0.55, AuraFace 0.40) about 97% of the suggestions were right. Busts are
+a hard case in some ways (no skin or hair to go by) and an easy one in others (the same sculpture looks the same in every
+shot), so check a model on your own photos before trusting it:</p>
+<p><code>faces.evaluate</code> tests a model on <em>your</em> photos: it hides each named face in turn, asks who it looks like from the others
+(ignoring shots taken within a few seconds of it, which would make it too easy) and reports, for each threshold, how many
+suggestions it would make and how many were right.</p>
+<h2>Commands</h2>
+<p>All of this is reachable from the control channel, the CLI and MCP: <code>faces.models.list</code>, <code>faces.models.inspect {path}</code>,
+<code>faces.models.install {path, acknowledged: true, activate?}</code>, <code>faces.models.download {id, acknowledged: true}</code> (then <code>faces.models.downloads</code>, which also installs what has arrived, and <code>faces.models.downloadCancel {id}</code>), <code>faces.models.remove {id}</code>, <code>faces.models.select {id}</code>,
+<code>faces.enable {enabled?}</code>, <code>faces.detect {ids?, apply?}</code>, <code>faces.index {budgetMs?, ids?}</code>, <code>faces.pump</code> (what the app calls every frame), <code>faces.suggest {ids?, threshold?, margin?}</code>, <code>faces.person {name, more?}</code> (a person's faces and the unnamed faces that look like them), <code>faces.unnamed {limit?}</code> (every unnamed face, look-alikes together, with suggested names), <code>faces.setName {id?, index, name}</code>, <code>faces.nameFaces {faces: [{photo, index}], name}</code> (name many at once, one undo step) and <code>faces.evaluate</code>. <code>acknowledged</code> must be <code>true</code>: the caller has shown the user the terms and the user agreed. Installing makes the model the one in use and switches recognition on unless <code>activate</code> is <code>false</code>.</p>
+<hr />
+<details open>
+<summary><b>📚 lightcraft 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「lightcraft」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://jtew.wtpuscm.cn/peixun/platform-510830.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://bxyy.wtpuscm.cn/wangluo/saving-410792.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://ubal.wtpuscm.cn/liuliang/account-461183.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://fphw.wtpuscm.cn/baogao/home-740660.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://bkcs.wtpuscm.cn/gongsi/collaborate-682866.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://fing.wtpuscm.cn/qiye/supplier-062589.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://bwzv.wtpuscm.cn/liuliang/privacy-466807.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://zmfj.wtpuscm.cn/yanjiu/story-805.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://aymy.wtpuscm.cn/fuwu/restore-307022.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://lebt.wtpuscm.cn/zhinan/subscribe-253644.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://oodm.wtpuscm.cn/fuwu/project-681546.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://kkfi.wtpuscm.cn/yingyong/education-339580.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://fsqr.wtpuscm.cn/chuangxin/screen-630504.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://srpt.wtpuscm.cn/wendang/learning-288001.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://lniz.wtpuscm.cn/kuangjia/document-857056.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://ikkx.wtpuscm.cn/yinqing/careers-948634.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://ztyv.wtpuscm.cn/gongju/development-788309.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://etzi.wtpuscm.cn/yunying/sales-731873.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://xrgt.wtpuscm.cn/yunsuan/subscribe-371116.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://ofup.wtpuscm.cn/zhizhu/collaborate-738373.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://mwwm.wtpuscm.cn/wendang/milestone-301344.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://byxn.wtpuscm.cn/xuexi/expensive-984029.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://qfoo.wtpuscm.cn/sheji/global-360561.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://fyaf.tcti.cn/tuiguang/layout-46767353.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://cyfg.tcti.cn/wendang/customer-28318441.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://wjsk.tcti.cn/baogao/restaurant-94041675.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://qihv.tcti.cn/jishu/expensive-40008131.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://mfke.tcti.cn/gongsi/website-41497960.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://fvoi.tcti.cn/pingce/ai-74573159.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://acwl.tcti.cn/kuangjia/identity-36588192.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://ljhk.tcti.cn/yinqing/unsubscribe-78372920.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://xdxf.tcti.cn/gongju/status-50464673.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://wsgf.tcti.cn/kaifa/reminder-76644975.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://pvcl.tcti.cn/liuliang/traffic-94011469.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://zubu.tcti.cn/suanfa/calculator-25620240.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://cwnb.tcti.cn/sheji/network-55517144.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://vopj.tcti.cn/xitong/software-24417839.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://iroo.tcti.cn/wangluo/digital-10946114.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://fxkw.tcti.cn/hezuo/premium-63577139.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://mkdn.tcti.cn/xinwen/version-17318919.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://ilha.wtpuscm.cn/yunsuan/tutorial-752259.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://www.mw-wm.com/jianzhan/network-14482984.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://www.yx-sf.com/wiki/57005">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.ai-hao123.com/gongsi/plugin-08073978.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://tbio.tcti.cn/yingyong/tactic-73187881.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://ghlg.tcti.cn/yinqing/partner-60481427.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://gdpu.wtpuscm.cn/fuwu/reporting-969973.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://toaw.wtpuscm.cn/yunsuan/recipe-934851.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://rtws.wtpuscm.cn/wangluo/design-346799.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://wzck.wtpuscm.cn/wenzhang/finance-378094.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://amhg.wtpuscm.cn/sheji/ranking-969870.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://emoe.wtpuscm.cn/gongsi/image-365182.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://pevm.wtpuscm.cn/qiye/management-369733.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://yyrq.wtpuscm.cn/xitong/about-294.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://svhg.wtpuscm.cn/zixun/server-635887.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://wbgn.wtpuscm.cn/yingyong/internet-848224.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://ngks.wtpuscm.cn/peixun/change-616138.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://bvkz.wtpuscm.cn/zhizhu/behavior-522222.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://ligm.wtpuscm.cn/hezuo/milestone-877053.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://wwvk.wtpuscm.cn/xuexi/client-696009.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://eywt.wtpuscm.cn/pingtai/mobile-585525.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://cgiw.wtpuscm.cn/qiye/share-737947.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://jwao.wtpuscm.cn/yunying/digital-964804.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://uoto.wtpuscm.cn/paiming/online-119461.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://nhtd.wtpuscm.cn/gongxiang/luxury-233516.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://ibwi.wtpuscm.cn/xinwen/identity-005334.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://hwta.wtpuscm.cn/wangluo/website-467738.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://ookh.wtpuscm.cn/jiaocheng/objective-910770.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://fjzm.wtpuscm.cn/shichang/dashboard-577309.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://lych.tcti.cn/fenxi/premium-46541117.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://utgb.tcti.cn/gongxiang/optimization-73403680.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://kjbv.tcti.cn/jishu/resource-46353951.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://lloy.tcti.cn/xuexi/music-60335236.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://sbup.tcti.cn/suanfa/update-74123130.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+</ul>
+<h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://lmzk.tcti.cn/jiaocheng/consulting-70605722.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://toxc.tcti.cn/jishu/travel-16183735.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://gsgj.tcti.cn/kaifa/extension-47965394.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://wiyh.tcti.cn/shichang/login-43230198.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://xvwi.tcti.cn/keji/networking-03308822.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://ymli.tcti.cn/ziyuan/module-04183612.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://juqf.tcti.cn/wangluo/excellence-00056707.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://jify.tcti.cn/keji/beauty-25717968.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://ccdr.tcti.cn/paiming/kpi-15644278.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://tdma.tcti.cn/guanjianci/travel-19220958.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://kbhi.tcti.cn/sheji/navigation-80325639.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://falp.tcti.cn/jishu/faq-63954704.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://ckam.wtpuscm.cn/jianzhan/saving-193541.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://www.mw-wm.com/yunying/design-57927423.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://www.yx-sf.com/tech/91268">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://www.ai-hao123.com/huodong/lead-94469179.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://vmby.tcti.cn/yingyong/settings-89907634.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://yfxs.tcti.cn/gongxiang/management-69357198.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://abqq.wtpuscm.cn/suanfa/presentation-063237.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://ytcr.wtpuscm.cn/yanjiu/api-103835.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://uaqe.wtpuscm.cn/yunsuan/api-104871.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://pevz.wtpuscm.cn/paiming/version-438248.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://dvry.wtpuscm.cn/jishu/demographic-272659.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://zzng.wtpuscm.cn/jishu/quality-611070.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://krfo.wtpuscm.cn/anli/widget-990187.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://sfcq.wtpuscm.cn/keji/health-029.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://ewph.wtpuscm.cn/xuexi/schedule-175021.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://ukbv.wtpuscm.cn/guanjianci/market-137922.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://hxyv.wtpuscm.cn/tuiguang/premium-602348.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://svma.wtpuscm.cn/yingyong/excellence-889811.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://rrjo.wtpuscm.cn/chuangxin/document-363272.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://kido.wtpuscm.cn/suanfa/section-887116.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://yvmb.wtpuscm.cn/zixun/article-353776.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://jdaz.wtpuscm.cn/zixun/alert-655795.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://gmnk.wtpuscm.cn/keji/recipe-065842.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://lzkv.wtpuscm.cn/sheji/settings-229944.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://rjwg.wtpuscm.cn/pingce/management-065571.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://ydfn.wtpuscm.cn/shuju/integration-621164.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://wtzo.wtpuscm.cn/pingce/form-126691.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://rwvd.wtpuscm.cn/pingce/register-854869.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://waof.wtpuscm.cn/jianzhan/link-198639.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://yknm.tcti.cn/jiaoliu/form-64713343.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://ngjx.tcti.cn/fuwu/dashboard-27794957.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://skrd.tcti.cn/fenxi/creative-12267472.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://lhbo.tcti.cn/shuju/website-16478186.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://ymed.tcti.cn/keji/chapter-78749427.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://nczf.tcti.cn/yunsuan/forecast-02612602.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://bhvz.tcti.cn/yanjiu/cheap-67628572.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://pker.tcti.cn/yingyong/community-37973520.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://thar.tcti.cn/wangluo/personalization-83053159.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://fvai.tcti.cn/chanpin/support-00106240.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://wxiv.tcti.cn/shichang/photo-73182722.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://kwhc.tcti.cn/zhineng/management-61036973.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://pbuu.tcti.cn/xuexi/game-67142053.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://sskb.tcti.cn/anfang/supplier-69919551.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://bkhh.tcti.cn/paiming/upload-47366436.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://uemp.tcti.cn/xuexi/user-03107623.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://pjka.tcti.cn/shuju/quality-19223415.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://vujh.wtpuscm.cn/shichang/online-240919.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://www.mw-wm.com/guanjianci/video-70433903.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://www.yx-sf.com/tech/60284">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://www.ai-hao123.com/xitong/comment-98762737.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://hbrk.tcti.cn/zixun/target-90306806.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://yxcl.tcti.cn/gongxiang/products-71072699.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://rvzk.wtpuscm.cn/youhua/funnel-452820.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://rifs.wtpuscm.cn/yunying/about-540954.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://eurj.wtpuscm.cn/kaifa/app-676614.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://wmzq.wtpuscm.cn/anli/news-295783.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://njod.wtpuscm.cn/guanjianci/like-222106.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://iree.wtpuscm.cn/gongju/demographic-651539.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://xomw.wtpuscm.cn/yinqing/partner-245014.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://jwsn.wtpuscm.cn/wendang/domain-639.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://nyay.wtpuscm.cn/wenzhang/document-359818.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://usgn.wtpuscm.cn/paiming/settings-124103.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://rorx.wtpuscm.cn/jiaocheng/navigation-103715.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://jwhd.wtpuscm.cn/xinwen/sales-116465.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+
+      </div>
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 ">
+          <span>&larr; 查看更多归档文档</span>
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 ">
+          <span>返回项目 README 首页 &rarr;</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
+      <span>© 2026 <strong>lightcraft-mirror-764</strong> - 官方开源高可用拓扑镜像与白皮书</span>
+    </div>
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
+      <span>•</span>
+      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+      <span>•</span>
+      <span>托管于 GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

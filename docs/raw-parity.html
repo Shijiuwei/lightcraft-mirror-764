@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAW parity: cameras, formats, demosaic, colour and lens profiles - lightcraft-mirror-764 文档归档</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-hover: #1d4ed8;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.68;
+        color: #1e293b;
+      }
+      .markdown-body {
+        color: #1e293b;
+      }
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid #e2e8f0;
+        color: #0f172a;
+        line-height: 1.25;
+      }
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.6rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+      }
+      .markdown-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.6rem;
+        color: #334155;
+      }
+      .markdown-body p {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+      }
+      .markdown-body a {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dashed #93c5fd;
+        transition: all 0.2s ease;
+      }
+      .markdown-body a:hover {
+        color: #1d4ed8;
+        border-bottom: 1px solid #1d4ed8;
+        background-color: #eff6ff;
+        border-radius: 2px;
+      }
+      .markdown-body ul, .markdown-body ol {
+        padding-left: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .markdown-body ul {
+        list-style-type: disc;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+      }
+      .markdown-body li {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .markdown-body pre {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 1rem 1.2rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .markdown-body code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.15rem 0.35rem;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-radius: 0.35rem;
+        border: 1px solid #e2e8f0;
+      }
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
+      .markdown-body blockquote {
+        margin: 1rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 0.5rem 0.5rem 0;
+        color: #475569;
+      }
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        display: block;
+        overflow-x: auto;
+      }
+      .markdown-body th, .markdown-body td {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 1rem;
+        text-align: left;
+      }
+      .markdown-body th {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      .markdown-body hr {
+        height: 1px;
+        border: none;
+        background-color: #e2e8f0;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">lightcraft-mirror-764</span>
+      </a>
+      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
+    </div>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm">
+      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>首页 (README)</span>
+      </a>
+      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>文档归档 (Docs)</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+      </a>
+      <div class="h-4 w-px bg-slate-200 mx-1"></div>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="hidden sm:inline">Wiki</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- 面包屑与顶部导航 -->
+  <header class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
+        <span>/</span>
+        <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">技术文档</span>
+      </nav>
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">RAW parity: cameras, formats, demosaic, colour and lens profiles</h1>
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors ">
+          <span>&larr; 返回文档归档菜单</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体正文区域 -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full">
+    <article class="bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-slate-200">
+      <div class="markdown-body">
+        <h1>RAW parity: cameras, formats, demosaic, colour and lens profiles</h1>
+<blockquote>
+<p><strong>Last reviewed:</strong> 2026-10-10 · <strong>Last updated:</strong> 2026-10-10 · <strong>Change:</strong> major (model-by-model measurement against Adobe's published camera list; use-weighted coverage; variant matrix; colour and lens sections; ranked next cameras) · <strong>Target:</strong> Adobe Lightroom Classic 15.5 / Lightroom 9.6 (Camera Raw 18.7)</p>
+</blockquote>
+<p>Raw processing is the deepest single dimension of Lightroom parity: a photographer whose camera
+does not decode, or decodes with the wrong colour, cannot switch. This document measures it model by
+model. The numbers feed <a href="target-app-parity.md">target-app-parity.md</a>; individual shortfalls are
+ranked in <a href="gaps.md">gaps.md</a>. Details per format: <a href="cr3.md">cr3.md</a>,
+<a href="raf-compression.md">raf-compression.md</a>, <a href="sony-lens-corrections.md">sony-lens-corrections.md</a>,
+<a href="camera-preview-colour.md">camera-preview-colour.md</a>, <a href="denoise.md">denoise.md</a>.</p>
+<h2>Headline</h2>
+<table><thead><tr><th>Measure</th><th style="text-align: right">Value</th><th>Kind</th></tr></thead><tbody>
+<tr><td>Adobe-listed camera models</td><td style="text-align: right"><strong>1,446</strong></td><td>measured: <a href="raw/adobe-cameras.tsv">raw/adobe-cameras.tsv</a></td></tr>
+<tr><td>Decoded from sensor data and <strong>verified</strong> on a real file</td><td style="text-align: right"><strong>234</strong> (16%)</td><td>measured: <a href="raw/evidence.tsv">raw/evidence.tsv</a></td></tr>
+<tr><td>Decoder path should handle it, <strong>unverified</strong></td><td style="text-align: right"><strong>943</strong> (65%)</td><td>measured from the format rules (632 of them DNG, mostly phones)</td></tr>
+<tr><td><strong>Preview-only</strong> (embedded JPEG)</td><td style="text-align: right"><strong>233</strong> (16%)</td><td>measured</td></tr>
+<tr><td><strong>Unsupported</strong> (not imported, refused or decodes wrongly)</td><td style="text-align: right"><strong>36</strong> (2%)</td><td>measured</td></tr>
+<tr><td>Models added since 2017 (Camera Raw 10+): verified / unverified / preview / unsupported</td><td style="text-align: right">81 / 641 / 24 / 8 of 754</td><td>measured</td></tr>
+<tr><td><strong>Share of photographers whose camera fully works</strong> (decodes from sensor data), use-weighted</td><td style="text-align: right"><strong>~84%</strong></td><td>estimated: measured classes × written usage weights × per-format confidence</td></tr>
+<tr><td>…of which on a body we have verified</td><td style="text-align: right"><strong>~40%</strong></td><td>estimated, same weights</td></tr>
+<tr><td>Camera colour: Adobe profiles vs ours</td><td style="text-align: right">1,500 Adobe Standard profiles, 481 models with Camera Matching profiles vs <strong>4 bundled profiles</strong> + per-file fits + 52 spectral matrices</td><td>measured (bundle listing, Adobe list, <code>assets/camera-profiles</code>)</td></tr>
+<tr><td>Lens profiles: Adobe vs ours</td><td style="text-align: right"><strong>3,635 vs 0</strong> (in-file corrections only)</td><td>measured</td></tr>
+<tr><td><strong>RAW readiness</strong> (decoding 60%, colour 25%, lens 15%)</td><td style="text-align: right"><strong>~56%</strong> (range 50–60%)</td><td>estimated, see <a href="#scores">Scores</a></td></tr>
+</tbody></table>
+<p>Re-measure with <code>python3 docs/raw/coverage.py</code> (standard library only): it classifies every Adobe
+model from the format rules in the script (which mirror <code>crates/raw/src</code>) plus the per-model evidence,
+rewrites <a href="raw/coverage.tsv">raw/coverage.tsv</a> and prints the tables below; <code>--check</code> fails when the
+committed table is stale.</p>
+<h2>How it was measured</h2>
+<ul>
+<li><strong>Adobe's list</strong>: helpx "Camera Raw supported cameras" (the live page refuses scripted requests, so
+the Wayback Machine capture of 2026-10-03 was parsed): 1,446 camera rows from 40 makers after
+dropping profile-only rows; maker, model, extension(s), Camera Matching profile, minimum Camera Raw
+version. The year a model was added is approximated from that Camera Raw major version.</li>
+<li><strong>What we decode</strong>: the decoders and their refusals in <code>crates/raw/src</code> (<code>lib.rs</code> routing, <code>vendor/*.rs</code>
+coding variants, <code>crx.rs</code> CRX limits, <code>orf.rs</code> / <code>srw.rs</code> compressed refusals), the import list
+<code>lightcraft_engine::import::EXTENSIONS</code>, and <code>KNOWN_UNSUPPORTED</code> in <code>crates/raw/tests/corpus.rs</code>. Doc
+claims were not used.</li>
+<li><strong>Verified</strong> means a real file from that body decoded from sensor data in: the corpus test over the
+<code>RAW_SAMPLES</code> manifest (<code>xtask/src/main.rs</code>, 101 CC0 files; bodies whose sample is in
+<code>KNOWN_UNSUPPORTED</code> excluded), <code>crates/raw/tests/cr3_corpus.rs</code> (3 bodies, exact), the RAF reference
+check (<a href="raf-compression.md">raf-compression.md</a>), and the raw.pixls.us bulk checks recorded in issue
+#535 (all 100 Sony bodies there; 87 decode) and PR #215 (every Panasonic / Leica RW2 / RWL / RAW body
+there, 178 files from 118 bodies). Bulk-check body lists were matched to Adobe names through the
+raw.pixls.us folder names. Checks without a body list (≈ 60 NEFs, 35 CR2 bodies for the CFA layout)
+are not counted as verified.</li>
+<li><strong>Usage weights</strong> (<a href="raw/usage-weights.tsv">raw/usage-weights.tsv</a>): maker buckets from 2025 market
+data (Nikkei production: Canon ~36%, Sony ~29%, Nikon ~14%, Fujifilm ~12% of mirrorless; BCN retail:
+Sony 29.9%, Canon 27.4%, Nikon 15.1%), adjusted for the DSLR installed base and for the makers named
+in this repo's 325 user issues (Sony 33, Nikon 31, Canon 26, phones 23, Fujifilm 9, Panasonic / Leica
+8, OM / Olympus 6, Pentax / Ricoh 6). Inside each bucket, 80% goes to the popular bodies of the last
+~8 years (listed in the file), 20% to the bucket's other Adobe models.</li>
+<li><strong>Per-format confidence</strong> for unverified bodies (the chance their files decode correctly): DNG, CR2,
+RAF, RW2 0.95; NEF, ARW, PEF 0.9; ORF, SRW, SR2 0.8; <strong>CR3 0.6</strong> (the CRX decoder refuses several
+coding variants and only three bodies are verified; maintainers report the R7 working).</li>
+</ul>
+<h2>By maker (measured)</h2>
+<table><thead><tr><th>Maker</th><th style="text-align: right">Adobe models</th><th style="text-align: right">verified</th><th style="text-align: right">unverified</th><th style="text-align: right">preview</th><th style="text-align: right">unsupported</th><th>Main reason for preview / unsupported</th></tr></thead><tbody>
+<tr><td>Sony</td><td style="text-align: right">149</td><td style="text-align: right">86</td><td style="text-align: right">51</td><td style="text-align: right">9</td><td style="text-align: right">3</td><td>DSLR-A200…A390 and A850 12-bit compressed ARW (preview, #535); A100 and DSC-F828 refused (regression #702); SRF not imported</td></tr>
+<tr><td>Canon</td><td style="text-align: right">134</td><td style="text-align: right">11</td><td style="text-align: right">100</td><td style="text-align: right">21</td><td style="text-align: right">2</td><td>CRW (2000–2004 bodies) preview; EOS-1D / 1Ds TIFF raws not imported</td></tr>
+<tr><td>Samsung</td><td style="text-align: right">128</td><td style="text-align: right">1</td><td style="text-align: right">118</td><td style="text-align: right">9</td><td style="text-align: right">0</td><td>compressed SRW (NX1, NX30, NX300, NX500, NX2000, NX3000, NX3300, NX mini, Galaxy NX)</td></tr>
+<tr><td>Apple</td><td style="text-align: right">113</td><td style="text-align: right">1</td><td style="text-align: right">112</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>— (DNG / ProRAW)</td></tr>
+<tr><td>Panasonic</td><td style="text-align: right">104</td><td style="text-align: right">93</td><td style="text-align: right">11</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>—</td></tr>
+<tr><td>Nikon</td><td style="text-align: right">99</td><td style="text-align: right">5</td><td style="text-align: right">94</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>— (HE / HE★ is a per-shot setting, preview-only)</td></tr>
+<tr><td>Fujifilm</td><td style="text-align: right">97</td><td style="text-align: right">16</td><td style="text-align: right">55</td><td style="text-align: right">26</td><td style="text-align: right">0</td><td>pre-X FinePix RAF without a raw IFD (estimated split)</td></tr>
+<tr><td>Google</td><td style="text-align: right">88</td><td style="text-align: right">1</td><td style="text-align: right">87</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>—</td></tr>
+<tr><td>Olympus</td><td style="text-align: right">71</td><td style="text-align: right">3</td><td style="text-align: right">9</td><td style="text-align: right">59</td><td style="text-align: right">0</td><td><strong>compressed ORF</strong></td></tr>
+<tr><td>Leica</td><td style="text-align: right">61</td><td style="text-align: right">13</td><td style="text-align: right">48</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>—</td></tr>
+<tr><td>Xiaomi, Oppo, LG, Huawei, OnePlus, Motorola, Nokia</td><td style="text-align: right">139</td><td style="text-align: right">0</td><td style="text-align: right">139</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>— (DNG)</td></tr>
+<tr><td>Pentax / Ricoh</td><td style="text-align: right">60</td><td style="text-align: right">4</td><td style="text-align: right">56</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>—</td></tr>
+<tr><td>Hasselblad</td><td style="text-align: right">34</td><td style="text-align: right">0</td><td style="text-align: right">2</td><td style="text-align: right">32</td><td style="text-align: right">0</td><td>Hasselblad-compressed 3FR / FFF</td></tr>
+<tr><td>Phase One / Leaf / Mamiya</td><td style="text-align: right">59</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">43</td><td style="text-align: right">16</td><td>IIQ, MOS preview; TIFF raws and MEF not imported</td></tr>
+<tr><td>Casio</td><td style="text-align: right">26</td><td style="text-align: right">0</td><td style="text-align: right">26</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>— (DNG)</td></tr>
+<tr><td>DJI</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>— (DNG)</td></tr>
+<tr><td>OM Digital Solutions</td><td style="text-align: right">7</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">7</td><td style="text-align: right">0</td><td><strong>compressed ORF</strong></td></tr>
+<tr><td>Kodak, Konica Minolta, Epson, Sigma, GoPro, Contax, others</td><td style="text-align: right">56</td><td style="text-align: right">0</td><td style="text-align: right">14</td><td style="text-align: right">27</td><td style="text-align: right">15</td><td>DCR, GPR not imported; KDC, MRW, ERF, X3F preview</td></tr>
+<tr><td><strong>All</strong></td><td style="text-align: right"><strong>1,446</strong></td><td style="text-align: right"><strong>234 (16%)</strong></td><td style="text-align: right"><strong>943 (65%)</strong></td><td style="text-align: right"><strong>233 (16%)</strong></td><td style="text-align: right"><strong>36 (2%)</strong></td><td></td></tr>
+</tbody></table>
+<h2>By use (estimated)</h2>
+<table><thead><tr><th>Bucket</th><th style="text-align: right">Weight</th><th style="text-align: right">Camera fully works</th><th style="text-align: right">On a verified body</th><th>Why</th></tr></thead><tbody>
+<tr><td>Canon</td><td style="text-align: right">33%</td><td style="text-align: right">72%</td><td style="text-align: right">16%</td><td>17 of the 22 popular bodies write CR3; 2 of them verified, the rest at 0.6</td></tr>
+<tr><td>Sony</td><td style="text-align: right">27%</td><td style="text-align: right">98%</td><td style="text-align: right">91%</td><td>bulk-checked</td></tr>
+<tr><td>Nikon</td><td style="text-align: right">16%</td><td style="text-align: right">91%</td><td style="text-align: right">12%</td><td>decoders cover every NEF coding but HE; few bodies verified</td></tr>
+<tr><td>Fujifilm</td><td style="text-align: right">10%</td><td style="text-align: right">91%</td><td style="text-align: right">45%</td><td></td></tr>
+<tr><td>Panasonic</td><td style="text-align: right">4%</td><td style="text-align: right">100%</td><td style="text-align: right">98%</td><td>bulk-checked</td></tr>
+<tr><td>OM / Olympus</td><td style="text-align: right">3%</td><td style="text-align: right">3%</td><td style="text-align: right">1%</td><td>compressed ORF</td></tr>
+<tr><td>Phones</td><td style="text-align: right">3%</td><td style="text-align: right">93%</td><td style="text-align: right">1%</td><td>DNG</td></tr>
+<tr><td>Pentax / Ricoh</td><td style="text-align: right">1.5%</td><td style="text-align: right">94%</td><td style="text-align: right">14%</td><td></td></tr>
+<tr><td>Leica</td><td style="text-align: right">1%</td><td style="text-align: right">95%</td><td style="text-align: right">5%</td><td></td></tr>
+<tr><td>DJI</td><td style="text-align: right">1%</td><td style="text-align: right">95%</td><td style="text-align: right">0%</td><td></td></tr>
+<tr><td>Medium format and others</td><td style="text-align: right">0.5%</td><td style="text-align: right">23%</td><td style="text-align: right">0%</td><td>IIQ, 3FR, X3F</td></tr>
+<tr><td><strong>Weighted</strong></td><td style="text-align: right">100%</td><td style="text-align: right"><strong>84%</strong></td><td style="text-align: right"><strong>40%</strong></td><td></td></tr>
+</tbody></table>
+<p>About 5 in 6 raw photographers' cameras decode, but only about 2 in 5 use a body we have actually
+checked, and Canon, the largest bucket, is the weakest of the big four.</p>
+<h2>Variant matrix (depth per format)</h2>
+<p>✅ decoded and checked on real files · 🟡 decoded, partial or unverified · ⬜ preview-only or refused.</p>
+<table><thead><tr><th>Format</th><th>Variant</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>CR2</td><td>lossless JPEG slices</td><td>✅</td><td>8 corpus bodies; CFA phase from <code>CR2CFAPattern</code> (#85, 35 bodies); masked-column black level</td></tr>
+<tr><td>CR2</td><td>sRAW / mRAW (YCbCr)</td><td>✅</td><td><code>vendor/cr2/sraw.rs</code>, 31 samples from 16 models</td></tr>
+<tr><td>CR3</td><td>CRX lossless, version 0x100</td><td>✅</td><td>M50, R100, R8 exact against a reference</td></tr>
+<tr><td>CR3</td><td>C-RAW 0x100 (horizontal tiles), 0x200 (single 14-bit tile, adaptive QP)</td><td>✅</td><td>same 3 bodies exact</td></tr>
+<tr><td>CR3</td><td>other CRX variants (vertical tiles, partial subbands, other plane flags, 0x200 multi-tile)</td><td>⬜</td><td>refused in <code>crx.rs</code>, falls back to the preview; which bodies write them is unmeasured</td></tr>
+<tr><td>CR3</td><td>sRAW / mRAW</td><td>⬜</td><td>4-plane Bayer only</td></tr>
+<tr><td>CR3</td><td>HEIF / HDR PQ</td><td>⬜</td><td>HEVC tracks recognised, not decoded</td></tr>
+<tr><td>CR3</td><td>dual-pixel raw</td><td>⬜</td><td>never substituted</td></tr>
+<tr><td>CRW</td><td>all</td><td>⬜</td><td>preview</td></tr>
+<tr><td>NEF</td><td>uncompressed, lossless, lossy type 1 / 2, lossy after split</td><td>✅</td><td>D5100, D7000, D7500, Z f corpus; ~60 NEFs by hand; #633</td></tr>
+<tr><td>NEF</td><td>packed 14-bit stored under a compressed tag (Z 6II uncompressed)</td><td>⬜</td><td>#769; fix in PR #671 (not merged)</td></tr>
+<tr><td>NEF</td><td>High Efficiency / HE★ (JPEG XS)</td><td>⬜</td><td>named, preview (#193); needs a JPEG XS decoder</td></tr>
+<tr><td>ARW</td><td>uncompressed, cRAW (ARW2), lossless LJ92 (L / M / S)</td><td>✅</td><td>86 bodies (#535); M/S black level 1024</td></tr>
+<tr><td>ARW</td><td>packed 12-bit (A900)</td><td>✅</td><td>one CC0 file; A850 unmeasured</td></tr>
+<tr><td>ARW</td><td>12-bit compressed of DSLR-A200…A390</td><td>⬜</td><td>preview (#535)</td></tr>
+<tr><td>ARW</td><td>A100 ARW; SRF (F828, V3)</td><td>⬜</td><td>refused (#702); SRF not imported</td></tr>
+<tr><td>ARW</td><td>ARQ pixel shift</td><td>⬜</td><td>no code</td></tr>
+<tr><td>SR2</td><td>DSC-R1</td><td>✅</td><td>CC0 3221 sample</td></tr>
+<tr><td>RAF</td><td>uncompressed, lossless and lossy compressed; Bayer and X-Trans; GFX 14/16-bit</td><td>✅</td><td>24 files from 13 bodies exact</td></tr>
+<tr><td>RAF</td><td>pre-X FinePix without a raw IFD</td><td>⬜</td><td><code>raf.rs</code> refuses (26 Adobe models, estimated split)</td></tr>
+<tr><td>ORF</td><td>uncompressed 16-bit, 12-bit packed, two-field 12-bit, 12.8 bpp</td><td>✅</td><td>E-1, E-400, XZ-2 corpus; #651</td></tr>
+<tr><td>ORF</td><td><strong>compressed</strong> (every Olympus / OM body since ~2008)</td><td>⬜</td><td><code>orf.rs</code> refuses; the E-M1 and E-M10 III corpus files are <code>KNOWN_UNSUPPORTED</code></td></tr>
+<tr><td>RW2 / RWL / RAW</td><td>formats 2, 4, 5, 6, 7, 8 and 16-bit words</td><td>✅</td><td>118 bodies (#215)</td></tr>
+<tr><td>PEF</td><td>uncompressed, Huffman, packed 12-bit</td><td>✅</td><td>K10D, K-3, K-5 IIs</td></tr>
+<tr><td>PEF / DNG</td><td>Pentax pixel shift</td><td>⬜</td><td>frames not combined</td></tr>
+<tr><td>SRW</td><td>uncompressed, 12-bit packed</td><td>✅</td><td>EX1 corpus; NX10, NX20</td></tr>
+<tr><td>SRW</td><td>compressed 32770 / 32772 / 32773</td><td>⬜</td><td>refused</td></tr>
+<tr><td>DNG</td><td>uncompressed, LJ92, lossy JPEG / Smart Preview, Deflate incl. float, LinearRaw, tiles / strips, row / column interleave</td><td>✅</td><td>6 corpus DNGs; 4 ILCE-6400 JXL DNGs</td></tr>
+<tr><td>DNG</td><td>JPEG XL (DNG 1.7, lossless and lossy)</td><td>✅</td><td>synthetic bit-exact; real lossless and lossy files</td></tr>
+<tr><td>DNG</td><td>Apple ProRAW (incl. semantic mattes)</td><td>✅</td><td>iPhone 12 Pro corpus; ProfileGainTableMap read but off (ΔE00 19 against Lightroom with it on)</td></tr>
+<tr><td>DNG</td><td>phone DNGs (Pixel, Galaxy, Xiaomi…)</td><td>🟡</td><td>Pixel 2 XL only; white-level pile-up fix #548</td></tr>
+<tr><td>DNG</td><td>GoPro GPR (VC-5)</td><td>⬜</td><td>refused</td></tr>
+<tr><td>3FR / FFF</td><td>DNG-like layouts</td><td>🟡</td><td>decoded when uncompressed or LJ92</td></tr>
+<tr><td>3FR / FFF</td><td>Hasselblad compression</td><td>⬜</td><td>preview</td></tr>
+<tr><td>IIQ, MOS, MRW, ERF, KDC, X3F</td><td>all</td><td>⬜</td><td>preview</td></tr>
+<tr><td>DCR, MEF, MFW, DXO, GPR, TIFF raws</td><td>all</td><td>⬜</td><td>not imported</td></tr>
+</tbody></table>
+<h2>Demosaic, levels, crops and lens metadata</h2>
+<table><thead><tr><th>Stage</th><th>Target</th><th>LightCraft</th><th>Status</th></tr></thead><tbody>
+<tr><td>Bayer demosaic</td><td>Adobe's own, plus AI "Raw Details"</td><td>AHD (default), PPG, bilinear (<code>crates/raw/src/demosaic</code>)</td><td>🟡 quality unmeasured against Lightroom; no Raw Details</td></tr>
+<tr><td>X-Trans demosaic</td><td>✅</td><td>in-house edge-weighted directional</td><td>🟡 unmeasured</td></tr>
+<tr><td>Foveon</td><td>✅ (older bodies)</td><td>—</td><td>⬜</td></tr>
+<tr><td>Monochrome / LinearRaw</td><td>✅</td><td>handled, no demosaic</td><td>✅</td></tr>
+<tr><td>Pixel shift (Sony ARQ, Pentax, OM high-res, Nikon)</td><td>✅ (Sony, Pentax, Nikon)</td><td>—</td><td>⬜</td></tr>
+<tr><td>Black and white levels</td><td>per model, calibrated</td><td>read from each file (masked columns, maker notes, SR2SubIFD, CMP1)</td><td>🟡 per-body bugs keep surfacing: A450–A700 SR2 black level and M/S ARW pedestal (#535, fixed); 5D Mark IV CR2 renders dark (#455, open); white-level pile-up in phone DNGs (#548, fixed)</td></tr>
+<tr><td>Crop masks and aspect</td><td>✅</td><td>DefaultCrop, Sony recorded size, Canon AspectInfo, Panasonic in-camera crops, Nikon CropArea</td><td>🟡 7RM3 / 7RM4 crop origin 8–32 px off (cosmetic)</td></tr>
+<tr><td>Lens metadata</td><td>✅ read for profile selection</td><td>EXIF lens fields read; used only for the in-file corrections below</td><td>🟡</td></tr>
+<tr><td>Highlight reconstruction</td><td>✅</td><td>neutral clip, chromaticity diffusion (<code>highlight.rs</code>)</td><td>🟡 tuned by eye</td></tr>
+<tr><td>AI denoise</td><td>✅ Bayer and X-Trans, model bundled</td><td>Bayer only, user-installed weights, pure-Rust CPU / GPU</td><td>🟡 no X-Trans, no shippable weights</td></tr>
+<tr><td>Super Resolution</td><td>✅</td><td>—</td><td>⬜</td></tr>
+<tr><td>HDR / panorama merge to raw DNG</td><td>✅</td><td>linear DNG (float16 HDR) with the source's colour tags</td><td>✅</td></tr>
+<tr><td>Convert to DNG</td><td>✅</td><td>uncompressed or LJ92 tiles (<code>dngwrite.rs</code>)</td><td>✅ (no lossy DNG)</td></tr>
+</tbody></table>
+<h2>Colour</h2>
+<table><thead><tr><th>Item</th><th>Adobe</th><th>LightCraft</th></tr></thead><tbody>
+<tr><td>Default profile per model</td><td>Adobe Standard for every model (1,500 profile names in the bundle)</td><td>the DNG's own matrices; else a pooled profile (<strong>4 bundled</strong>: ILCE-7CR, ILCE-7M4, X-H2S, X-T4); else a guarded per-file fit to the camera's embedded JPEG; else spectral matrices (<strong>52 models</strong>, rawtoaces-data); else a neutral matrix</td></tr>
+<tr><td>Camera Matching looks</td><td>481 models (plus phone-maker looks)</td><td>none (the per-file JPEG fit imitates the camera's own look)</td></tr>
+<tr><td>Creative profiles</td><td>Adobe Color, Portrait, Landscape, Vivid, Monochrome…</td><td>our own looks (Color, Neutral, Vivid, Landscape, Portrait, Monochrome)</td></tr>
+<tr><td>DCP / dual-illuminant model</td><td>✅</td><td>dual-illuminant DNG colour (ColorMatrix / ForwardMatrix 1-2, CameraCalibration, AnalogBalance), HueSatMap, LookTable, ProfileToneCurve; external <code>.dcp</code> never loaded (clean-room)</td></tr>
+<tr><td>White balance in Kelvin</td><td>✅ for every model</td><td>absolute Kelvin only where matrices exist; per-file fits give relative WB (#296, #730)</td></tr>
+</tbody></table>
+<p><strong>How far the default rendering is from Adobe's</strong> (CIE ΔE; measured where stated):</p>
+<ul>
+<li>Against the camera JPEG (what the fit targets): the Sony bulk check (#535) accepted fits on 81 of 87
+bodies, median ΔE 5.1, ΔL* +0.2; rejected fits fall back to a neutral matrix at median ΔE 18.5,
+ΔL* −11, chroma ×0.39. RW2 140 of 174 files accepted, median 5.0. NEF 13 of 13, 2.9–7.8. RAF 23 of
+24, pooled X-H2S 1.62 / X-T4 2.34. SRW 2.2–7.6.</li>
+<li>Against Lightroom itself (few): Sony DRO median ΔE76 7.5 → 3.3; Olympus E-1 vs Lightroom Classic
+ΔE00 11.25 → 8.30; ProRAW with its gain map ΔE00 19 (why the map is off). No measurement against
+Adobe Standard across models exists.</li>
+<li>User evidence: 33 open issues about raw colour or rendering (wrong colours, dark, flat, green,
+desaturated), the largest group of open core-path issues.</li>
+</ul>
+<p><strong>Colour score ~35%</strong> (estimated): most decoded files start close to the camera's own look (ΔE ~5),
+about 10% start far off (ΔE ~18), nothing is calibrated, Kelvin WB is missing for fitted cameras, and
+the distance to Adobe Standard is unmeasured. In the readiness numbers this becomes a colour factor
+of ×0.85 for a working photographer (they correct colour by hand, at a cost) and ×0.75 for the
+essentials user (the default look is what they keep).</p>
+<h2>Lens profiles</h2>
+<table><thead><tr><th>Item</th><th>Adobe</th><th>LightCraft</th></tr></thead><tbody>
+<tr><td>Profile database</td><td>3,635 profile files, 56 makers, auto-selected</td><td><strong>0</strong> (Adobe LCPs never used; no database of our own)</td></tr>
+<tr><td>In-file corrections</td><td>✅</td><td>DNG opcodes (WarpRectilinear, FixVignetteRadial, GainMap…) applied; Panasonic / Leica RW2 distortion (79 photos, 13 bodies, 11 lenses); Sony tag 0x7037 distortion for the ILCE-7RM4A (2 lenses)</td></tr>
+<tr><td>Vignetting / lateral CA from maker notes</td><td>✅</td><td>⬜</td></tr>
+<tr><td>Manual distortion, vignetting, CA, defringe</td><td>✅</td><td>✅</td></tr>
+</tbody></table>
+<p><strong>Lens score ~10%</strong> (estimated): automatic correction reaches roughly Panasonic / Leica, phone and
+drone DNG users (~9% of photographers by the weights above); Adobe reaches nearly everyone.</p>
+<h2>Scores</h2>
+<table><thead><tr><th>Part</th><th style="text-align: right">Weight</th><th style="text-align: right">Score</th><th>Basis</th></tr></thead><tbody>
+<tr><td>Decoding</td><td style="text-align: right">60%</td><td style="text-align: right"><strong>76%</strong></td><td>use-weighted 84% × 0.9 for per-body decode bugs still surfacing (levels, crops, WB: #535, #455, #461, #702)</td></tr>
+<tr><td>Colour</td><td style="text-align: right">25%</td><td style="text-align: right"><strong>35%</strong></td><td>see <a href="#colour">Colour</a></td></tr>
+<tr><td>Lens profiles</td><td style="text-align: right">15%</td><td style="text-align: right"><strong>10%</strong></td><td>see <a href="#lens-profiles">Lens profiles</a></td></tr>
+<tr><td><strong>RAW readiness</strong></td><td style="text-align: right">100%</td><td style="text-align: right"><strong>~56%</strong> (range 50–60%)</td><td>45.6 + 8.75 + 1.5; demosaic and highlight quality unmeasured</td></tr>
+</tbody></table>
+<p>The previous estimate (earlier on 2026-10-10) was ~50%, with decoding at ~78% weighted by maker
+from the format list alone. Measured model by model, decoding comes out about the same; the change is
+the written decomposition, not new decoding.</p>
+<h2>Remaining work, ranked by photographers unlocked per hour</h2>
+<p>Hours are Opus 5.5 agent hours, calibrated on this repo's raw PRs: RW2 every format 6.5 h (#215),
+compressed RAF 8.6 h (#282), CR3 CRX 10 h (#279), NEF lossy after split 4.7 h (#633), ORF 12.8 bpp
+1.7 h (#651), HEIC 7 h (#609). "Gain" is the change in the use-weighted share whose camera fully
+works, from <a href="raw/usage-weights.tsv">raw/usage-weights.tsv</a>.</p>
+<table><thead><tr><th style="text-align: right">#</th><th>Camera / variant</th><th style="text-align: right">Gain (points of photographers)</th><th style="text-align: right">Hours</th><th style="text-align: right">Gain per hour</th><th>Needs</th></tr></thead><tbody>
+<tr><td style="text-align: right">1</td><td>Compressed ORF (every Olympus / OM body since ~2008)</td><td style="text-align: right">+2.6</td><td style="text-align: right">8–15</td><td style="text-align: right">~0.20</td><td>CC0 samples (have 2)</td></tr>
+<tr><td style="text-align: right">2</td><td>CR3: remaining CRX variants, then verify the 17 popular CR3 bodies</td><td style="text-align: right">+6.5</td><td style="text-align: right">25–45</td><td style="text-align: right">~0.19</td><td>samples per body (raw.pixls.us has most)</td></tr>
+<tr><td style="text-align: right">3</td><td>Verify popular Nikon, Fujifilm, Canon CR2 and Pentax bodies (one CC0 file each, fix what breaks)</td><td style="text-align: right">+2.0</td><td style="text-align: right">8–15</td><td style="text-align: right">~0.17</td><td>public samples</td></tr>
+<tr><td style="text-align: right">4</td><td>Nikon packed 14-bit under a compressed tag (Z 6II uncompressed, #769)</td><td style="text-align: right">+0.2</td><td style="text-align: right">1–2</td><td style="text-align: right">~0.13</td><td>PR #671 exists</td></tr>
+<tr><td style="text-align: right">5</td><td>Sony DSLR-A200…A390 / A850 12-bit compressed ARW</td><td style="text-align: right">+0.4</td><td style="text-align: right">3–6</td><td style="text-align: right">~0.08</td><td>samples on raw.pixls.us</td></tr>
+<tr><td style="text-align: right">6</td><td>Pre-X FinePix RAF</td><td style="text-align: right">+0.6</td><td style="text-align: right">4–8</td><td style="text-align: right">~0.08</td><td>samples</td></tr>
+<tr><td style="text-align: right">7</td><td>Sony A100 and DSC-F828 regression (#702)</td><td style="text-align: right">+0.1</td><td style="text-align: right">1–2</td><td style="text-align: right">~0.07</td><td>samples on raw.pixls.us</td></tr>
+<tr><td style="text-align: right">8</td><td>Canon CRW (2000–2004 bodies)</td><td style="text-align: right">+1.2 by the uniform tail weight, far less by real use</td><td style="text-align: right">6–12</td><td style="text-align: right">≤ 0.1</td><td>samples</td></tr>
+<tr><td style="text-align: right">9</td><td>Nikon HE / HE★ NEF (Z 8, Z 9, Z 6III, Z f, Z50II, Z5II set to HE)</td><td style="text-align: right">+1.1</td><td style="text-align: right">20–40</td><td style="text-align: right">~0.04</td><td>a pure-Rust JPEG XS decoder</td></tr>
+<tr><td style="text-align: right">10</td><td>Compressed SRW, Hasselblad 3FR, IIQ, X3F, MRW, KDC, ERF, DCR, MEF, GPR</td><td style="text-align: right">+0.6 together</td><td style="text-align: right">45–85</td><td style="text-align: right">~0.01</td><td>samples; low use</td></tr>
+</tbody></table>
+<p>Beyond decoding:</p>
+<table><thead><tr><th>Gap</th><th style="text-align: right">Hours</th><th>Needs</th></tr></thead><tbody>
+<tr><td>Measured colour calibration for the ~60 popular bodies, Kelvin WB, render-fidelity suite against Lightroom</td><td style="text-align: right">80–150</td><td>chart shots per camera (a human with cameras) or licensable measured data</td></tr>
+<tr><td>Lens profile database of our own (fitting tools, data format, top 100 lenses), maker-note vignetting / CA</td><td style="text-align: right">40–80</td><td>calibration shots (a human with lenses)</td></tr>
+<tr><td>Demosaic and highlight quality measured against Lightroom; X-Trans AI denoise</td><td style="text-align: right">15–30</td><td></td></tr>
+<tr><td><strong>Total RAW</strong></td><td style="text-align: right"><strong>255–480 h</strong> (decoding list above 120–220 h; ~60% parallelizes)</td><td></td></tr>
+</tbody></table>
+<h2>Revision history</h2>
+<table><thead><tr><th>Date</th><th>Change</th><th>Summary</th></tr></thead><tbody>
+<tr><td>2026-10-10 (later)</td><td>major</td><td>Model-by-model measurement against Adobe's published list (1,446 models: 234 verified, 943 unverified, 233 preview, 36 unsupported); <code>docs/raw/</code> data and re-measure script; use-weighted share 84% (40% on verified bodies); variant matrix; colour and lens sections with scores; ranked next cameras; RAW readiness ~56% from written parts</td></tr>
+<tr><td>2026-10-10</td><td>major</td><td>Created: formats, makers, demosaic, colour and lens checklists; target counts from the installed Lightroom 9.6 bundle listing</td></tr>
+</tbody></table>
+<hr />
+<details open>
+<summary><b>📚 lightcraft 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「lightcraft」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://zzss.wtpuscm.cn/baogao/media-760084.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://fvcr.wtpuscm.cn/gongsi/accessibility-777598.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://yyck.wtpuscm.cn/fenxi/template-232933.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://taoy.wtpuscm.cn/kuangjia/privacy-166712.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://trts.wtpuscm.cn/huodong/food-358926.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://yuyk.wtpuscm.cn/jiaocheng/advertising-156481.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://vbgl.wtpuscm.cn/baogao/tracking-506262.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://datu.wtpuscm.cn/jiaocheng/share-491.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://sbdo.wtpuscm.cn/xinwen/comment-932086.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://jzst.wtpuscm.cn/anfang/network-193793.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://lbda.wtpuscm.cn/jiaocheng/url-867084.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://qutj.wtpuscm.cn/gongxiang/review-977993.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://axhr.wtpuscm.cn/chanpin/content-264103.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://mhov.wtpuscm.cn/zhizhu/game-804317.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://bgzx.wtpuscm.cn/shichang/sale-349014.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://uazy.wtpuscm.cn/kaifa/analytics-728183.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://tssy.wtpuscm.cn/sheji/photo-931089.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://yivt.wtpuscm.cn/anli/digital-681969.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://gllk.wtpuscm.cn/kuangjia/guide-333027.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://mcjg.wtpuscm.cn/yinqing/logo-318570.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://ssrb.wtpuscm.cn/jiaoliu/planning-094703.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://dhvx.wtpuscm.cn/wendang/value-167513.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://fvme.wtpuscm.cn/zhizhu/policy-292801.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://yrzl.tcti.cn/suanfa/internet-46537305.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://kbxl.tcti.cn/gongxiang/music-53667221.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://ddrs.tcti.cn/guanjianci/ai-16249704.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://ediv.tcti.cn/shichang/privacy-74950740.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://isqw.tcti.cn/wendang/account-85661557.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://dfpz.tcti.cn/wangluo/about-04236642.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://xoww.tcti.cn/baogao/planning-63043388.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://kxmz.tcti.cn/jiaoliu/vendor-50702635.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://exvz.tcti.cn/zhinan/metric-48995769.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://oxmz.tcti.cn/yunsuan/quality-18706223.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://sfdu.tcti.cn/anli/ebook-91995590.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://egnv.tcti.cn/shangye/income-65682688.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://wetl.tcti.cn/fuwu/solution-69208370.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://acqa.tcti.cn/shuju/objective-54286936.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://gvqy.tcti.cn/wendang/online-38231171.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://tdph.tcti.cn/jishu/recommendation-52757306.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://cbom.tcti.cn/xuexi/automation-13677408.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://olxr.wtpuscm.cn/kaifa/learning-667765.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://www.mw-wm.com/kaifa/data-30506397.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://www.yx-sf.com/news/25193">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.ai-hao123.com/shichang/about-65671406.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://bxsf.tcti.cn/huodong/lesson-60104271.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://mofy.tcti.cn/peixun/management-81902110.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://datp.wtpuscm.cn/chuangxin/domain-996293.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://ebdj.wtpuscm.cn/wenzhang/traffic-829584.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://kums.wtpuscm.cn/yingxiao/enterprise-997764.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://both.wtpuscm.cn/zhinan/project-248774.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://xnua.wtpuscm.cn/anfang/reminder-190710.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://pkud.wtpuscm.cn/zhineng/efficiency-024930.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://maog.wtpuscm.cn/pingtai/cloud-568430.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://iuiu.wtpuscm.cn/zhizhu/goal-380.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://wxna.wtpuscm.cn/youhua/subscribe-282229.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://slzg.wtpuscm.cn/baogao/report-622448.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://mwrf.wtpuscm.cn/suanfa/travel-377363.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://gbqz.wtpuscm.cn/shangye/navigation-237708.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://ofit.wtpuscm.cn/paiming/subscribe-867551.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://iiwc.wtpuscm.cn/paiming/project-974980.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://itmp.wtpuscm.cn/gongxiang/workshop-341502.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://kxra.wtpuscm.cn/chuangxin/cloud-068941.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://juym.wtpuscm.cn/wendang/analysis-764380.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://bkpc.wtpuscm.cn/keji/services-375259.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://izcf.wtpuscm.cn/peixun/marketing-305831.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://onjj.wtpuscm.cn/peixun/server-056242.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://kisl.wtpuscm.cn/tuiguang/resource-429306.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://yxse.wtpuscm.cn/jianzhan/report-078984.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://yajd.wtpuscm.cn/yingyong/user-622359.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://ieki.tcti.cn/wendang/milestone-44542503.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://aduu.tcti.cn/fuwu/deadline-98280131.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://wgdw.tcti.cn/anfang/collaborate-30297661.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://xpdd.tcti.cn/yinqing/entertainment-25435323.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://rufm.tcti.cn/xinwen/digital-22688161.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+</ul>
+<h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://kfdp.tcti.cn/yunsuan/personalization-19385270.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://cfqw.tcti.cn/baogao/fitness-90016597.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://rhte.tcti.cn/wangluo/database-61358849.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://adhs.tcti.cn/guanjianci/security-60646756.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://qrqa.tcti.cn/xitong/vendor-28893429.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://ipmp.tcti.cn/qiye/metric-72278389.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://dltu.tcti.cn/gongju/metric-20756949.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://lfox.tcti.cn/wenzhang/learning-80241174.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://ewme.tcti.cn/liuliang/kpi-39879821.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://oeca.tcti.cn/yunsuan/plugin-47866597.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://kfxw.tcti.cn/pingce/study-08527530.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://kycx.tcti.cn/gongxiang/interface-20625267.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://dsaw.wtpuscm.cn/yunying/sport-924052.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://www.mw-wm.com/jishu/form-48389165.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://www.yx-sf.com/news/34214">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://www.ai-hao123.com/kuangjia/review-48051218.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://krfd.tcti.cn/zhineng/like-55072528.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://qntq.tcti.cn/wendang/interface-46943038.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://qijh.wtpuscm.cn/wenzhang/software-734287.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://grch.wtpuscm.cn/wendang/tool-376079.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://zsrf.wtpuscm.cn/qiye/privacy-261141.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://hdhb.wtpuscm.cn/sheji/video-295130.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://jbdq.wtpuscm.cn/xitong/innovation-849841.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://hqsi.wtpuscm.cn/fenxi/template-862836.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://dmzb.wtpuscm.cn/ziyuan/expensive-837600.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://tlot.wtpuscm.cn/gongsi/saving-898.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://nusx.wtpuscm.cn/xinwen/promotion-895673.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://ozgn.wtpuscm.cn/guanjianci/screen-088038.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://uvef.wtpuscm.cn/hezuo/unsubscribe-563719.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://djyo.wtpuscm.cn/qiye/privacy-393607.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://rxaz.wtpuscm.cn/gongxiang/retention-996161.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://mqsn.wtpuscm.cn/shuju/notification-649401.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://lvgv.wtpuscm.cn/jiaocheng/calculator-786005.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://xfec.wtpuscm.cn/yunying/alert-327406.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://fufe.wtpuscm.cn/shuju/topic-496411.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://nffx.wtpuscm.cn/wenzhang/customization-074741.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://rmzt.wtpuscm.cn/tuiguang/automation-521157.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://yjbi.wtpuscm.cn/huodong/management-968709.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://higp.wtpuscm.cn/chuangxin/api-074357.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://hxgb.wtpuscm.cn/huodong/deal-335178.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://gxdv.wtpuscm.cn/xuexi/experience-004327.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://jfbx.tcti.cn/zhizhu/promotion-66598048.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://ywjn.tcti.cn/yinqing/roi-28651063.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://evdx.tcti.cn/wangluo/lesson-16069159.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://hnii.tcti.cn/wendang/satisfaction-19008913.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://gsip.tcti.cn/zhineng/alert-00245595.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://ibnm.tcti.cn/xinwen/chapter-89482499.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://ebgs.tcti.cn/shichang/landing-14036200.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://eyrf.tcti.cn/guanjianci/api-75716274.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://dpwl.tcti.cn/yanjiu/topic-58485650.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://mfxw.tcti.cn/yingxiao/conversion-94963306.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://wbjn.tcti.cn/zhizhu/success-15947453.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://jkgx.tcti.cn/yunying/home-67610012.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://aupa.tcti.cn/shangye/advertising-70922332.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://lzsa.tcti.cn/chuangxin/website-03521183.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://xeuc.tcti.cn/jishu/data-15920083.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://navm.tcti.cn/sheji/team-82568614.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://sgzf.tcti.cn/zixun/reminder-85892310.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://rkxr.wtpuscm.cn/anfang/music-785366.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://www.mw-wm.com/sheji/cheap-47894492.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://www.yx-sf.com/news/47589">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://www.ai-hao123.com/zhineng/kpi-24765153.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://pmwz.tcti.cn/gongju/support-53038122.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://zgdq.tcti.cn/peixun/alliance-04127840.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://tcnl.wtpuscm.cn/zixun/profit-577961.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://gfom.wtpuscm.cn/zhizhu/learning-340940.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://rwlt.wtpuscm.cn/peixun/progress-238955.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://ryhw.wtpuscm.cn/youhua/objective-197965.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://utqc.wtpuscm.cn/kaifa/satisfaction-276019.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://pojc.wtpuscm.cn/fuwu/backup-599190.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://ppcq.wtpuscm.cn/xitong/seminar-756364.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://ijft.wtpuscm.cn/kuangjia/sale-752.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://hvxf.wtpuscm.cn/fenxi/development-449272.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://mffo.wtpuscm.cn/keji/online-984122.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://alqf.wtpuscm.cn/jiaocheng/brand-698438.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://sxmi.wtpuscm.cn/huodong/travel-474093.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+
+      </div>
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 ">
+          <span>&larr; 查看更多归档文档</span>
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 ">
+          <span>返回项目 README 首页 &rarr;</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
+      <span>© 2026 <strong>lightcraft-mirror-764</strong> - 官方开源高可用拓扑镜像与白皮书</span>
+    </div>
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
+      <span>•</span>
+      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+      <span>•</span>
+      <span>托管于 GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

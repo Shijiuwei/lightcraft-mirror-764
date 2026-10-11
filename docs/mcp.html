@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightCraft MCP server - lightcraft-mirror-764 文档归档</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-hover: #1d4ed8;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.68;
+        color: #1e293b;
+      }
+      .markdown-body {
+        color: #1e293b;
+      }
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid #e2e8f0;
+        color: #0f172a;
+        line-height: 1.25;
+      }
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.6rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+      }
+      .markdown-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.6rem;
+        color: #334155;
+      }
+      .markdown-body p {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+      }
+      .markdown-body a {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dashed #93c5fd;
+        transition: all 0.2s ease;
+      }
+      .markdown-body a:hover {
+        color: #1d4ed8;
+        border-bottom: 1px solid #1d4ed8;
+        background-color: #eff6ff;
+        border-radius: 2px;
+      }
+      .markdown-body ul, .markdown-body ol {
+        padding-left: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .markdown-body ul {
+        list-style-type: disc;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+      }
+      .markdown-body li {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .markdown-body pre {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 1rem 1.2rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .markdown-body code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.15rem 0.35rem;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-radius: 0.35rem;
+        border: 1px solid #e2e8f0;
+      }
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
+      .markdown-body blockquote {
+        margin: 1rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 0.5rem 0.5rem 0;
+        color: #475569;
+      }
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        display: block;
+        overflow-x: auto;
+      }
+      .markdown-body th, .markdown-body td {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 1rem;
+        text-align: left;
+      }
+      .markdown-body th {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      .markdown-body hr {
+        height: 1px;
+        border: none;
+        background-color: #e2e8f0;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">lightcraft-mirror-764</span>
+      </a>
+      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
+    </div>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm">
+      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>首页 (README)</span>
+      </a>
+      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>文档归档 (Docs)</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+      </a>
+      <div class="h-4 w-px bg-slate-200 mx-1"></div>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="hidden sm:inline">Wiki</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- 面包屑与顶部导航 -->
+  <header class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
+        <span>/</span>
+        <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">技术文档</span>
+      </nav>
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">LightCraft MCP server</h1>
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors ">
+          <span>&larr; 返回文档归档菜单</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体正文区域 -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full">
+    <article class="bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-slate-200">
+      <div class="markdown-body">
+        <h1>LightCraft MCP server</h1>
+<p><code>lightcraft-cli mcp</code> exposes LightCraft to AI agents through the
+<a href="https://wxri.wtpuscm.cn/zixun/workshop-481059.html">Model Context Protocol</a>: newline-delimited JSON-RPC 2.0 over
+stdio (protocol revision <code>2025-06-18</code>; <code>2025-03-26</code> and <code>2024-11-05</code> clients are accepted). The
+server lives in <code>crates/mcp</code> (<code>lightcraft-mcp</code>, layer L5) and is hand-written: no async runtime,
+no C dependencies.</p>
+<p>It runs in one of two modes:</p>
+<table><thead><tr><th>Mode</th><th>Command</th><th>What it drives</th></tr></thead><tbody>
+<tr><td><strong>Headless</strong> (default)</td><td><code>lightcraft-cli mcp [--demo] [FILES/FOLDERS…]</code></td><td>An in-process engine <code>Session</code>. Develop, render and export without a window.</td></tr>
+<tr><td><strong>Connect</strong></td><td><code>lightcraft-cli mcp --connect [127.0.0.1:7980]</code></td><td>A running desktop app started with <code>lightcraft --control 7980</code>, through its loopback JSON-lines control channel (<a href="control-protocol.md">control-protocol.md</a>). Adds the UI tools (screenshot, clicks, keys, pointer gestures).</td></tr>
+</tbody></table>
+<p>Options: <code>--library DIR</code> opens (or creates) a persistent LightCraft library — the same crash-safe
+format the desktop app uses (<code>~/Pictures/LightCraft Library</code> by default there) — so ratings, edits and albums
+survive between sessions (with <code>--demo</code>, a new library is seeded with the demo photos). A library
+is open in one program at a time (<code>catalog.lock</code> in the library folder): while the desktop app has
+it open, <code>--library</code> on the same folder fails with "This library is already open in LightCraft
+(process N …)" — use connect mode to work with the running app instead;
+<code>--demo</code> starts the headless session with the procedurally generated demo library;
+<code>--compact</code> lists only the helper tools (see below). In connect mode the server starts even when
+the app is not running yet and connects on the first call (and reconnects if the app restarts).</p>
+<p>Logs go to stderr; stdout carries only protocol messages.</p>
+<h2>Wiring it into a client</h2>
+<p>Build once: <code>cargo build --release -p lightcraft-cli</code> (binary: <code>target/release/lightcraft-cli</code>).</p>
+<h3>Claude Code</h3>
+<pre><code class="language-sh"># headless, with a folder of photos imported at start
+claude mcp add lightcraft -- /path/to/lightcraft/target/release/lightcraft-cli mcp ~/Pictures/shoot
+
+# or: drive the running desktop app (start it with `lightcraft --control 7980`)
+claude mcp add lightcraft-app -- /path/to/lightcraft/target/release/lightcraft-cli mcp --connect 127.0.0.1:7980
+</code></pre>
+<p>Or check a project-scoped <code>.mcp.json</code> into your repo:</p>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "lightcraft": {
+      "command": "/path/to/lightcraft/target/release/lightcraft-cli",
+      "args": ["mcp", "--connect", "127.0.0.1:7980"]
+    }
+  }
+}
+</code></pre>
+<h3>Codex</h3>
+<p>The macOS release includes a separate <code>lightcraft-cli-&lt;version&gt;-macos-universal.zip</code>;
+unpack it alongside the desktop app if you do not want to build from source. Use the CLI
+and app from the same release. Verify both downloads against that release's <code>SHA256SUMS.txt</code>.</p>
+<p>Register the CLI's stdio server with Codex using its <strong>absolute</strong> installed path:</p>
+<pre><code class="language-sh"># Headless: a persistent library whose edits survive MCP restarts.
+codex mcp add lightcraft -- "/absolute/path/lightcraft-cli" mcp --library "/absolute/path/library"
+
+# Live desktop: start the app on the matching loopback port first.
+"/absolute/path/LightCraft.app/Contents/MacOS/LightCraft" --library "/absolute/path/library" --control 7980
+codex mcp add lightcraft-app -- "/absolute/path/lightcraft-cli" mcp --connect 127.0.0.1:7980
+</code></pre>
+<p>Choose one mode for a library: a headless server cannot open a library already locked by
+the desktop app. Connect mode edits the window's actual library and reconnects after the
+app restarts. An external library path keeps the catalog on that drive. Copy/move imports
+default to the library's <code>Originals/</code> folder; add-mode imports keep the originals at their
+existing paths. The library path does not relocate settings, logs or optional models (see
+the README's settings/log locations). Make sure an external drive is mounted before
+starting either process.</p>
+<p><code>codex mcp list</code> confirms registration, not a successful tool call. After adding the server,
+restart the client's MCP connections and verify <code>doc_inspect</code> or <code>query_photos</code> against the
+expected library before editing. Configuration options are in the
+<a href="https://nasn.tcti.cn/yingxiao/global-45217862.html">Codex MCP documentation</a>.</p>
+<h3>From an installed release</h3>
+<p>The release packages ship <code>lightcraft-cli</code> alongside the desktop app, so no build is needed:</p>
+<table><thead><tr><th>Install</th><th>CLI</th></tr></thead><tbody>
+<tr><td>Windows (MSI)</td><td><code>C:\Program Files\LightCraft\lightcraft-cli.exe</code> by default (wherever you installed it otherwise), not on <code>PATH</code></td></tr>
+<tr><td>Linux (deb, rpm)</td><td><code>/usr/bin/lightcraft-cli</code></td></tr>
+<tr><td>macOS</td><td>the separate <code>lightcraft-cli-&lt;version&gt;-macos-&lt;arch&gt;.zip</code> release asset (the <code>.app</code> holds only the desktop app)</td></tr>
+</tbody></table>
+<pre><code class="language-sh"># Windows, default install folder
+claude mcp add lightcraft -- "C:\Program Files\LightCraft\lightcraft-cli.exe" mcp
+# Linux, or macOS with the CLI unzipped onto PATH
+claude mcp add lightcraft -- lightcraft-cli mcp
+</code></pre>
+<h3>Other clients (Claude Desktop, Cursor, …)</h3>
+<p>Every stdio MCP client takes the same shape: a <code>command</code> plus <code>args</code>. For example
+<code>claude_desktop_config.json</code>:</p>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "lightcraft": {
+      "command": "/path/to/lightcraft/target/release/lightcraft-cli",
+      "args": ["mcp", "--demo"]
+    }
+  }
+}
+</code></pre>
+<p>During development you can also point the client at <code>cargo run --release -p lightcraft-cli -- mcp</code>
+(with <code>"cwd"</code> set to the repository), at the cost of a slower start.</p>
+<h2>Shared core tools</h2>
+<p>These follow the same conventions as <a href="https://usze.tcti.cn/shichang/study-77795798.html">filmcraft #28</a>.
+They are listed in both full and compact mode; existing documented helpers remain listed too.
+There are no hidden compatibility aliases.</p>
+<table><thead><tr><th>Tool</th><th>Arguments</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>command_list</code></td><td><code>filter?</code>, <code>enabled_only?</code></td><td>Command catalog</td></tr>
+<tr><td><code>command_run</code></td><td><code>id</code>, <code>params?</code></td><td>Command result</td></tr>
+<tr><td><code>command_batch</code></td><td><code>steps: [{id, params?}]</code>, <code>stop_on_error?</code></td><td>Counts and per-step results; stops on error by default</td></tr>
+<tr><td><code>doc_inspect</code></td><td>none</td><td>Library state and catalog counts</td></tr>
+<tr><td><code>render_preview</code></td><td><code>id?</code>, <code>max_side?</code>, <code>format?</code></td><td>Image; neither changes selection nor saves a file</td></tr>
+</tbody></table>
+<p>Each edit in a batch has its own undo step. Connect mode also lists <code>ui_inspect</code> and
+<code>ui_screenshot</code> (the latter has no output-path argument). The existing <code>inspect_ui</code>,
+<code>screenshot</code>, <code>list_commands</code>, <code>run_command</code> and <code>render_photo</code> keep their documented arguments.
+Ports and connect mode are unchanged.</p>
+<p>Every listed tool has a title and all four MCP hints. Generated command tools are conservatively
+marked as edits. Helpers with optional output paths are marked as writers; <code>export</code> is not
+idempotent because the default conflict policy chooses a new filename on repeated calls.
+Unknown helper argument keys return JSON-RPC <code>-32602</code> naming the key and accepted arguments.
+Generated <code>cmd_*</code> tools and nested command params remain free-form: the registry has prose
+parameter docs, not machine-readable schemas. Existing command validation (including strict
+export options) is preserved. Escaped tool panics return <code>isError: true</code>, and the session keeps
+serving; backend panics during resource reads or tool listing return an internal error.
+The headless backend owns its session directly, without a session mutex.</p>
+<p><code>lightcraft://document</code> and <code>lightcraft://commands</code> contain JSON matching <code>doc_inspect</code> and
+<code>command_list</code>. Existing resources remain available. Requests declaring MCP 2026-07-28 in
+per-request <code>_meta</code> receive <code>resultType: complete</code> and list/read cache hints; reads are not cached.</p>
+<h2>Tools</h2>
+<h3>Helpers</h3>
+<table><thead><tr><th>Tool</th><th>Does</th></tr></thead><tbody>
+<tr><td><code>list_commands {filter?}</code></td><td>Every command: id, label, menu, shortcut, parameter doc, enabled now</td></tr>
+<tr><td><code>run_command {command, params?}</code></td><td>Run any command by id</td></tr>
+<tr><td><code>import {paths, album?, mode?, destination?, organize?, rename?}</code></td><td>Import files/folders (folders are scanned recursively); the first new photo becomes active. <code>mode: "copy"</code> copies into <code>destination</code> (default: the library's Originals/), <code>mode: "move"</code> moves there (each original and its XMP sidecars are removed from the source only after the copy is verified and catalogued; duplicates and failures keep their sources; the result's <code>moved</code> / <code>kept</code> list what moved and what stayed, and why; undo leaves the moved files at the destination), filed by <code>organize</code>: <code>date</code> (YYYY/YYYY-MM-DD), <code>month</code>, <code>flat</code> or a folder template such as <code>{date:%Y}/{date:%Y%m%d}</code> (→ <code>2026/20260114</code>; capture date, else the import date; always inside the destination), and named by the <code>rename</code> template (<code>run_command photo.renameTokens</code> lists the tags)</td></tr>
+<tr><td><code>query_photos {filter?, sort?, offset?, limit?}</code></td><td>Photos in the current view (or matching a catalog <code>Filter</code>)</td></tr>
+<tr><td><code>select_photos {ids, active?, mode?}</code></td><td>Set the selection / active photo. Every id (and <code>active</code>) must be in the library: an unknown id is a tool error (<code>no such photo 9999</code>) and the selection and active photo are left as they were</td></tr>
+<tr><td><code>list_controls {section?}</code></td><td>Every develop slider: id (<code>light.exposure</code>…), range, default, current value</td></tr>
+<tr><td><code>get_develop {id?}</code></td><td>Full develop-settings JSON, with <code>process</code>: the rendering process the photo is on (<a href="process-versions.md">process-versions.md</a>)</td></tr>
+<tr><td><code>set_develop {id?, values?, settings?, label?}</code></td><td><code>values</code>: <code>{controlId: number}</code>; <code>settings</code>: partial develop JSON deep-merged. Undoable</td></tr>
+<tr><td><code>apply_preset {preset, amount?, ids?}</code></td><td>Apply a preset (ids from <code>cmd_presets_list</code>)</td></tr>
+<tr><td><code>crop {id?, rect?, angle?, reset?}</code></td><td>Normalized crop rect <code>[x0,y0,x1,y1]</code> and straighten angle; at least one of <code>rect</code>, <code>angle</code>, <code>reset: true</code></td></tr>
+<tr><td><code>render_photo {id?, size?, format?, path?}</code></td><td>Render with current settings → <strong>image content</strong> (PNG, or JPEG with <code>format: "jpeg"</code>), long edge <code>size</code> (default 1024)</td></tr>
+<tr><td><code>export {path | dir, id? | ids?, format?, longEdge? | shortEdge? | width?/height? | megapixels? | percent?, dontEnlarge?, ppi?, quality?, colorSpace?, bitDepth?, …}</code></td><td>Full-quality render to <code>.png</code> / <code>.jpg</code> / <code>.tif</code> / <code>.webp</code> / <code>.avif</code>; <code>format: "original"</code> copies the file + an XMP sidecar with the edits, <code>format: "dng"</code> writes raw photos as DNG with the edits embedded. No size param = 3000 px long edge; <code>longEdge: 0</code> = full size (cropped, native resolution); <code>width</code> + <code>height</code> fit either orientation; <code>dontEnlarge</code> defaults to true</td></tr>
+</tbody></table>
+<p>Tools taking <code>id</code> make that photo active first; without it they act on the active photo.</p>
+<h3>Connect mode only</h3>
+<table><thead><tr><th>Tool</th><th>Does</th></tr></thead><tbody>
+<tr><td><code>screenshot {maxSize?, format?, path?}</code></td><td>The app window as an image, after pending renders finish</td></tr>
+<tr><td><code>inspect_ui</code></td><td>View, panel, window/image rects, selection, status</td></tr>
+<tr><td><code>set_ui {state}</code></td><td>Merge UI state, e.g. <code>{"view": "detail"}</code></td></tr>
+<tr><td><code>list_widgets {filter?}</code> / <code>click {widget | x,y, count?, button?}</code></td><td>Widgets by automation id; real egui clicks (<code>button: "right"</code> right-clicks)</td></tr>
+<tr><td><code>press_key {key, cmd?, shift?, alt?}</code> / <code>type_text {text}</code></td><td>Keyboard input (shortcuts)</td></tr>
+<tr><td><code>clipboard {action, text?}</code></td><td>Cut, copy or paste in the focused text field (⌘X / ⌘C / ⌘V; refused when none has the focus; cut and copy write the system clipboard); <code>inspect_ui</code> → <code>copied</code> is what was copied</td></tr>
+<tr><td><code>pointer_gesture {events}</code></td><td>Gestures in normalized image coordinates (brush strokes, gradients, crop handles)</td></tr>
+</tbody></table>
+<p>In headless mode these return a tool error explaining how to start the app.</p>
+<h3>One tool per command</h3>
+<p>Everything is a command in LightCraft, so <code>tools/list</code> also contains one tool per entry of the
+command registry (engine commands, plus the app's UI commands such as <code>view.detail</code> when
+connected): the id with <code>.</code> replaced by <code>_</code> and a <code>cmd_</code> prefix — <code>photo.rate</code> → <code>cmd_photo_rate</code>,
+<code>develop.set</code> → <code>cmd_develop_set</code>, <code>edit.undo</code> → <code>cmd_edit_undo</code>. Arguments are the command's
+JSON params (documented in each tool's description and by <code>list_commands</code>). Pass <code>--compact</code> to
+leave these per-command tools out when a client struggles with a large tool list; <code>run_command</code>
+still reaches every command.</p>
+<h2>Resources</h2>
+<p><code>resources/list</code> / <code>resources/read</code> serve JSON snapshots:</p>
+<table><thead><tr><th>URI</th><th>Content</th></tr></thead><tbody>
+<tr><td><code>lightcraft://library</code></td><td>Source, filter, sort, selection, undo/redo labels (<code>library.state</code>)</td></tr>
+<tr><td><code>lightcraft://photos</code></td><td>Photos in the current view (<code>catalog.query</code>)</td></tr>
+<tr><td><code>lightcraft://photo/active</code></td><td>Everything about the active photo (<code>photo.inspect</code>)</td></tr>
+<tr><td><code>lightcraft://develop/active</code></td><td>The active photo's develop settings (<code>develop.get</code>)</td></tr>
+<tr><td><code>lightcraft://controls</code></td><td>Every develop control with its current value (<code>develop.controls</code>)</td></tr>
+</tbody></table>
+<h2>Example session</h2>
+<pre><code class="language-text">→ {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"me","version":"1"}}}
+← {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-06-18","capabilities":{"tools":{…},"resources":{…}},"serverInfo":{"name":"lightcraft",…},"instructions":"…"}}
+→ {"jsonrpc":"2.0","method":"notifications/initialized"}
+→ {"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"set_develop","arguments":{"values":{"light.exposure":0.7}}}}
+← {"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"{…}"}],"isError":false,"structuredContent":{"ok":true,"controls":[{"id":"light.exposure","value":0.7}]}}}
+→ {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"render_photo","arguments":{"size":768}}}
+← {"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"image","data":"iVBORw0…","mimeType":"image/png"},{"type":"text","text":"{\"id\":21,\"width\":512,\"height\":768}"}],"isError":false}}
+</code></pre>
+<p>Errors from commands (unknown control, nothing selected, app not reachable) come back as tool
+results with <code>isError: true</code> so the model can read and correct them; malformed JSON-RPC gets the
+standard error codes (-32700 parse, -32600 invalid request, -32601 method not found, -32602
+invalid params, -32002 resource not found).</p>
+<p>With <code>--library</code>, a command whose change can't be written to disk (disk full, …) is an error too:
+<code>saved in memory but not written to disk: &lt;reason&gt;; LightCraft will retry</code> — the change is applied in the session and
+written by the next successful save (see <a href="control-protocol.md#when-the-library-cant-be-saved">control-protocol.md</a>).</p>
+<h2>One-shot commands: <code>lightcraft-cli run</code></h2>
+<p>For agents that prefer a shell over an MCP session: run any chain of commands in one process and read one JSON
+line per command (<code>{"command", "ok", "result" | "error", "ms"}</code>; non-zero exit status on failure). A word without
+<code>=</code> starts the next command; <code>key=value</code> values are JSON when they parse, else strings; a <code>'{…}'</code> argument merges a
+JSON object into the params. Quote values with brackets or spaces for your shell (<code>'ids=[3,4]'</code>; zsh treats <code>[…]</code> as a glob).</p>
+<pre><code class="language-sh"># headless: import, edit, export
+lightcraft-cli run --import ~/Pictures/a.dng develop.set control=light.exposure value=0.7 \
+    develop.auto app.export path=/tmp/a.jpg shortEdge=1080 colorSpace=displayP3
+# a persistent library: edits are saved, later invocations see them
+lightcraft-cli run --library ~/lc-lib --import ~/Pictures/shoot library.info
+lightcraft-cli run --library ~/lc-lib library.select ids=[3] develop.get
+# the running app (same commands, plus ui.* methods)
+lightcraft-cli run --connect ui.set view=detail ui.screenshot path=/tmp/ui.png
+# JSON lines from a file or stdin: {"command": id, "params": {…}} or {"method": "ui.inspect"}
+lightcraft-cli run --demo --script steps.jsonl --keep-going
+</code></pre>
+<h2>Other CLI subcommands</h2>
+<pre><code class="language-sh">lightcraft-cli render in.dng -o out.tif --opt colorSpace=displayP3 --opt bitDepth=16 --opt percent=50
+lightcraft-cli render in.dng -o out.jpg --set light.exposure=0.5 --set light.contrast=20 --size 2048
+lightcraft-cli render in.jpg -o out.png --settings look.json --preset &lt;presetId&gt;
+lightcraft-cli commands [--json]   # the command registry
+lightcraft-cli controls [--json]   # develop control ids and ranges
+lightcraft-cli calibrate --max 300 ~/Pictures/2026   # camera colour profiles (docs/camera-preview-colour.md)
+</code></pre>
+<h2>Tests</h2>
+<ul>
+<li><code>crates/mcp/tests/e2e.rs</code> — M0.9 acceptance: over the stdio framing, set exposure and render;
+checks the decoded PNG gets brighter/darker. Runs headless and through the TCP transport
+(<code>Remote</code>) against a stand-in control server; also import → render → JPEG export of a real file.</li>
+<li><code>apps/lightcraft-cli/tests/cli.rs</code> — spawns <code>lightcraft-cli mcp</code> with real pipes; <code>render</code>;
+<code>commands</code>.</li>
+</ul>
+<h2>Export progress and cancellation</h2>
+<p>Headless direct <code>export</code>, <code>command_run</code> / <code>run_command</code> with <code>app.export</code>, and <code>cmd_app_export</code>
+calls report photo-count progress when <code>params._meta.progressToken</code> is a string or number.
+Notifications are strictly increasing, at most ten per second plus the final total. No token
+means no notifications. <code>ping</code> is answered at photo boundaries; other requests wait in order
+until the export ends. EOF lets a pending export finish and preserves queued requests.</p>
+<p><code>notifications/cancelled</code> with <code>params.requestId</code> stops the matching export before its next
+photo, suppressing its response. Unknown/completed request ids are ignored. A photo already
+being processed finishes first: completed photos remain, each written with the existing atomic
+file writer, and there are no partial files to delete. Unrelated outputs and earlier exports
+are untouched. A failed export is an <code>isError</code> tool result. Transport mutexes recover poisoning.</p>
+<p>Connect mode and exports inside <code>command_batch</code> remain synchronous and do not report MCP
+progress or cancellation. Use a direct headless export call for this behavior.</p>
+<hr />
+<details open>
+<summary><b>📚 lightcraft 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「lightcraft」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://tvea.wtpuscm.cn/gongju/training-789052.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://uasm.wtpuscm.cn/shichang/behavior-492625.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://nxws.wtpuscm.cn/zixun/movie-391341.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://zyws.wtpuscm.cn/yanjiu/device-011133.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://jbvf.wtpuscm.cn/xuexi/database-554322.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://htqn.wtpuscm.cn/jiaocheng/retention-343311.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://bfzn.wtpuscm.cn/zixun/shopping-088785.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://ruim.wtpuscm.cn/yinqing/share-748.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://ycgg.wtpuscm.cn/suanfa/premium-569613.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://ylrk.wtpuscm.cn/yunying/advertising-208713.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://lkej.wtpuscm.cn/jianzhan/about-828722.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://boen.wtpuscm.cn/shichang/advertising-911101.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://kbtr.wtpuscm.cn/pingtai/presentation-011298.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://glie.wtpuscm.cn/pingtai/satisfaction-376675.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://gluh.wtpuscm.cn/zhizhu/development-562502.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://omxi.wtpuscm.cn/chanpin/campaign-922663.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://zfml.wtpuscm.cn/ziyuan/tag-296117.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://mbcl.wtpuscm.cn/shangye/story-069631.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://hvuv.wtpuscm.cn/jiaoliu/news-194903.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://dpcx.wtpuscm.cn/zixun/partner-164174.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://xqtt.wtpuscm.cn/wendang/subscribe-568960.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://haue.wtpuscm.cn/shangye/server-355878.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://thwc.wtpuscm.cn/fenxi/message-484578.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://bmck.tcti.cn/xinwen/beauty-72878717.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://vzbm.tcti.cn/jishu/like-52638011.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://sbgo.tcti.cn/shuju/news-81377578.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://xlui.tcti.cn/shangye/url-20806091.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://qqrv.tcti.cn/shangye/traffic-55526850.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://yher.tcti.cn/huodong/template-75260632.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://jprh.tcti.cn/wenzhang/status-11538752.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://rwri.tcti.cn/gongsi/web-41787262.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://gxzp.tcti.cn/chuangxin/beauty-86941447.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://nnkt.tcti.cn/wangluo/project-19603382.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://twfg.tcti.cn/shangye/finance-64670589.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://uvze.tcti.cn/kuangjia/media-93076951.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://lyih.tcti.cn/zhizhu/research-82565418.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://pyza.tcti.cn/pingce/form-60370873.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://hrik.tcti.cn/ziyuan/reporting-72334030.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://xeeb.tcti.cn/yunying/browser-60340071.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://aocx.tcti.cn/chuangxin/metric-84476966.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://rrzu.wtpuscm.cn/hezuo/topic-662360.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://www.mw-wm.com/yingxiao/keyword-68299528.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://www.yx-sf.com/tech/86011">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.ai-hao123.com/chuangxin/tracking-23534947.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://dxxe.tcti.cn/zixun/recommendation-58273913.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://kgxx.tcti.cn/wenzhang/resource-65786509.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://xytu.wtpuscm.cn/zhineng/web-298524.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://snnw.wtpuscm.cn/gongju/lead-504397.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://uojs.wtpuscm.cn/paiming/tactic-140267.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://uujs.wtpuscm.cn/yingxiao/visitor-220903.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://astx.wtpuscm.cn/chuangxin/software-216518.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://apkr.wtpuscm.cn/huodong/device-204163.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://whlv.wtpuscm.cn/tuiguang/identity-864104.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://tued.wtpuscm.cn/anli/site-927.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://zflo.wtpuscm.cn/jiaoliu/community-678039.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://xqdr.wtpuscm.cn/zixun/backup-783677.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://yzhq.wtpuscm.cn/yinqing/topic-000312.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://ghlo.wtpuscm.cn/gongju/screen-560795.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://byhh.wtpuscm.cn/huodong/video-629421.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://rlvj.wtpuscm.cn/anli/policy-099417.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://pvsd.wtpuscm.cn/jiaoliu/trading-128410.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://vyeq.wtpuscm.cn/yingxiao/label-356910.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://tuth.wtpuscm.cn/xitong/course-734090.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://yzkp.wtpuscm.cn/fuwu/image-023574.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://autd.wtpuscm.cn/kuangjia/article-822778.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://ipeo.wtpuscm.cn/gongsi/services-470281.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://opqn.wtpuscm.cn/tuiguang/download-162446.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://tqkj.wtpuscm.cn/zhineng/interface-873613.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://pqzq.wtpuscm.cn/yunsuan/seo-321934.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://hfqa.tcti.cn/jianzhan/efficiency-07291521.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://fkqc.tcti.cn/xuexi/segment-71596329.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://gqfj.tcti.cn/yunying/page-95602496.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://bqpn.tcti.cn/fuwu/follow-34916238.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://biin.tcti.cn/yanjiu/feedback-02614053.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+</ul>
+<h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://xdyf.tcti.cn/guanjianci/prospect-43337869.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://tnhe.tcti.cn/yunying/affordable-33789392.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://gzax.tcti.cn/zixun/subscribe-33893309.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://lfih.tcti.cn/tuiguang/creative-54684475.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://rodb.tcti.cn/chuangxin/website-93302411.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://eabm.tcti.cn/baogao/software-44643945.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://uqta.tcti.cn/jishu/article-06876089.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://ejne.tcti.cn/peixun/login-35834461.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://bkfu.tcti.cn/jianzhan/beauty-29194083.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://xukr.tcti.cn/anfang/webinar-31273755.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://gasp.tcti.cn/zhizhu/sync-91035108.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://ryrf.tcti.cn/pingce/expense-02252007.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://isne.wtpuscm.cn/xitong/recommendation-582771.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://www.mw-wm.com/ziyuan/unsubscribe-38617865.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://www.yx-sf.com/news/89784">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://www.ai-hao123.com/shichang/investment-48347953.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://npqi.tcti.cn/sheji/goal-60094957.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://meyd.tcti.cn/wangluo/contact-80257273.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://xmjl.wtpuscm.cn/yingxiao/label-792974.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://nocc.wtpuscm.cn/peixun/help-000220.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://zkdn.wtpuscm.cn/yingxiao/budget-070351.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://lovf.wtpuscm.cn/chuangxin/dashboard-024660.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://snyd.wtpuscm.cn/yanjiu/services-661028.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://amgl.wtpuscm.cn/ziyuan/widget-806447.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://yejt.wtpuscm.cn/zhinan/identity-215000.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://wwax.wtpuscm.cn/suanfa/saving-084.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://xdwa.wtpuscm.cn/fuwu/development-095924.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://jtjw.wtpuscm.cn/yingyong/landing-009122.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://usne.wtpuscm.cn/wangluo/segment-323020.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://uvmg.wtpuscm.cn/zhinan/logo-238313.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://suzk.wtpuscm.cn/chuangxin/story-585851.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://uxtd.wtpuscm.cn/zixun/fitness-921873.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://yvxx.wtpuscm.cn/keji/user-623696.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://fjuu.wtpuscm.cn/paiming/discount-724053.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://vfrc.wtpuscm.cn/fenxi/team-736632.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://ytzf.wtpuscm.cn/sheji/like-450399.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://fzid.wtpuscm.cn/yinqing/profit-239729.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://lrwr.wtpuscm.cn/qiye/contact-841553.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://qiih.wtpuscm.cn/tuiguang/market-163182.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://brrw.wtpuscm.cn/gongju/extension-312210.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://mekp.wtpuscm.cn/anfang/restaurant-618846.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://zevt.tcti.cn/chuangxin/prospect-89404299.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://ezde.tcti.cn/xinwen/affordable-63508959.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://izma.tcti.cn/paiming/analytics-80919830.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://atxi.tcti.cn/kuangjia/social-88551778.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://jhiw.tcti.cn/shuju/roi-70797471.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://nckk.tcti.cn/yanjiu/partner-82056889.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://blxl.tcti.cn/qiye/forum-23199934.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://rpqf.tcti.cn/suanfa/design-32519631.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://lckv.tcti.cn/pingtai/expensive-99033943.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://jdgc.tcti.cn/jiaocheng/network-16946448.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://ezaz.tcti.cn/hezuo/health-93905091.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://fqwu.tcti.cn/xinwen/funnel-93620572.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://ofkw.tcti.cn/shuju/support-67247146.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://wffx.tcti.cn/gongxiang/forecast-37348653.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://qcyj.tcti.cn/jiaocheng/cheap-83808987.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://rfib.tcti.cn/paiming/finance-22456000.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://xvow.tcti.cn/yingyong/target-30874445.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://sarq.wtpuscm.cn/huodong/link-542536.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://www.mw-wm.com/gongju/software-65434444.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://www.yx-sf.com/wiki/25990">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://www.ai-hao123.com/jiaoliu/category-97275602.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://synr.tcti.cn/tuiguang/layout-89272701.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://twuw.tcti.cn/baogao/target-87060993.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://sdot.wtpuscm.cn/xinwen/advertising-317066.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://gsfn.wtpuscm.cn/wangluo/demographic-237037.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://mtwh.wtpuscm.cn/youhua/category-515932.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://fsla.wtpuscm.cn/kuangjia/excellence-442888.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://mnlm.wtpuscm.cn/xinwen/resource-588246.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://opsd.wtpuscm.cn/chuangxin/data-571052.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://ydvs.wtpuscm.cn/zhizhu/experience-823925.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://xrdn.wtpuscm.cn/jishu/support-585.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://gsiu.wtpuscm.cn/keji/technology-178163.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://rbnj.wtpuscm.cn/gongsi/segment-425294.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://nnvx.wtpuscm.cn/chuangxin/saving-943769.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://nrvi.wtpuscm.cn/kuangjia/prospect-242308.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+
+      </div>
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 ">
+          <span>&larr; 查看更多归档文档</span>
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 ">
+          <span>返回项目 README 首页 &rarr;</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
+      <span>© 2026 <strong>lightcraft-mirror-764</strong> - 官方开源高可用拓扑镜像与白皮书</span>
+    </div>
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
+      <span>•</span>
+      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+      <span>•</span>
+      <span>托管于 GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

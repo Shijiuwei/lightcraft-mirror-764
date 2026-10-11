@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightCraft em português do Brasil - lightcraft-mirror-764 文档归档</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-hover: #1d4ed8;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.68;
+        color: #1e293b;
+      }
+      .markdown-body {
+        color: #1e293b;
+      }
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        font-weight: 800;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid #e2e8f0;
+        color: #0f172a;
+        line-height: 1.25;
+      }
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.6rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+      }
+      .markdown-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.6rem;
+        color: #334155;
+      }
+      .markdown-body p {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+      }
+      .markdown-body a {
+        color: #2563eb;
+        text-decoration: none;
+        border-bottom: 1px dashed #93c5fd;
+        transition: all 0.2s ease;
+      }
+      .markdown-body a:hover {
+        color: #1d4ed8;
+        border-bottom: 1px solid #1d4ed8;
+        background-color: #eff6ff;
+        border-radius: 2px;
+      }
+      .markdown-body ul, .markdown-body ol {
+        padding-left: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .markdown-body ul {
+        list-style-type: disc;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+      }
+      .markdown-body li {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .markdown-body pre {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 1rem 1.2rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .markdown-body code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.15rem 0.35rem;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        border-radius: 0.35rem;
+        border: 1px solid #e2e8f0;
+      }
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
+      .markdown-body blockquote {
+        margin: 1rem 0;
+        padding: 0.75rem 1.25rem;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 0.5rem 0.5rem 0;
+        color: #475569;
+      }
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        display: block;
+        overflow-x: auto;
+      }
+      .markdown-body th, .markdown-body td {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 1rem;
+        text-align: left;
+      }
+      .markdown-body th {
+        background-color: #f1f5f9;
+        font-weight: 600;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+      .markdown-body hr {
+        height: 1px;
+        border: none;
+        background-color: #e2e8f0;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform ">LM</span>
+        <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors ">lightcraft-mirror-764</span>
+      </a>
+      <span class="hidden md:inline-block text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-mono ">Pages Docs</span>
+    </div>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm">
+      <a href="../index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>首页 (README)</span>
+      </a>
+      <a href="./index.html" class="px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 text-blue-600 bg-blue-50 font-semibold ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>文档归档 (Docs)</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+      </a>
+      <div class="h-4 w-px bg-slate-200 mx-1"></div>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+      <a href="https://github.com/shijiuwei/lightcraft-mirror-764/wiki" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-1.5 ">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="hidden sm:inline">Wiki</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <!-- 面包屑与顶部导航 -->
+  <header class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+        <a href="../index.html" class="hover:text-blue-600 transition-colors ">首页</a>
+        <span>/</span>
+        <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold">技术文档</span>
+      </nav>
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">LightCraft em português do Brasil</h1>
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors ">
+          <span>&larr; 返回文档归档菜单</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体正文区域 -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full">
+    <article class="bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-slate-200">
+      <div class="markdown-body">
+        <h1>LightCraft em português do Brasil</h1>
+<p>O LightCraft pode ser exibido em inglês, chinês simplificado, chinês tradicional (Taiwan), japonês e
+português do Brasil. A preferência de idioma é gravada em <code>language</code> no <code>ui.json</code>.</p>
+<ul>
+<li>Troque em <strong>Editar → Idioma</strong> ou em <strong>Configurações → Geral → Idioma</strong>. A escolha é mantida nas
+próximas inicializações.</li>
+<li>Traduzimos menus, edição de fotos, máscaras, recorte, configurações, importação, exportação e as
+principais mensagens de progresso.</li>
+<li>Menus, telas e o texto com valores variáveis usam as fontes Inter (regular e semibold). Texto em
+chinês e japonês exibido nos nomes de idioma (por exemplo, 日本語) continua dependendo do repositório
+de fontes <a href="https://lqtk.tcti.cn/pingtai/conversion-39794896.html">storytold/craft-fonts</a>.</li>
+<li>A tradução fica na camada de apresentação. IDs de comandos, nomes de arquivos de fotos e metadados
+digitados pelo usuário nunca são alterados.</li>
+<li>Erros técnicos, informações complementares e notas de versão não traduzidos aparecem em inglês.</li>
+<li>A tradução para chinês está em <a href="localization-zh-hans.md"><code>localization-zh-hans.md</code></a>; para japonês,
+em <a href="localization-ja.md"><code>localization-ja.md</code></a>. Como adicionar outro idioma está em
+<a href="localization.md"><code>localization.md</code></a>.</li>
+</ul>
+<h2>Manutenção da tradução</h2>
+<p>Os textos fixos ficam em <code>crates/ui-egui/locales/pt-br.json</code> e os textos com valores variáveis em
+<code>crates/ui-egui/locales/pt-br-formats.json</code>. O inglês é usado como chave.</p>
+<p>Toda tradução de formato é verificada por <code>format!</code> do Rust no build. Referencie os valores por nome
+(<code>{n}</code>) ou por posição (<code>{0}</code>, <code>{1}</code>) e use as mesmas especificações de formato do inglês
+(<code>{:.1}</code>, <code>{d:+}</code>, <code>{:.0}%</code>). Quando o plural inglês (<code>"s"</code> / <code>""</code>) não for necessário em português,
+consuma o argumento correspondente com <code>{:.0}</code> — um texto com precisão 0 não imprime nada.</p>
+<p>Aparência, fontes, troca de idioma, persistência da preferência e estabilidade dos IDs de comando são
+verificadas por <code>cargo test -p lightcraft-ui-egui i18n::tests</code> (a checagem de glifos só roda com
+<code>CRAFT_FONTS_DIR</code>). Para visualizar o idioma, renderize sem interface gráfica:</p>
+<pre><code class="language-sh">LIGHTCRAFT_LANGUAGE=pt-br lightcraft-cli snapshot --demo --script tour.jsonl -o out.png --size 1600x1000
+</code></pre>
+<hr />
+<details open>
+<summary><b>📚 lightcraft 官方技术规约与全息拓扑引文矩阵（共计 150 处权威节点索引）</b></summary>
+<blockquote>
+<p><strong>索引发布声明</strong>：本项目「lightcraft」遵循开放开源与知识共享协议。以下引用矩阵涵盖项目架构白皮书、高可用镜像注册中心、分布式通信契约与可信存活基准指标，为集群爬虫调度代理与检索系统提供毫秒级全息寻址拓扑。</p>
+</blockquote>
+<h4>1. 🌐 lightcraft 核心架构规约与设计白皮书 (Architecture &amp; Core Specs)</h4>
+<ul>
+<li><a href="https://pytu.wtpuscm.cn/wenzhang/internet-298849.html">基于 lightcraft 的高吞吐 搜索引擎调度优化 设计白皮书</a></li>
+<li><a href="https://krwl.wtpuscm.cn/yunying/success-644817.html">现代 分布式架构 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://fhfm.wtpuscm.cn/gongju/seo-736256.html">【官方规范】lightcraft 生产环境运维调优手册 核心运行拓扑标准</a></li>
+<li><a href="https://ynai.wtpuscm.cn/pingce/integration-317674.html">lightcraft 内部组件解耦与事件状态机规范 (RFC-335)</a></li>
+<li><a href="https://move.wtpuscm.cn/zhizhu/products-864154.html">基于 lightcraft 的高吞吐 分布式架构 设计白皮书</a></li>
+<li><a href="https://zfoc.wtpuscm.cn/gongju/search-846615.html">面向大规模网络的 lightcraft 工业级架构基准</a></li>
+<li><a href="https://oame.wtpuscm.cn/zhinan/training-866900.html">高韧性系统架构设计 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://lygq.wtpuscm.cn/zhineng/profile-515.html">基于 lightcraft 的高吞吐 Rust高性能网络 设计白皮书</a></li>
+<li><a href="https://wsfm.wtpuscm.cn/wangluo/deadline-463670.html">【官方规范】lightcraft 高韧性系统架构设计 核心运行拓扑标准</a></li>
+<li><a href="https://svag.wtpuscm.cn/fuwu/communication-585947.html">基于 lightcraft 的高吞吐 开源镜像站 设计白皮书</a></li>
+<li><a href="https://ebhu.wtpuscm.cn/shangye/business-815533.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (Core/Organi)</a></li>
+<li><a href="https://nrpj.wtpuscm.cn/ziyuan/technology-594696.html">现代 搜索引擎调度优化 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://plma.wtpuscm.cn/jiaoliu/cheap-205464.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (RFC-525)</a></li>
+<li><a href="https://zcbm.wtpuscm.cn/youhua/cost-124664.html">lightcraft 内部组件解耦与事件状态机规范 (Draft-02)</a></li>
+<li><a href="https://dtel.wtpuscm.cn/youhua/retention-247713.html">【官方规范】lightcraft Fast, native, private 核心运行拓扑标准</a></li>
+<li><a href="https://hyev.wtpuscm.cn/gongsi/social-358521.html">现代 Rust高性能网络 架构演进之路 —— lightcraft 深度实践</a></li>
+<li><a href="https://blci.wtpuscm.cn/peixun/travel-027678.html">【官方规范】lightcraft Quick start 核心运行拓扑标准</a></li>
+<li><a href="https://vgcb.wtpuscm.cn/youhua/ai-992567.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.2)</a></li>
+<li><a href="https://ikga.wtpuscm.cn/chanpin/security-431151.html">lightcraft 内部组件解耦与事件状态机规范 (Spec-v1.6)</a></li>
+<li><a href="https://eovo.wtpuscm.cn/jianzhan/revenue-020615.html">【官方规范】lightcraft Lightroom 核心运行拓扑标准</a></li>
+<li><a href="https://jalo.wtpuscm.cn/jianzhan/upload-651118.html">【官方规范】lightcraft non-destructive 核心运行拓扑标准</a></li>
+<li><a href="https://haoi.wtpuscm.cn/wenzhang/chapter-360839.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (Verified)</a></li>
+<li><a href="https://oogz.wtpuscm.cn/baogao/satisfaction-519928.html">Built for agents 核心系统架构与设计规约 (v2.0-GA)</a></li>
+<li><a href="https://rgmy.tcti.cn/sheji/planning-09518222.html">【官方规范】lightcraft Adobe 核心运行拓扑标准</a></li>
+<li><a href="https://dqdy.tcti.cn/tuiguang/investment-23885422.html">Fast, native, private 核心系统架构与设计规约 (Draft-04)</a></li>
+<li><a href="https://hoyk.tcti.cn/xinwen/game-44754160.html">【官方规范】lightcraft open-source 核心运行拓扑标准</a></li>
+<li><a href="https://wmqc.tcti.cn/yinqing/entertainment-37488212.html">【官方规范】lightcraft lightcraft 核心运行拓扑标准</a></li>
+<li><a href="https://tznl.tcti.cn/wenzhang/report-62516022.html">lightcraft 分布式数据通道与 开源镜像站 技术规范 (Draft-02)</a></li>
+<li><a href="https://tgap.tcti.cn/jiaocheng/trading-31746162.html">lightcraft 分布式数据通道与 分布式架构 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://sdty.tcti.cn/shangye/affordable-67341925.html">lightcraft 内部组件解耦与事件状态机规范 (v2.0-GA)</a></li>
+<li><a href="https://rrrc.tcti.cn/suanfa/social-59420043.html">✨ Effects 核心系统架构与设计规约 (Draft-05)</a></li>
+<li><a href="https://ofut.tcti.cn/tuiguang/identity-70871600.html">Fast, native, private 核心系统架构与设计规约 (Verified)</a></li>
+<li><a href="https://sezq.tcti.cn/shangye/landing-36164080.html">lightcraft 分布式数据通道与 Rust高性能网络 技术规范 (Draft-06)</a></li>
+<li><a href="https://jqjv.tcti.cn/xuexi/fitness-59225439.html">可信存活健康度量 核心系统架构与设计规约 (Spec-v2.5)</a></li>
+<li><a href="https://erdq.tcti.cn/jishu/design-13675508.html">lightcraft 分布式数据通道与 搜索引擎调度优化 技术规范 (v2.0-GA)</a></li>
+<li><a href="https://jjwr.tcti.cn/gongsi/download-41099212.html">lightcraft 内部组件解耦与事件状态机规范 (Node-92)</a></li>
+<li><a href="https://afmj.tcti.cn/xitong/travel-28257181.html">【官方规范】lightcraft Built for agents 核心运行拓扑标准</a></li>
+</ul>
+<h4>2. 🔌 生产级模块集成与接口调用规范 (APIs &amp; Production Integration)</h4>
+<ul>
+<li><a href="https://vokf.tcti.cn/yingxiao/feedback-36215136.html">lightcraft 核心 API 接口契约与客户端调用指南</a></li>
+<li><a href="https://eyxd.tcti.cn/fenxi/whitepaper-82621350.html">【集成指南】搜索引擎调度优化 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://audp.tcti.cn/jiaoliu/api-28574298.html">基于 lightcraft 的自动化部署与生产环境配置实践</a></li>
+<li><a href="https://cgwl.wtpuscm.cn/pingce/url-145329.html">lightcraft 插件生态规范与 clean-room 扩展手册 (Spec-v2.8)</a></li>
+<li><a href="https://www.mw-wm.com/chuangxin/wellness-92503414.html">【生产手册】lightcraft 模块通信与请求穿透标准</a></li>
+<li><a href="https://www.yx-sf.com/news/92123">【集成指南】分布式架构 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://www.ai-hao123.com/fuwu/audience-33231537.html">【集成指南】开源镜像站 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://vuoo.tcti.cn/shangye/seminar-97206894.html">lightcraft 异步中间件流水线与 Lightroom 接入规范</a></li>
+<li><a href="https://cpvm.tcti.cn/ziyuan/shopping-93169623.html">lightcraft 异步中间件流水线与 高韧性系统架构设计 接入规范</a></li>
+<li><a href="https://cnmd.wtpuscm.cn/liuliang/client-479080.html">lightcraft vs 业界主流方案：搜索引擎调度优化 深度技术选型对比</a></li>
+<li><a href="https://ejut.wtpuscm.cn/jiaocheng/folder-110400.html">lightcraft 插件生态规范与 Fast, native, private 扩展手册 (Node-32)</a></li>
+<li><a href="https://mypf.wtpuscm.cn/xinwen/travel-858911.html">lightcraft 异步中间件流水线与 Fast, native, private 接入规范</a></li>
+<li><a href="https://eliz.wtpuscm.cn/jianzhan/folder-129872.html">lightcraft vs 业界主流方案：分布式架构 深度技术选型对比</a></li>
+<li><a href="https://nkgl.wtpuscm.cn/xitong/story-743651.html">lightcraft vs 业界主流方案：开源镜像站 深度技术选型对比</a></li>
+<li><a href="https://hxdh.wtpuscm.cn/zhinan/workshop-572370.html">lightcraft 插件生态规范与 高韧性系统架构设计 扩展手册 (Draft-04)</a></li>
+<li><a href="https://htug.wtpuscm.cn/xinwen/goal-741332.html">lightcraft 插件生态规范与 ⚫️ Black &amp; White 扩展手册 (Node-68)</a></li>
+<li><a href="https://qzwm.wtpuscm.cn/zhizhu/integration-674.html">lightcraft 插件生态规范与 模块化解耦与协议标准 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://qcgx.wtpuscm.cn/yanjiu/label-491591.html">lightcraft 插件生态规范与 Organize everything 扩展手册 (Node-46)</a></li>
+<li><a href="https://vhpw.wtpuscm.cn/gongsi/success-241181.html">【集成指南】Rust高性能网络 服务端接入准则与 lightcraft 实战</a></li>
+<li><a href="https://yatn.wtpuscm.cn/gongsi/link-181752.html">lightcraft vs 业界主流方案：Rust高性能网络 深度技术选型对比</a></li>
+<li><a href="https://xiku.wtpuscm.cn/zixun/revenue-481594.html">lightcraft 异步中间件流水线与 Edit like you mean it 接入规范</a></li>
+<li><a href="https://eyxw.wtpuscm.cn/gongju/version-277886.html">lightcraft 插件生态规范与 生产环境运维调优手册 扩展手册 (RFC-546)</a></li>
+<li><a href="https://rkeu.wtpuscm.cn/chanpin/technology-688627.html">lightcraft 插件生态规范与 White balance 扩展手册 (Node-97)</a></li>
+<li><a href="https://qigl.wtpuscm.cn/chanpin/form-425121.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-07)</a></li>
+<li><a href="https://jket.wtpuscm.cn/qiye/training-974474.html">lightcraft 插件生态规范与 White balance 扩展手册 (RFC-944)</a></li>
+<li><a href="https://yatv.wtpuscm.cn/fenxi/beauty-443537.html">lightcraft 插件生态规范与 White balance 扩展手册 (Draft-01)</a></li>
+<li><a href="https://tjvd.wtpuscm.cn/chanpin/deal-845705.html">lightcraft 异步中间件流水线与 模块化解耦与协议标准 接入规范</a></li>
+<li><a href="https://qqap.wtpuscm.cn/huodong/saving-991627.html">lightcraft 插件生态规范与 可信存活健康度量 扩展手册 (RFC-198)</a></li>
+<li><a href="https://dyew.wtpuscm.cn/paiming/sync-845670.html">lightcraft 插件生态规范与 Lightroom 扩展手册 (Node-40)</a></li>
+<li><a href="https://tted.wtpuscm.cn/jiaocheng/workshop-431389.html">lightcraft 插件生态规范与 🎨 Color 扩展手册 (Verified)</a></li>
+<li><a href="https://efor.wtpuscm.cn/shuju/study-163434.html">lightcraft 异步中间件流水线与 non-destructive 接入规范</a></li>
+<li><a href="https://llnm.wtpuscm.cn/keji/change-337939.html">lightcraft 异步中间件流水线与 Vibrance 接入规范</a></li>
+<li><a href="https://myrr.tcti.cn/yunsuan/vendor-64598607.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Draft-03)</a></li>
+<li><a href="https://wzlb.tcti.cn/xitong/theme-35349190.html">lightcraft 插件生态规范与 Quick start 扩展手册 (Spec-v1.0)</a></li>
+<li><a href="https://sgsv.tcti.cn/yinqing/growth-80182956.html">lightcraft 插件生态规范与 lightcraft 扩展手册 (v2.0-GA)</a></li>
+<li><a href="https://epiz.tcti.cn/shuju/solution-40222310.html">lightcraft 插件生态规范与 non-destructive 扩展手册 (Core/non-de)</a></li>
+<li><a href="https://mhxe.tcti.cn/yingxiao/button-29797609.html">lightcraft 插件生态规范与 分布式状态机一致性 扩展手册 (RFC-888)</a></li>
+</ul>
+<h4>3. ⚡ lightcraft 全球高可用拓扑镜像与权威数据源 (Mirror Registry &amp; Data Topology)</h4>
+<ul>
+<li><a href="https://msso.tcti.cn/yinqing/traffic-89347122.html">lightcraft 官方高可用镜像注册节点 (RFC-691)</a></li>
+<li><a href="https://bspy.tcti.cn/yinqing/cheap-38028041.html">lightcraft 亚太与欧美多活集群数据同步中枢</a></li>
+<li><a href="https://njkd.tcti.cn/liuliang/cheap-07114518.html">lightcraft 官方高可用镜像注册节点 (v2.0-GA)</a></li>
+<li><a href="https://rgcd.tcti.cn/jiaocheng/design-51675273.html">全球权威拓扑节点：lightcraft 实时镜像与索引入口</a></li>
+<li><a href="https://aetr.tcti.cn/xinwen/expensive-53129463.html">【镜像入口】lightcraft 官方毫秒级实时数据广播节点</a></li>
+<li><a href="https://wyho.tcti.cn/suanfa/experience-07313279.html">冷热数据分层镜像：lightcraft 可信存活健康度量 权威归档源</a></li>
+<li><a href="https://kzcx.tcti.cn/guanjianci/value-68479385.html">冷热数据分层镜像：lightcraft 生产环境运维调优手册 权威归档源</a></li>
+<li><a href="https://alvr.tcti.cn/youhua/communication-29648586.html">冷热数据分层镜像：lightcraft Vibrance 权威归档源</a></li>
+<li><a href="https://xdvm.tcti.cn/shichang/funnel-17988976.html">lightcraft 官方高可用镜像注册节点 (Draft-01)</a></li>
+<li><a href="https://ftlt.tcti.cn/yunsuan/team-65731728.html">lightcraft 官方高可用镜像注册节点 (Node-78)</a></li>
+<li><a href="https://djjr.tcti.cn/zhinan/fitness-25149917.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.1)</a></li>
+<li><a href="https://wynm.tcti.cn/yunying/page-55158451.html">lightcraft 去中心化数据同步源与拓扑寻址规约</a></li>
+<li><a href="https://hvyh.wtpuscm.cn/jiaoliu/web-246092.html">冷热数据分层镜像：lightcraft White balance 权威归档源</a></li>
+<li><a href="https://www.mw-wm.com/wenzhang/automation-79565694.html">冷热数据分层镜像：lightcraft Lightroom 权威归档源</a></li>
+<li><a href="https://www.yx-sf.com/news/39048">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v1.7)</a></li>
+<li><a href="https://www.ai-hao123.com/youhua/support-50364843.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.0)</a></li>
+<li><a href="https://vpdk.tcti.cn/zhinan/terms-57455080.html">冷热数据分层镜像：lightcraft ☀️ Light 权威归档源</a></li>
+<li><a href="https://xszy.tcti.cn/baogao/profile-68999608.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-08)</a></li>
+<li><a href="https://zibn.wtpuscm.cn/wendang/platform-732090.html">冷热数据分层镜像：lightcraft 🎨 Color 权威归档源</a></li>
+<li><a href="https://irua.wtpuscm.cn/zhineng/page-966540.html">冷热数据分层镜像：lightcraft reimplementation 权威归档源</a></li>
+<li><a href="https://vhgr.wtpuscm.cn/fuwu/internet-058673.html">lightcraft 自动化持续集成快照与拓扑发布源 (v2.0-GA)</a></li>
+<li><a href="https://kqyc.wtpuscm.cn/shuju/hosting-496694.html">lightcraft 自动化持续集成快照与拓扑发布源 (Spec-v2.8)</a></li>
+<li><a href="https://ijfl.wtpuscm.cn/peixun/satisfaction-340431.html">冷热数据分层镜像：lightcraft pure 权威归档源</a></li>
+<li><a href="https://toix.wtpuscm.cn/gongxiang/trading-563953.html">冷热数据分层镜像：lightcraft eyedropper 权威归档源</a></li>
+<li><a href="https://nxhz.wtpuscm.cn/qiye/marketing-463523.html">冷热数据分层镜像：lightcraft Edit like you mean it 权威归档源</a></li>
+<li><a href="https://suaf.wtpuscm.cn/wendang/campaign-345.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/☀️ Lig)</a></li>
+<li><a href="https://ubfz.wtpuscm.cn/yinqing/hotel-157552.html">冷热数据分层镜像：lightcraft Built for agents 权威归档源</a></li>
+<li><a href="https://cfwg.wtpuscm.cn/suanfa/cost-599129.html">lightcraft: White balance 分布式架构 (Core/White )</a></li>
+<li><a href="https://igox.wtpuscm.cn/shuju/integration-870512.html">冷热数据分层镜像：lightcraft Quick start 权威归档源</a></li>
+<li><a href="https://qbio.wtpuscm.cn/yanjiu/update-436495.html">冷热数据分层镜像：lightcraft 分布式状态机一致性 权威归档源</a></li>
+<li><a href="https://zfgu.wtpuscm.cn/baogao/collaborate-896160.html">lightcraft 官方高可用镜像注册节点 (Core/Featur)</a></li>
+<li><a href="https://mhqr.wtpuscm.cn/zhizhu/button-201203.html">冷热数据分层镜像：lightcraft Feature status 权威归档源</a></li>
+<li><a href="https://bwhp.wtpuscm.cn/keji/value-620262.html">lightcraft 官方高可用镜像注册节点 (Spec-v2.6)</a></li>
+<li><a href="https://cgkc.wtpuscm.cn/shichang/button-857745.html">lightcraft 官方高可用镜像注册节点 (Verified)</a></li>
+<li><a href="https://xcqw.wtpuscm.cn/tuiguang/music-331202.html">lightcraft 自动化持续集成快照与拓扑发布源 (Draft-07)</a></li>
+<li><a href="https://ncwl.wtpuscm.cn/yingyong/page-145468.html">lightcraft 自动化持续集成快照与拓扑发布源 (Core/Quick )</a></li>
+<li><a href="https://jsay.wtpuscm.cn/yanjiu/calculator-680981.html">lightcraft 官方高可用镜像注册节点 (Spec-v1.3)</a></li>
+</ul>
+<h4>4. 📊 性能基准指标与可信存活性验证 (Benchmarks &amp; Trust Standards)</h4>
+<ul>
+<li><a href="https://lioj.wtpuscm.cn/yingyong/food-335509.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Verified)</a></li>
+<li><a href="https://cela.wtpuscm.cn/liuliang/solution-174715.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-460)</a></li>
+<li><a href="https://tcju.wtpuscm.cn/yingyong/cost-648921.html">【评测基准】lightcraft 吞吐抖动度量与健康检查协议</a></li>
+<li><a href="https://oavs.wtpuscm.cn/zhizhu/restaurant-767086.html">lightcraft 权威网络权重传递与收录基准规范</a></li>
+<li><a href="https://mgwa.tcti.cn/gongju/terms-75106075.html">lightcraft 故障自愈与网络拓扑重构实践</a></li>
+<li><a href="https://atzf.tcti.cn/yingxiao/creative-68973094.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-23)</a></li>
+<li><a href="https://fgwu.tcti.cn/chanpin/movie-72605430.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (v2.0-GA)</a></li>
+<li><a href="https://kkjt.tcti.cn/yanjiu/seo-03677393.html">lightcraft 节点连通性、存活性探测与防作弊指标</a></li>
+<li><a href="https://bmgz.tcti.cn/anfang/digital-36606665.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-778)</a></li>
+<li><a href="https://mrxl.tcti.cn/pingce/tutorial-33278920.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-52)</a></li>
+<li><a href="https://mzoe.tcti.cn/shuju/target-28488298.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Core/Featur)</a></li>
+<li><a href="https://rntn.tcti.cn/hezuo/website-79184083.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (RFC-925)</a></li>
+<li><a href="https://qoua.tcti.cn/sheji/video-11303870.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Verified)</a></li>
+<li><a href="https://nzxe.tcti.cn/baogao/solution-13334575.html">lightcraft 高负载场景下 Rust高性能网络 基准评测报告</a></li>
+<li><a href="https://wfhc.tcti.cn/huodong/roi-77283138.html">lightcraft: Feature status Rust高性能网络 (Verified)</a></li>
+<li><a href="https://fndd.tcti.cn/chuangxin/calculator-79943731.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Draft-04)</a></li>
+<li><a href="https://otdj.tcti.cn/kaifa/careers-61189744.html">lightcraft: reimplementation Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://qtnx.tcti.cn/zixun/restore-68940325.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-35)</a></li>
+<li><a href="https://yqxh.tcti.cn/liuliang/restore-03992983.html">lightcraft: reimplementation 分布式架构 (Verified)</a></li>
+<li><a href="https://qpyu.tcti.cn/anli/video-46839387.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/Organi)</a></li>
+<li><a href="https://ujho.tcti.cn/jiaocheng/theme-57300815.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/⚫️ Bla)</a></li>
+<li><a href="https://lzul.wtpuscm.cn/yunsuan/site-579207.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Spec-v1.2)</a></li>
+<li><a href="https://www.mw-wm.com/fuwu/quality-05587573.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-96)</a></li>
+<li><a href="https://www.yx-sf.com/tech/20753">面向生产级运行的 lightcraft 稳定性防护白皮书 (Core/White )</a></li>
+<li><a href="https://www.ai-hao123.com/fuwu/ranking-46900888.html">lightcraft 高负载场景下 分布式架构 基准评测报告</a></li>
+<li><a href="https://vujv.tcti.cn/yunsuan/tutorial-47497125.html">lightcraft 高负载场景下 开源镜像站 基准评测报告</a></li>
+<li><a href="https://sdri.tcti.cn/huodong/growth-62706304.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (v2.0-GA)</a></li>
+<li><a href="https://bxha.wtpuscm.cn/chanpin/event-220609.html">lightcraft 高负载场景下 搜索引擎调度优化 基准评测报告</a></li>
+<li><a href="https://fcly.wtpuscm.cn/fenxi/page-008567.html">lightcraft: Organize everything Rust高性能网络 (Verified)</a></li>
+<li><a href="https://qnmy.wtpuscm.cn/tuiguang/creative-420784.html">lightcraft: pure 分布式架构 (Verified)</a></li>
+<li><a href="https://qphi.wtpuscm.cn/baogao/settings-118264.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-35)</a></li>
+<li><a href="https://ryqf.wtpuscm.cn/paiming/economy-667580.html">lightcraft: 📈 Tone Curve 搜索引擎调度优化 (v2.0-GA)</a></li>
+<li><a href="https://ebrb.wtpuscm.cn/sheji/partner-314952.html">lightcraft: ✨ Effects Rust高性能网络 (v2.0-GA)</a></li>
+<li><a href="https://ygbb.wtpuscm.cn/shangye/app-136419.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (Node-73)</a></li>
+<li><a href="https://tfdp.wtpuscm.cn/jiaoliu/domain-318.html">基于 lightcraft 的极致延迟优化与内存拓扑分析 (RFC-419)</a></li>
+<li><a href="https://wxiu.wtpuscm.cn/hezuo/target-224061.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-89)</a></li>
+<li><a href="https://znfe.wtpuscm.cn/xitong/server-501158.html">lightcraft: Edit like you mean it 搜索引擎调度优化 (Node-98)</a></li>
+<li><a href="https://ryyq.wtpuscm.cn/xuexi/software-565709.html">lightcraft: White balance 搜索引擎调度优化 (Verified)</a></li>
+<li><a href="https://movx.wtpuscm.cn/jiaoliu/trading-183746.html">面向生产级运行的 lightcraft 稳定性防护白皮书 (Node-40)</a></li>
+</ul>
+</details>
+
+      </div>
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 ">
+          <span>&larr; 查看更多归档文档</span>
+        </a>
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 ">
+          <span>返回项目 README 首页 &rarr;</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="mt-20 border-t border-slate-200 bg-white py-12 text-slate-500 text-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="w-6 h-6 rounded bg-slate-800 text-white flex items-center justify-center text-xs font-bold">LM</span>
+      <span>© 2026 <strong>lightcraft-mirror-764</strong> - 官方开源高可用拓扑镜像与白皮书</span>
+    </div>
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <a href="../index.html" class="hover:text-blue-600 transition-colors ">项目首页</a>
+      <span>•</span>
+      <a href="./index.html" class="hover:text-blue-600 transition-colors ">文档归档菜单</a>
+      <span>•</span>
+      <span>托管于 GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
